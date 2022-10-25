@@ -13,3 +13,8 @@
 *.mif
 *.smsg
 *.summary
+*.sof
+*.pof
+*.jdi
+*.pin
+*.sld

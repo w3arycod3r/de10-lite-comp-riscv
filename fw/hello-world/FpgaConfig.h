@@ -12,7 +12,7 @@
 #define MEMADDR_OCRAM           ((uintptr_t)(0x80000000))
 #define MEMADDR_IRQCONTROLLER   ((uintptr_t)(0xff204040))
 #define MEMADDR_JTAG_UART       ((uintptr_t)(0xff201000))
-#define MEMADDR_PIO_LEDR        ((uintptr_t)(0x00010100))
+#define MEMADDR_PIO_LEDR        ((uintptr_t)(0xff200000))
 #define MEMADDR_PIO_SW          ((uintptr_t)(0xff200040))
 #define MEMADDR_PIO_KEY         ((uintptr_t)(0xff200050))
 #define MEMADDR_PIO_HEX5_HEX4   ((uintptr_t)(0xff200030))

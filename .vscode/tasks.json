@@ -9,6 +9,14 @@
             "group": "build",
             "type": "shell",
             "command": "./build.bat",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
         }
     ]
 }
