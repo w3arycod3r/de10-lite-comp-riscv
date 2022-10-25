@@ -1,0 +1,15 @@
+**/db/
+**/incremental_db/
+**/devkits/
+**/output_files/
+**/simulation/
+**/.qsys_edit/
+**/.obj/
+**/out/
+*.rpt
+*.done
+*.qws
+*.sopcinfo
+*.mif
+*.smsg
+*.summary

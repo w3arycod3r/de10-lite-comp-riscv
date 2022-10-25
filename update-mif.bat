@@ -1,0 +1,6 @@
+@set DESIGN_NAME=quartus/DE10_Lite_Computer
+
+quartus_cdb %DESIGN_NAME% -c %DESIGN_NAME% --update_mif
+quartus_asm --read_settings_files=on --write_settings_files=off %DESIGN_NAME% -c %DESIGN_NAME%
+
+@pause
