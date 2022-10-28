@@ -4,50 +4,52 @@
 
 `timescale 1 ps / 1 ps
 module Computer_System (
-		inout  wire        accelerometer_I2C_SDAT,      //         accelerometer.I2C_SDAT
-		output wire        accelerometer_I2C_SCLK,      //                      .I2C_SCLK
-		output wire        accelerometer_G_SENSOR_CS_N, //                      .G_SENSOR_CS_N
-		input  wire        accelerometer_G_SENSOR_INT,  //                      .G_SENSOR_INT
-		inout  wire [15:0] arduino_gpio_export,         //          arduino_gpio.export
-		output wire        arduino_reset_n_export,      //       arduino_reset_n.export
-		inout  wire [17:0] expansion_jp1_0_export,      //       expansion_jp1_0.export
-		inout  wire [17:0] expansion_jp1_1_export,      //       expansion_jp1_1.export
-		output wire [31:0] hex3_hex0_export,            //             hex3_hex0.export
-		output wire [15:0] hex5_hex4_export,            //             hex5_hex4.export
-		output wire [9:0]  leds_export,                 //                  leds.export
-		input  wire [1:0]  pushbuttons_export,          //           pushbuttons.export
-		output wire [1:0]  sdram_ba,                    //                 sdram.ba
-		output wire [12:0] sdram_addr,                  //                      .addr
-		output wire        sdram_cas_n,                 //                      .cas_n
-		output wire        sdram_cke,                   //                      .cke
-		output wire        sdram_cs_n,                  //                      .cs_n
-		inout  wire [15:0] sdram_dq,                    //                      .dq
-		output wire [1:0]  sdram_dqm,                   //                      .dqm
-		output wire        sdram_ras_n,                 //                      .ras_n
-		output wire        sdram_we_n,                  //                      .we_n
-		output wire        sdram_clk_clk,               //             sdram_clk.clk
-		input  wire [9:0]  slider_switches_export,      //       slider_switches.export
-		input  wire        system_pll_ref_clk_clk,      //    system_pll_ref_clk.clk
-		input  wire        system_pll_ref_reset_reset,  //  system_pll_ref_reset.reset
-		input  wire        vexriscvavalon_0_jtag_tms,   // vexriscvavalon_0_jtag.tms
-		input  wire        vexriscvavalon_0_jtag_tdi,   //                      .tdi
-		output wire        vexriscvavalon_0_jtag_tdo,   //                      .tdo
-		input  wire        vexriscvavalon_0_jtag_tck,   //                      .tck
-		output wire        vga_CLK,                     //                   vga.CLK
-		output wire        vga_HS,                      //                      .HS
-		output wire        vga_VS,                      //                      .VS
-		output wire        vga_BLANK,                   //                      .BLANK
-		output wire        vga_SYNC,                    //                      .SYNC
-		output wire [3:0]  vga_R,                       //                      .R
-		output wire [3:0]  vga_G,                       //                      .G
-		output wire [3:0]  vga_B,                       //                      .B
-		input  wire        video_pll_ref_clk_clk,       //     video_pll_ref_clk.clk
-		input  wire        video_pll_ref_reset_reset    //   video_pll_ref_reset.reset
+		inout  wire        accelerometer_I2C_SDAT,             //                accelerometer.I2C_SDAT
+		output wire        accelerometer_I2C_SCLK,             //                             .I2C_SCLK
+		output wire        accelerometer_G_SENSOR_CS_N,        //                             .G_SENSOR_CS_N
+		input  wire        accelerometer_G_SENSOR_INT,         //                             .G_SENSOR_INT
+		inout  wire [15:0] arduino_gpio_export,                //                 arduino_gpio.export
+		output wire        arduino_reset_n_export,             //              arduino_reset_n.export
+		inout  wire [17:0] expansion_jp1_0_export,             //              expansion_jp1_0.export
+		inout  wire [17:0] expansion_jp1_1_export,             //              expansion_jp1_1.export
+		output wire [31:0] hex3_hex0_export,                   //                    hex3_hex0.export
+		output wire [15:0] hex5_hex4_export,                   //                    hex5_hex4.export
+		output wire [9:0]  leds_export,                        //                         leds.export
+		input  wire [1:0]  pushbuttons_export,                 //                  pushbuttons.export
+		input  wire        reset_controller_0_reset_in0_reset, // reset_controller_0_reset_in0.reset
+		output wire [1:0]  sdram_ba,                           //                        sdram.ba
+		output wire [12:0] sdram_addr,                         //                             .addr
+		output wire        sdram_cas_n,                        //                             .cas_n
+		output wire        sdram_cke,                          //                             .cke
+		output wire        sdram_cs_n,                         //                             .cs_n
+		inout  wire [15:0] sdram_dq,                           //                             .dq
+		output wire [1:0]  sdram_dqm,                          //                             .dqm
+		output wire        sdram_ras_n,                        //                             .ras_n
+		output wire        sdram_we_n,                         //                             .we_n
+		output wire        sdram_clk_clk,                      //                    sdram_clk.clk
+		input  wire [9:0]  slider_switches_export,             //              slider_switches.export
+		input  wire        system_pll_ref_clk_clk,             //           system_pll_ref_clk.clk
+		input  wire        system_pll_ref_reset_reset,         //         system_pll_ref_reset.reset
+		input  wire        vexriscvavalon_0_jtag_tms,          //        vexriscvavalon_0_jtag.tms
+		input  wire        vexriscvavalon_0_jtag_tdi,          //                             .tdi
+		output wire        vexriscvavalon_0_jtag_tdo,          //                             .tdo
+		input  wire        vexriscvavalon_0_jtag_tck,          //                             .tck
+		output wire        vga_CLK,                            //                          vga.CLK
+		output wire        vga_HS,                             //                             .HS
+		output wire        vga_VS,                             //                             .VS
+		output wire        vga_BLANK,                          //                             .BLANK
+		output wire        vga_SYNC,                           //                             .SYNC
+		output wire [3:0]  vga_R,                              //                             .R
+		output wire [3:0]  vga_G,                              //                             .G
+		output wire [3:0]  vga_B,                              //                             .B
+		input  wire        video_pll_ref_clk_clk,              //            video_pll_ref_clk.clk
+		input  wire        video_pll_ref_reset_reset           //          video_pll_ref_reset.reset
 	);
 
-	wire         system_pll_sys_clk_clk;                                                          // System_PLL:sys_clk_clk -> [ADC:clock, Accelerometer:clk, Arduino_GPIO:clk, Arduino_Reset_N:clk, Expansion_JP1_0:clk, Expansion_JP1_1:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, Interval_Timer:clk, Interval_Timer_2:clk, JTAG_UART:clk, JTAG_to_FPGA_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, VexRiscvAvalon_0:clk, irq_mapper:clk, mm_interconnect_0:System_PLL_sys_clk_clk, rst_controller:clk]
+	wire         system_pll_sys_clk_clk;                                                          // System_PLL:sys_clk_clk -> [ADC:clock, Accelerometer:clk, Arduino_GPIO:clk, Arduino_Reset_N:clk, Expansion_JP1_0:clk, Expansion_JP1_1:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, Interval_Timer:clk, Interval_Timer_2:clk, JTAG_UART:clk, JTAG_to_FPGA_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, VexRiscvAvalon_0:clk, irq_mapper:clk, mm_interconnect_0:System_PLL_sys_clk_clk, reset_controller_0:clk, rst_controller:clk]
 	wire         video_pll_vga_clk_clk;                                                           // Video_PLL:vga_clk_clk -> VGA_Subsystem:vga_clk_clk
-	wire         system_pll_reset_source_reset;                                                   // System_PLL:reset_source_reset -> [JTAG_to_FPGA_Bridge:clk_reset_reset, VGA_Subsystem:sys_reset_reset_n, rst_controller:reset_in0]
+	wire         reset_controller_0_reset_out_reset;                                              // reset_controller_0:reset_out -> [JTAG_to_FPGA_Bridge:clk_reset_reset, VGA_Subsystem:sys_reset_reset_n, rst_controller:reset_in0]
+	wire         system_pll_reset_source_reset;                                                   // System_PLL:reset_source_reset -> reset_controller_0:reset_in1
 	wire         video_pll_reset_source_reset;                                                    // Video_PLL:reset_source_reset -> VGA_Subsystem:vga_reset_reset_n
 	wire         vexriscvavalon_0_data_bus_waitrequest;                                           // mm_interconnect_0:VexRiscvAvalon_0_data_bus_waitrequest -> VexRiscvAvalon_0:dBusAvalon_waitRequestn
 	wire  [31:0] vexriscvavalon_0_data_bus_readdata;                                              // mm_interconnect_0:VexRiscvAvalon_0_data_bus_readdata -> VexRiscvAvalon_0:dBusAvalon_readData
@@ -365,7 +367,7 @@ module Computer_System (
 		.FIFO_DEPTHS (2)
 	) jtag_to_fpga_bridge (
 		.clk_clk              (system_pll_sys_clk_clk),                   //          clk.clk
-		.clk_reset_reset      (system_pll_reset_source_reset),            //    clk_reset.reset
+		.clk_reset_reset      (reset_controller_0_reset_out_reset),       //    clk_reset.reset
 		.master_address       (jtag_to_fpga_bridge_master_address),       //       master.address
 		.master_readdata      (jtag_to_fpga_bridge_master_readdata),      //             .readdata
 		.master_read          (jtag_to_fpga_bridge_master_read),          //             .read
@@ -495,7 +497,7 @@ module Computer_System (
 		.rgb_slave_read                       (mm_interconnect_0_vga_subsystem_rgb_slave_read),                       //                 rgb_slave.read
 		.rgb_slave_readdata                   (mm_interconnect_0_vga_subsystem_rgb_slave_readdata),                   //                          .readdata
 		.sys_clk_clk                          (system_pll_sys_clk_clk),                                               //                   sys_clk.clk
-		.sys_reset_reset_n                    (~system_pll_reset_source_reset),                                       //                 sys_reset.reset_n
+		.sys_reset_reset_n                    (~reset_controller_0_reset_out_reset),                                  //                 sys_reset.reset_n
 		.vga_CLK                              (vga_CLK),                                                              //                       vga.CLK
 		.vga_HS                               (vga_HS),                                                               //                          .HS
 		.vga_VS                               (vga_VS),                                                               //                          .VS
@@ -553,6 +555,69 @@ module Computer_System (
 		.ref_reset_reset    (video_pll_ref_reset_reset),    //    ref_reset.reset
 		.vga_clk_clk        (video_pll_vga_clk_clk),        //      vga_clk.clk
 		.reset_source_reset (video_pll_reset_source_reset)  // reset_source.reset
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("both"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) reset_controller_0 (
+		.reset_in0      (reset_controller_0_reset_in0_reset), // reset_in0.reset
+		.reset_in1      (system_pll_reset_source_reset),      // reset_in1.reset
+		.clk            (system_pll_sys_clk_clk),             //       clk.clk
+		.reset_out      (reset_controller_0_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 	Computer_System_mm_interconnect_0 mm_interconnect_0 (
@@ -756,7 +821,7 @@ module Computer_System (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
-		.reset_in0      (system_pll_reset_source_reset),      // reset_in0.reset
+		.reset_in0      (reset_controller_0_reset_out_reset), // reset_in0.reset
 		.clk            (system_pll_sys_clk_clk),             //       clk.clk
 		.reset_out      (rst_controller_reset_out_reset),     // reset_out.reset
 		.reset_req      (rst_controller_reset_out_reset_req), //          .reset_req

@@ -111,7 +111,9 @@ architecture arch of DE10_Lite_Computer is
         vga_G                       : out   std_logic_vector(3 downto 0);                     -- G
         vga_B                       : out   std_logic_vector(3 downto 0);                     -- B
         video_pll_ref_clk_clk       : in    std_logic                     := 'X';             -- clk
-        video_pll_ref_reset_reset   : in    std_logic                     := 'X'              -- reset
+        video_pll_ref_reset_reset   : in    std_logic                     := 'X';             -- reset
+        reset_controller_0_reset_in0_reset : in    std_logic                     := 'X'             -- reset
+
 	);
 	end component Computer_System;
 
@@ -142,10 +144,11 @@ begin
     port map (
 
         -- Global Signals
-        system_pll_ref_clk_clk      => MAX10_CLK1_50,
-        video_pll_ref_clk_clk       => MAX10_CLK2_50,
-        system_pll_ref_reset_reset  => asyncReset,
-        video_pll_ref_reset_reset   => asyncReset,
+        system_pll_ref_clk_clk               => MAX10_CLK1_50,
+        video_pll_ref_clk_clk                => MAX10_CLK2_50,
+        system_pll_ref_reset_reset           => '0',    -- Logically dead...
+        video_pll_ref_reset_reset            => '0',    -- Logically dead...
+        reset_controller_0_reset_in0_reset   => asyncReset, -- Real reset
 
         -- CPU Core JTAG
         vexriscvavalon_0_jtag_tms   => open,

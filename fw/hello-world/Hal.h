@@ -40,4 +40,7 @@ uint64_t Hal_ReadTime64();
 // Private function called from Crt.S, not to be called directly
 	// uintptr_t Hal_Exception(uintptr_t stack, uintptr_t addr, uint32_t irq);
 
+// Macros
+#define HAL_HAS_DURATION_PASSED(timer32, dur32) ( (Hal_ReadTime32()-timer32) > dur32 )
+
 #endif // HAL_H

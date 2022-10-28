@@ -24,6 +24,7 @@ DEALINGS IN THE SOFTWARE. */
 #include "Hal.h"
 #include "bit.h"
 #include "pio.h"
+#include "seg7.h"
 
 static int counterMod = 1;
 
@@ -45,15 +46,14 @@ void IRQHandlerUart() {
 int main() {
 
     // Greetings
-    UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
-    UartWrite(g_Uart, DBUILD_VERSION);
-    UartWrite(g_Uart, "  - ");
-    UartWrite(g_Uart, DBUILD_DATE);
-    UartWrite(g_Uart, "  * * *\n");
+    // UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
+    // UartWrite(g_Uart, DBUILD_VERSION);
+    // UartWrite(g_Uart, "  - ");
+    // UartWrite(g_Uart, DBUILD_DATE);
+    // UartWrite(g_Uart, "  * * *\n");
 
-    // Hex Displays off
-    pio_write_port(g_pio_hex5_hex4, 0);
-    pio_write_port(g_pio_hex3_hex0, 0);
+    // Init seg7 module
+    __seg7_init();
 
     // LEDs off
     pio_write_port(g_pio_ledr, 0);
@@ -69,6 +69,7 @@ int main() {
     Hal_TimerStart(MSEC_TO_TICKS(3000)); // 3 seconds
     Hal_GlobalEnableInterrupts();
 
+    seg7_writeString("Hello!");
 
     uint32_t timeLast = Hal_ReadTime32();
     uint32_t pattern = 1;
@@ -97,5 +98,8 @@ int main() {
             // Drive
             pio_write_port(g_pio_ledr, pattern);
         }
+
+        // Main task of the seg7 module
+        __seg7_service();
     }
 }

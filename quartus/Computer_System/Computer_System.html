@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2022.10.25.17:12:01</td>
+    <td class="l">2022.10.26.13:27:24</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -804,7 +804,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">ADC</td>
+      <td class="main" rowspan="11">ADC</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;adc_slave</td>
@@ -825,7 +825,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -833,8 +833,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -919,7 +925,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Accelerometer</td>
+      <td class="main" rowspan="13">Accelerometer</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_accelerometer_spi_mode_slave</td>
@@ -946,7 +952,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -954,8 +960,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1008,7 +1020,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Arduino_GPIO</td>
+      <td class="main" rowspan="13">Arduino_GPIO</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1035,7 +1047,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -1043,8 +1055,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1224,7 +1242,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">Arduino_Reset_N</td>
+      <td class="main" rowspan="11">Arduino_Reset_N</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1245,7 +1263,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -1253,8 +1271,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1434,7 +1458,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Expansion_JP1_0</td>
+      <td class="main" rowspan="13">Expansion_JP1_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1461,7 +1485,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -1469,8 +1493,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1650,7 +1680,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Expansion_JP1_1</td>
+      <td class="main" rowspan="13">Expansion_JP1_1</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1677,7 +1707,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -1685,8 +1715,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1866,7 +1902,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">HEX3_HEX0</td>
+      <td class="main" rowspan="11">HEX3_HEX0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1887,7 +1923,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -1895,8 +1931,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2076,7 +2118,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">HEX5_HEX4</td>
+      <td class="main" rowspan="11">HEX5_HEX4</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -2097,7 +2139,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -2105,8 +2147,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2286,7 +2334,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Interval_Timer</td>
+      <td class="main" rowspan="13">Interval_Timer</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -2313,7 +2361,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -2321,8 +2369,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2486,7 +2540,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Interval_Timer_2</td>
+      <td class="main" rowspan="13">Interval_Timer_2</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -2513,7 +2567,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -2521,8 +2575,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2686,7 +2746,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">JTAG_UART</td>
+      <td class="main" rowspan="13">JTAG_UART</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_jtag_slave</td>
@@ -2713,7 +2773,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -2721,8 +2781,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2846,17 +2912,23 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
-      <td class="main" rowspan="69">JTAG_to_FPGA_Bridge</td>
+      <td class="main" rowspan="70">JTAG_to_FPGA_Bridge</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk_reset</td>
@@ -3282,7 +3354,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">LEDs</td>
+      <td class="main" rowspan="11">LEDs</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -3303,7 +3375,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -3311,8 +3383,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -3492,7 +3570,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="15">Onchip_SRAM</td>
+      <td class="main" rowspan="16">Onchip_SRAM</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -3531,7 +3609,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -3539,8 +3617,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk1</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset1</td>
@@ -3784,7 +3868,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="12">Pushbuttons</td>
+      <td class="main" rowspan="13">Pushbuttons</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -3811,7 +3895,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -3819,8 +3903,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -4000,7 +4090,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="15">SDRAM</td>
+      <td class="main" rowspan="16">SDRAM</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -4039,7 +4129,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -4047,8 +4137,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -4093,7 +4189,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">Slider_Switches</td>
+      <td class="main" rowspan="11">Slider_Switches</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -4114,7 +4210,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -4122,8 +4218,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -4303,7 +4405,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
       </td>
       <td class="from">data_bus&#160;&#160;</td>
-      <td class="main" rowspan="10">SysID</td>
+      <td class="main" rowspan="11">SysID</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;control_slave</td>
@@ -4324,7 +4426,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -4332,8 +4434,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -4353,7 +4461,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1666735920</td>
+        <td class="parametervalue">1666808843</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -4378,7 +4486,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1666735920</td>
+        <td class="parametervalue">1666808843</td>
        </tr>
       </table>
      </td>
@@ -4482,7 +4590,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <table>
        <tr>
         <td class="parametername">AUTO_GENERATION_ID</td>
-        <td class="parametervalue">1666735920</td>
+        <td class="parametervalue">1666808843</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_UNIQUE_ID</td>
@@ -4514,11 +4622,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_SYS_CLK_CLOCK_DOMAIN</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_SYS_CLK_RESET_DOMAIN</td>
-        <td class="parametervalue">7</td>
+        <td class="parametervalue">8</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_VGA_CLK_CLOCK_RATE</td>
@@ -4526,11 +4634,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_VGA_CLK_CLOCK_DOMAIN</td>
-        <td class="parametervalue">9</td>
+        <td class="parametervalue">10</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_VGA_CLK_RESET_DOMAIN</td>
-        <td class="parametervalue">9</td>
+        <td class="parametervalue">10</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -4565,7 +4673,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <table>
        <tr>
         <td class="parametername">AUTO_GENERATION_ID</td>
-        <td class="parametervalue">1666735920</td>
+        <td class="parametervalue">1666808843</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_UNIQUE_ID</td>
@@ -5703,17 +5811,23 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
-      <td class="main" rowspan="42">VGA_Subsystem_Sys_Clk</td>
+      <td class="main" rowspan="43">VGA_Subsystem_Sys_Clk</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk_in</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk_in_reset</td>
@@ -6922,7 +7036,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_JTAG_to_FPGA_Bridge">JTAG_to_FPGA_Bridge</a>
       </td>
       <td class="from">master&#160;&#160;</td>
-      <td class="main" rowspan="89">VexRiscvAvalon_0</td>
+      <td class="main" rowspan="90">VexRiscvAvalon_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;irq_controller</td>
@@ -6931,7 +7045,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_System_PLL">System_PLL</a>
       </td>
       <td class="from">sys_clk&#160;&#160;</td>
@@ -6939,8 +7053,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;clock</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
-      <td class="from">reset_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_reset_controller_0">reset_controller_0</a>
+      </td>
+      <td class="from">reset_out&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -7509,10 +7629,478 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_reset_controller_0"> </a>
+  <div>
+   <hr/>
+   <h2>reset_controller_0</h2>altera_reset_controller v21.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_System_PLL">System_PLL</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+      <td class="main" rowspan="63">reset_controller_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_in1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_JTAG_to_FPGA_Bridge">JTAG_to_FPGA_Bridge</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk_reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_VexRiscvAvalon_0">VexRiscvAvalon_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_SDRAM">SDRAM</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_HEX3_HEX0">HEX3_HEX0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_HEX5_HEX4">HEX5_HEX4</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Slider_Switches">Slider_Switches</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Pushbuttons">Pushbuttons</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Expansion_JP1_0">Expansion_JP1_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Expansion_JP1_1">Expansion_JP1_1</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Arduino_GPIO">Arduino_GPIO</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Arduino_Reset_N">Arduino_Reset_N</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_JTAG_UART">JTAG_UART</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Interval_Timer">Interval_Timer</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Interval_Timer_2">Interval_Timer_2</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_SysID">SysID</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_ADC">ADC</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Accelerometer">Accelerometer</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_LEDs">LEDs</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_Onchip_SRAM">Onchip_SRAM</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_out&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_VGA_Subsystem_Sys_Clk">VGA_Subsystem_Sys_Clk</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk_in_reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">NUM_RESET_INPUTS</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">OUTPUT_RESET_SYNC_EDGES</td>
+        <td class="parametervalue">both</td>
+       </tr>
+       <tr>
+        <td class="parametername">SYNC_DEPTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_REQUEST_PRESENT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_REQ_WAIT_TIME</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">MIN_RST_ASSERTION_TIME</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">RESET_REQ_EARLY_DSRT_TIME</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN0</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN1</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN2</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN3</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN4</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN5</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN6</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN7</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN8</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN9</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN10</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN11</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN12</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN13</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN14</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_IN15</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">USE_RESET_REQUEST_INPUT</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">ADAPT_RESET_REQUEST</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.03 seconds</td>
-    <td class="r">rendering took 0.16 seconds</td>
+    <td class="l">generation took 0.02 seconds</td>
+    <td class="r">rendering took 0.27 seconds</td>
    </tr>
   </table>
  </body>

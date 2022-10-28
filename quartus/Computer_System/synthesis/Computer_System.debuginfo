@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="Computer_System" kind="system" version="21.1" fabric="QSYS">
  <!-- Format version 21.1 850 (Future versions may contain additional information.) -->
- <!-- 2022.10.25.17:14:22 -->
+ <!-- 2022.10.26.13:29:40 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1666735920</value>
+  <value>1666808843</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -13493,7 +13493,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1666735920</value>
+   <value>1666808843</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -13513,7 +13513,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1666735920</value>
+   <value>1666808843</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -13529,7 +13529,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1666735920</value>
+   <value>1666808843</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -14378,6 +14378,12 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
+    <moduleName>reset_controller_0</moduleName>
+    <slaveName>clk</slaveName>
+    <name>reset_controller_0.clk</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
     <moduleName>Onchip_SRAM</moduleName>
     <slaveName>clk1</slaveName>
     <name>Onchip_SRAM.clk1</name>
@@ -14643,7 +14649,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1666735920</value>
+   <value>1666808843</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14718,7 +14724,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_SYS_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14728,7 +14734,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_SYS_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>7</value>
+   <value>8</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14748,7 +14754,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_VGA_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>9</value>
+   <value>10</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -14758,7 +14764,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_VGA_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>9</value>
+   <value>10</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -16881,7 +16887,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1666735920</value>
+   <value>1666808843</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -29996,6 +30002,426 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
+   name="reset_controller_0"
+   kind="altera_reset_controller"
+   version="21.1"
+   path="reset_controller_0">
+  <!-- Describes a single module. Module parameters are
+the requested settings for a module instance. -->
+  <parameter name="NUM_RESET_INPUTS">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="OUTPUT_RESET_SYNC_EDGES">
+   <type>java.lang.String</type>
+   <value>both</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="SYNC_DEPTH">
+   <type>int</type>
+   <value>2</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQUEST_PRESENT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQ_WAIT_TIME">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="MIN_RST_ASSERTION_TIME">
+   <type>int</type>
+   <value>3</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="RESET_REQ_EARLY_DSRT_TIME">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN0">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN1">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN2">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN3">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN4">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN5">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN6">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN7">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN8">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN9">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN10">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN11">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN12">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN13">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN14">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_IN15">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="USE_RESET_REQUEST_INPUT">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="ADAPT_RESET_REQUEST">
+   <type>int</type>
+   <value>0</value>
+   <derived>true</derived>
+   <enabled>true</enabled>
+   <visible>false</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <interface name="reset_in0" kind="reset_sink" version="21.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>NONE</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset_in0</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
+  <interface name="reset_in1" kind="reset_sink" version="21.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>NONE</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>false</isStart>
+   <port>
+    <name>reset_in1</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
+  <interface name="clk" kind="clock_sink" version="21.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="externallyDriven">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="ptfSchematicName">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>false</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>clock</type>
+   <isStart>false</isStart>
+   <port>
+    <name>clk</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>clk</role>
+   </port>
+  </interface>
+  <interface name="reset_out" kind="reset_source" version="21.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clk</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedDirectReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedResetSinks">
+    <type>[Ljava.lang.String;</type>
+    <value>reset_in0,reset_in1</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="synchronousEdges">
+    <type>com.altera.sopcmodel.reset.Reset$Edges</type>
+    <value>BOTH</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>reset</type>
+   <isStart>true</isStart>
+   <port>
+    <name>reset_out</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>reset</role>
+   </port>
+  </interface>
+ </module>
+ <module
    name="mm_interconnect_0"
    kind="altera_mm_interconnect"
    version="21.1"
@@ -42286,6 +42712,33 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
+   name="System_PLL.sys_clk/reset_controller_0.clk"
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
+   end="reset_controller_0.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>System_PLL</startModule>
+  <startConnectionPoint>sys_clk</startConnectionPoint>
+  <endModule>reset_controller_0</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
    name="System_PLL.sys_clk/Onchip_SRAM.clk1"
    kind="clock"
    version="21.1"
@@ -42394,10 +42847,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_in</endConnectionPoint>
  </connection>
  <connection
-   name="System_PLL.reset_source/JTAG_to_FPGA_Bridge.clk_reset"
+   name="reset_controller_0.reset_out/JTAG_to_FPGA_Bridge.clk_reset"
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="JTAG_to_FPGA_Bridge.clk_reset">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -42415,17 +42868,44 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>System_PLL</startModule>
-  <startConnectionPoint>reset_source</startConnectionPoint>
+  <startModule>reset_controller_0</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>JTAG_to_FPGA_Bridge</endModule>
   <endConnectionPoint>clk_reset</endConnectionPoint>
  </connection>
  <connection
-   name="System_PLL.reset_source/VGA_Subsystem_Sys_Clk.clk_in_reset"
+   name="reset_controller_0.reset_out/VGA_Subsystem_Sys_Clk.clk_in_reset"
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="VGA_Subsystem_Sys_Clk.clk_in_reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>reset_controller_0</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
+  <endModule>VGA_Subsystem_Sys_Clk</endModule>
+  <endConnectionPoint>clk_in_reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="System_PLL.reset_source/reset_controller_0.reset_in1"
    kind="reset"
    version="21.1"
    start="System_PLL.reset_source"
-   end="VGA_Subsystem_Sys_Clk.clk_in_reset">
+   end="reset_controller_0.reset_in1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -42444,8 +42924,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>System_PLL</startModule>
   <startConnectionPoint>reset_source</startConnectionPoint>
-  <endModule>VGA_Subsystem_Sys_Clk</endModule>
-  <endConnectionPoint>clk_in_reset</endConnectionPoint>
+  <endModule>reset_controller_0</endModule>
+  <endConnectionPoint>reset_in1</endConnectionPoint>
  </connection>
  <connection
    name="Video_PLL.reset_source/VGA_Subsystem_VGA_Clk.clk_in_reset"
@@ -45328,10 +45808,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_reset</endConnectionPoint>
  </connection>
  <connection
-   name="System_PLL.reset_source/rst_controller.reset_in0"
+   name="reset_controller_0.reset_out/rst_controller.reset_in0"
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="rst_controller.reset_in0">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
@@ -45349,8 +45829,8 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>System_PLL</startModule>
-  <startConnectionPoint>reset_source</startConnectionPoint>
+  <startModule>reset_controller_0</startModule>
+  <startConnectionPoint>reset_out</startConnectionPoint>
   <endModule>rst_controller</endModule>
   <endConnectionPoint>reset_in0</endConnectionPoint>
  </connection>
@@ -45417,7 +45897,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>40</instanceCount>
+  <instanceCount>41</instanceCount>
   <name>clock_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -45425,7 +45905,7 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <plugin>
-  <instanceCount>41</instanceCount>
+  <instanceCount>43</instanceCount>
   <name>reset_sink</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -45505,7 +45985,7 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <plugin>
-  <instanceCount>5</instanceCount>
+  <instanceCount>6</instanceCount>
   <name>reset_source</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>
@@ -45713,6 +46193,14 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
+  <instanceCount>2</instanceCount>
+  <name>altera_reset_controller</name>
+  <type>com.altera.entityinterfaces.IElementClass</type>
+  <subtype>com.altera.entityinterfaces.IModule</subtype>
+  <displayName>Merlin Reset Controller</displayName>
+  <version>21.1</version>
+ </plugin>
+ <plugin>
   <instanceCount>1</instanceCount>
   <name>altera_mm_interconnect</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
@@ -45726,14 +46214,6 @@ parameters are a RESULT of the module parameters. -->
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
   <displayName>Merlin IRQ Mapper</displayName>
-  <version>21.1</version>
- </plugin>
- <plugin>
-  <instanceCount>1</instanceCount>
-  <name>altera_reset_controller</name>
-  <type>com.altera.entityinterfaces.IElementClass</type>
-  <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>Merlin Reset Controller</displayName>
   <version>21.1</version>
  </plugin>
  <plugin>
@@ -45761,7 +46241,7 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <plugin>
-  <instanceCount>37</instanceCount>
+  <instanceCount>38</instanceCount>
   <name>clock</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -45769,7 +46249,7 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <plugin>
-  <instanceCount>19</instanceCount>
+  <instanceCount>20</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -45809,5 +46289,5 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <reportVersion>21.1 850</reportVersion>
- <uniqueIdentifier>3C58C26DBD760000018411341EF3</uniqueIdentifier>
+ <uniqueIdentifier>3C58C26DBD7600000184158CCCB7</uniqueIdentifier>
 </EnsembleReport>

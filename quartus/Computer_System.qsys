@@ -213,7 +213,7 @@
    {
       datum _sortIndex
       {
-         value = "0";
+         value = "23";
          type = "int";
       }
    }
@@ -317,7 +317,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "0";
          type = "int";
       }
       datum sopceditor_expanded
@@ -370,7 +370,7 @@
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "3";
          type = "int";
       }
    }
@@ -391,7 +391,15 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "2";
+         type = "int";
+      }
+   }
+   element reset_controller_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
          type = "int";
       }
    }
@@ -460,6 +468,11 @@
    name="pushbuttons"
    internal="Pushbuttons.external_connection"
    type="conduit"
+   dir="end" />
+ <interface
+   name="reset_controller_0_reset_in0"
+   internal="reset_controller_0.reset_in0"
+   type="reset"
    dir="end" />
  <interface name="sdram" internal="SDRAM.wire" type="conduit" dir="end" />
  <interface
@@ -970,13 +983,13 @@
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_PIXEL_DMA_MASTER_ADDRESS_MAP"><![CDATA[<address-map><slave name='SDRAM.s1' start='0x0' end='0x4000000' /><slave name='Onchip_SRAM.s2' start='0x8000000' end='0x8010000' /></address-map>]]></parameter>
   <parameter name="AUTO_PIXEL_DMA_MASTER_ADDRESS_WIDTH" value="AddressWidth = 28" />
-  <parameter name="AUTO_SYS_CLK_CLOCK_DOMAIN" value="7" />
+  <parameter name="AUTO_SYS_CLK_CLOCK_DOMAIN" value="8" />
   <parameter name="AUTO_SYS_CLK_CLOCK_RATE" value="100000000" />
-  <parameter name="AUTO_SYS_CLK_RESET_DOMAIN" value="7" />
+  <parameter name="AUTO_SYS_CLK_RESET_DOMAIN" value="8" />
   <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_VGA_Subsystem</parameter>
-  <parameter name="AUTO_VGA_CLK_CLOCK_DOMAIN" value="9" />
+  <parameter name="AUTO_VGA_CLK_CLOCK_DOMAIN" value="10" />
   <parameter name="AUTO_VGA_CLK_CLOCK_RATE" value="25000000" />
-  <parameter name="AUTO_VGA_CLK_RESET_DOMAIN" value="9" />
+  <parameter name="AUTO_VGA_CLK_RESET_DOMAIN" value="10" />
  </module>
  <module
    name="VexRiscvAvalon_0"
@@ -1005,6 +1018,36 @@
   <parameter name="lcd_clk_en" value="false" />
   <parameter name="vga_clk_en" value="true" />
   <parameter name="video_in_clk_en" value="false" />
+ </module>
+ <module
+   name="reset_controller_0"
+   kind="altera_reset_controller"
+   version="21.1"
+   enabled="1">
+  <parameter name="MIN_RST_ASSERTION_TIME" value="3" />
+  <parameter name="NUM_RESET_INPUTS" value="2" />
+  <parameter name="OUTPUT_RESET_SYNC_EDGES" value="both" />
+  <parameter name="RESET_REQUEST_PRESENT" value="0" />
+  <parameter name="RESET_REQ_EARLY_DSRT_TIME" value="1" />
+  <parameter name="RESET_REQ_WAIT_TIME" value="1" />
+  <parameter name="SYNC_DEPTH" value="2" />
+  <parameter name="USE_RESET_REQUEST_IN0" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN1" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN10" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN11" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN12" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN13" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN14" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN15" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN2" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN3" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN4" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN5" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN6" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN7" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN8" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN9" value="0" />
+  <parameter name="USE_RESET_REQUEST_INPUT" value="0" />
  </module>
  <connection
    kind="avalon"
@@ -1741,6 +1784,11 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
+   end="reset_controller_0.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
    end="Onchip_SRAM.clk1" />
  <connection
    kind="clock"
@@ -1866,83 +1914,103 @@
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="JTAG_to_FPGA_Bridge.clk_reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
+   end="VexRiscvAvalon_0.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
    end="SDRAM.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
-   end="LEDs.reset" />
- <connection
-   kind="reset"
-   version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="HEX3_HEX0.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="HEX5_HEX4.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Slider_Switches.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Pushbuttons.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Expansion_JP1_0.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
+   end="Expansion_JP1_1.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
    end="Arduino_GPIO.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Arduino_Reset_N.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="JTAG_UART.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Interval_Timer.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Interval_Timer_2.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="SysID.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="ADC.reset" />
  <connection
    kind="reset"
    version="21.1"
-   start="System_PLL.reset_source"
+   start="reset_controller_0.reset_out"
    end="Accelerometer.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="LEDs.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="Onchip_SRAM.reset1" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="VGA_Subsystem.sys_reset" />
  <connection
    kind="reset"
    version="21.1"
@@ -1952,22 +2020,7 @@
    kind="reset"
    version="21.1"
    start="System_PLL.reset_source"
-   end="VexRiscvAvalon_0.reset" />
- <connection
-   kind="reset"
-   version="21.1"
-   start="System_PLL.reset_source"
-   end="Expansion_JP1_1.reset" />
- <connection
-   kind="reset"
-   version="21.1"
-   start="System_PLL.reset_source"
-   end="Onchip_SRAM.reset1" />
- <connection
-   kind="reset"
-   version="21.1"
-   start="System_PLL.reset_source"
-   end="VGA_Subsystem.sys_reset" />
+   end="reset_controller_0.reset_in1" />
  <connection
    kind="reset"
    version="21.1"

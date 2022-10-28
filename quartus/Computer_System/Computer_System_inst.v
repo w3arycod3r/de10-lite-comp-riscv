@@ -1,0 +1,43 @@
+	Computer_System u0 (
+		.accelerometer_I2C_SDAT             (<connected-to-accelerometer_I2C_SDAT>),             //                accelerometer.I2C_SDAT
+		.accelerometer_I2C_SCLK             (<connected-to-accelerometer_I2C_SCLK>),             //                             .I2C_SCLK
+		.accelerometer_G_SENSOR_CS_N        (<connected-to-accelerometer_G_SENSOR_CS_N>),        //                             .G_SENSOR_CS_N
+		.accelerometer_G_SENSOR_INT         (<connected-to-accelerometer_G_SENSOR_INT>),         //                             .G_SENSOR_INT
+		.arduino_gpio_export                (<connected-to-arduino_gpio_export>),                //                 arduino_gpio.export
+		.arduino_reset_n_export             (<connected-to-arduino_reset_n_export>),             //              arduino_reset_n.export
+		.expansion_jp1_0_export             (<connected-to-expansion_jp1_0_export>),             //              expansion_jp1_0.export
+		.expansion_jp1_1_export             (<connected-to-expansion_jp1_1_export>),             //              expansion_jp1_1.export
+		.hex3_hex0_export                   (<connected-to-hex3_hex0_export>),                   //                    hex3_hex0.export
+		.hex5_hex4_export                   (<connected-to-hex5_hex4_export>),                   //                    hex5_hex4.export
+		.leds_export                        (<connected-to-leds_export>),                        //                         leds.export
+		.pushbuttons_export                 (<connected-to-pushbuttons_export>),                 //                  pushbuttons.export
+		.reset_controller_0_reset_in0_reset (<connected-to-reset_controller_0_reset_in0_reset>), // reset_controller_0_reset_in0.reset
+		.sdram_ba                           (<connected-to-sdram_ba>),                           //                        sdram.ba
+		.sdram_addr                         (<connected-to-sdram_addr>),                         //                             .addr
+		.sdram_cas_n                        (<connected-to-sdram_cas_n>),                        //                             .cas_n
+		.sdram_cke                          (<connected-to-sdram_cke>),                          //                             .cke
+		.sdram_cs_n                         (<connected-to-sdram_cs_n>),                         //                             .cs_n
+		.sdram_dq                           (<connected-to-sdram_dq>),                           //                             .dq
+		.sdram_dqm                          (<connected-to-sdram_dqm>),                          //                             .dqm
+		.sdram_ras_n                        (<connected-to-sdram_ras_n>),                        //                             .ras_n
+		.sdram_we_n                         (<connected-to-sdram_we_n>),                         //                             .we_n
+		.sdram_clk_clk                      (<connected-to-sdram_clk_clk>),                      //                    sdram_clk.clk
+		.slider_switches_export             (<connected-to-slider_switches_export>),             //              slider_switches.export
+		.system_pll_ref_clk_clk             (<connected-to-system_pll_ref_clk_clk>),             //           system_pll_ref_clk.clk
+		.system_pll_ref_reset_reset         (<connected-to-system_pll_ref_reset_reset>),         //         system_pll_ref_reset.reset
+		.vexriscvavalon_0_jtag_tms          (<connected-to-vexriscvavalon_0_jtag_tms>),          //        vexriscvavalon_0_jtag.tms
+		.vexriscvavalon_0_jtag_tdi          (<connected-to-vexriscvavalon_0_jtag_tdi>),          //                             .tdi
+		.vexriscvavalon_0_jtag_tdo          (<connected-to-vexriscvavalon_0_jtag_tdo>),          //                             .tdo
+		.vexriscvavalon_0_jtag_tck          (<connected-to-vexriscvavalon_0_jtag_tck>),          //                             .tck
+		.vga_CLK                            (<connected-to-vga_CLK>),                            //                          vga.CLK
+		.vga_HS                             (<connected-to-vga_HS>),                             //                             .HS
+		.vga_VS                             (<connected-to-vga_VS>),                             //                             .VS
+		.vga_BLANK                          (<connected-to-vga_BLANK>),                          //                             .BLANK
+		.vga_SYNC                           (<connected-to-vga_SYNC>),                           //                             .SYNC
+		.vga_R                              (<connected-to-vga_R>),                              //                             .R
+		.vga_G                              (<connected-to-vga_G>),                              //                             .G
+		.vga_B                              (<connected-to-vga_B>),                              //                             .B
+		.video_pll_ref_clk_clk              (<connected-to-video_pll_ref_clk_clk>),              //            video_pll_ref_clk.clk
+		.video_pll_ref_reset_reset          (<connected-to-video_pll_ref_reset_reset>)           //          video_pll_ref_reset.reset
+	);
+

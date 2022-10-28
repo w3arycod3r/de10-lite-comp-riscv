@@ -24,11 +24,11 @@ ABI := ilp32
 BUILD_VERSION := "$(shell git describe --abbrev=8 --dirty --always --tags)"
 BUILD_DATE := "$(shell date '+%Y-%m-%d %H:%M:%S %:::z')"
 
-CFLAGS  := -fno-delete-null-pointer-checks -g -march=$(ARCH) -mabi=$(ABI) -Wall -std=gnu99 -I. -ffunction-sections -fdata-sections -Os -flto -fno-strict-aliasing
+CFLAGS  := -ffreestanding -fno-delete-null-pointer-checks -g -march=$(ARCH) -mabi=$(ABI) -Wall -std=gnu99 -I. -ffunction-sections -fdata-sections -Os -flto -fno-strict-aliasing
 CFLAGS += -DDBUILD_VERSION=\"$(BUILD_VERSION)\"
 CFLAGS += -DDBUILD_DATE=\"$(BUILD_DATE)\"
 
-LDFLAGS := -march=$(ARCH) -mabi=$(ABI) -static -nostartfiles -nostdlib -lgcc -lc -Wl,-print-memory-usage -Wl,-gc-sections
+LDFLAGS := -march=$(ARCH) -mabi=$(ABI) -static -nostartfiles -nostdlib -lgcc -Wl,-print-memory-usage -Wl,-gc-sections
 
 APP = out/bootrom
 
@@ -44,12 +44,15 @@ all: $(MIF)
 make_dirs:
 	$(shell mkdir -p $(DIRS))
 
+# Compile C sources
 .obj/%.o: %.c make_dirs
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Compile asm sources
 .obj/%.S.o: %.S make_dirs
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Link
 $(ELF): $(C_OUT) $(A_OUT) $(LD_SCRIPT)
 	$(CC) -T $(LD_SCRIPT) $(A_OUT) $(C_OUT) -o $@ $(LDFLAGS)
 	$(OBJDUMP) -D $@ > $(DUMP)
@@ -57,12 +60,15 @@ $(ELF): $(C_OUT) $(A_OUT) $(LD_SCRIPT)
 $(SREC): $(ELF)
 	$(OBJCOPY) -I elf32-littleriscv -O srec --srec-forceS3 $< $@
 
+# Convert .bin to .mif file
 $(MIF): $(BIN)
 	$(BIN2MIF) $< 0x0 > $@
 
+# .elf to .bin
 $(BIN): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 
+# .elf to .hex
 $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 

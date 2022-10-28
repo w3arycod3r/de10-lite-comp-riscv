@@ -2,7 +2,7 @@ set_global_assignment -entity "Computer_System" -library "Computer_System" -name
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "Computer_System" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../Computer_System.sopcinfo"]
-set_global_assignment -entity "Computer_System" -library "Computer_System" -name SLD_INFO "QSYS_NAME Computer_System HAS_SOPCINFO 1 GENERATION_ID 1666735920"
+set_global_assignment -entity "Computer_System" -library "Computer_System" -name SLD_INFO "QSYS_NAME Computer_System HAS_SOPCINFO 1 GENERATION_ID 1666808843"
 set_global_assignment -library "Computer_System" -name MISC_FILE [file join $::quartus(qip_path) "../Computer_System.cmp"]
 set_global_assignment -library "Computer_System" -name SLD_FILE [file join $::quartus(qip_path) "Computer_System.regmap"]
 set_global_assignment -library "Computer_System" -name SLD_FILE [file join $::quartus(qip_path) "Computer_System.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "Computer_System" -library "Computer_System" -name
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjczNTkyMA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjgwODg0Mw==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDNkdFUw==::QXV0byBERVZJQ0U="
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -26,38 +26,6 @@ set_global_assignment -entity "Computer_System" -library "Computer_System" -name
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WSURFT19QTExfUkVGX0NMS19DTE9DS19SQVRF::LTE=::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WSURFT19QTExfUkVGX0NMS19DTE9DS19ET01BSU4=::LTE=::QXV0byBDTE9DS19ET01BSU4="
 set_global_assignment -entity "Computer_System" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WSURFT19QTExfUkVGX0NMS19SRVNFVF9ET01BSU4=::LTE=::QXV0byBSRVNFVF9ET01BSU4="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_NAME "YWx0ZXJhX3Jlc2V0X2NvbnRyb2xsZXI="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIFJlc2V0IENvbnRyb2xsZXI="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_VERSION "MjEuMQ=="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "TlVNX1JFU0VUX0lOUFVUUw==::MQ==::TnVtYmVyIG9mIGlucHV0cw=="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "T1VUUFVUX1JFU0VUX1NZTkNfRURHRVM=::ZGVhc3NlcnQ=::T3V0cHV0IFJlc2V0IFN5bmNocm9ub3VzIEVkZ2Vz"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "U1lOQ19ERVBUSA==::Mg==::U3luY2hyb25pemVyIGRlcHRo"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRVUVTVF9QUkVTRU5U::MQ==::UmVzZXQgcmVxdWVzdCBsb2dpYyBlbmFibGU="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX1dBSVRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCB3YWl0IHRpbWU="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "TUlOX1JTVF9BU1NFUlRJT05fVElNRQ==::Mw==::TWluaW11bSByZXNldCBhc3NlcnRpb24gdGltZQ=="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX0VBUkxZX0RTUlRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCBkZWFzc2VydCB0aW1pbmc="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4w::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjA="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4x::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4y::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjI="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4z::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjM="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU40::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjQ="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU41::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjU="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU42::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjY="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU43::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjc="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU44::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjg="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU45::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjk="
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEw"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEx"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMg==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEy"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMw==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEz"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE0"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE1"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU5QVVQ=::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcmVzZXRfaW5wdXRz"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QURBUFRfUkVTRVRfUkVRVUVTVA==::MA==::T25seSBhZGFwdCBvbmx5IHJlc2V0IHJlcXVlc3Q="
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_COMPONENT_NAME "Q29tcHV0ZXJfU3lzdGVtX2lycV9tYXBwZXI="
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIElSUSBNYXBwZXI="
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -986,6 +954,38 @@ set_global_assignment -entity "altera_merlin_master_translator" -library "Comput
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVZfUkVHSVNURVJJTkNPTUlOR1NJR05BTFM=::MA==::cmVnaXN0ZXJJbmNvbWluZ1NpZ25hbHM="
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVZfQUxXQVlTQlVSU1RNQVhCVVJTVA==::MA==::QWx3YXlzIGJ1cnN0IG1heC1idXJzdA=="
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_COMPONENT_PARAMETER "U1lOQ19SRVNFVA==::MA==::VXNlIHN5bmNocm9ub3VzIHJlc2V0cw=="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_NAME "YWx0ZXJhX3Jlc2V0X2NvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_DISPLAY_NAME "TWVybGluIFJlc2V0IENvbnRyb2xsZXI="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_VERSION "MjEuMQ=="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_DESCRIPTION "Rm9yIHN5c3RlbXMgd2l0aCBtdWx0aXBsZSByZXNldCBpbnB1dHMsIHRoZSBNZXJsaW4gUmVzZXQgQ29udHJvbGxlciBPUnMgYWxsIHJlc2V0IGlucHV0cyBhbmQgZ2VuZXJhdGVzIGEgc2luZ2xlIHJlc2V0IG91dHB1dC4="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "TlVNX1JFU0VUX0lOUFVUUw==::Mg==::TnVtYmVyIG9mIGlucHV0cw=="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "T1VUUFVUX1JFU0VUX1NZTkNfRURHRVM=::Ym90aA==::T3V0cHV0IFJlc2V0IFN5bmNocm9ub3VzIEVkZ2Vz"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "U1lOQ19ERVBUSA==::Mg==::U3luY2hyb25pemVyIGRlcHRo"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRVUVTVF9QUkVTRU5U::MA==::UmVzZXQgcmVxdWVzdCBsb2dpYyBlbmFibGU="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX1dBSVRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCB3YWl0IHRpbWU="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "TUlOX1JTVF9BU1NFUlRJT05fVElNRQ==::Mw==::TWluaW11bSByZXNldCBhc3NlcnRpb24gdGltZQ=="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "UkVTRVRfUkVRX0VBUkxZX0RTUlRfVElNRQ==::MQ==::UmVzZXQgcmVxdWVzdCBkZWFzc2VydCB0aW1pbmc="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4w::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjA="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4x::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4y::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjI="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4z::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjM="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU40::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjQ="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU41::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjU="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU42::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjY="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU43::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjc="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU44::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjg="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU45::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjk="
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEw"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEx"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMg==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEy"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xMw==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjEz"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNA==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE0"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU4xNQ==::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcG9ydCByZXNldF9pbjE1"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "VVNFX1JFU0VUX1JFUVVFU1RfSU5QVVQ=::MA==::RW5hYmxlIHJlc2V0X3JlcSBmb3IgcmVzZXRfaW5wdXRz"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QURBUFRfUkVTRVRfUkVRVUVTVA==::MA==::T25seSBhZGFwdCBvbmx5IHJlc2V0IHJlcXVlc3Q="
 set_global_assignment -entity "Computer_System_Video_PLL" -library "Computer_System" -name IP_COMPONENT_NAME "Q29tcHV0ZXJfU3lzdGVtX1ZpZGVvX1BMTA=="
 set_global_assignment -entity "Computer_System_Video_PLL" -library "Computer_System" -name IP_COMPONENT_DISPLAY_NAME "VmlkZW8gQ2xvY2tzIGZvciBERS1zZXJpZXMgQm9hcmRz"
 set_global_assignment -entity "Computer_System_Video_PLL" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1046,7 +1046,7 @@ set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjczNTkyMA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjgwODg0Mw==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19VTklRVUVfSUQ=::Q29tcHV0ZXJfU3lzdGVtX1ZHQV9TdWJzeXN0ZW0=::QXV0byBVTklRVUVfSUQ="
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDNkdFUw==::QXV0byBERVZJQ0U="
@@ -1054,11 +1054,11 @@ set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19QSVhFTF9ETUFfTUFTVEVSX0FERFJFU1NfTUFQ::PGFkZHJlc3MtbWFwPjxzbGF2ZSBuYW1lPSdTRFJBTS5zMScgc3RhcnQ9JzB4MCcgZW5kPScweDQwMDAwMDAnIC8+PHNsYXZlIG5hbWU9J09uY2hpcF9TUkFNLnMyJyBzdGFydD0nMHg4MDAwMDAwJyBlbmQ9JzB4ODAxMDAwMCcgLz48L2FkZHJlc3MtbWFwPg==::QXV0byBBRERSRVNTX01BUA=="
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19QSVhFTF9ETUFfTUFTVEVSX0FERFJFU1NfV0lEVEg=::QWRkcmVzc1dpZHRoID0gMjg=::QXV0byBBRERSRVNTX1dJRFRI"
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19TWVNfQ0xLX0NMT0NLX1JBVEU=::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
-set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19TWVNfQ0xLX0NMT0NLX0RPTUFJTg==::Nw==::QXV0byBDTE9DS19ET01BSU4="
-set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19TWVNfQ0xLX1JFU0VUX0RPTUFJTg==::Nw==::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19TWVNfQ0xLX0NMT0NLX0RPTUFJTg==::OA==::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19TWVNfQ0xLX1JFU0VUX0RPTUFJTg==::OA==::QXV0byBSRVNFVF9ET01BSU4="
 set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WR0FfQ0xLX0NMT0NLX1JBVEU=::MjUwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
-set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WR0FfQ0xLX0NMT0NLX0RPTUFJTg==::OQ==::QXV0byBDTE9DS19ET01BSU4="
-set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WR0FfQ0xLX1JFU0VUX0RPTUFJTg==::OQ==::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WR0FfQ0xLX0NMT0NLX0RPTUFJTg==::MTA=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "Computer_System_VGA_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19WR0FfQ0xLX1JFU0VUX0RPTUFJTg==::MTA=::QXV0byBSRVNFVF9ET01BSU4="
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_COMPONENT_NAME "Q29tcHV0ZXJfU3lzdGVtX1ZHQV9TdWJzeXN0ZW1fYXZhbG9uX3N0X2FkYXB0ZXI="
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIEFkYXB0ZXI="
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1206,7 +1206,7 @@ set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjczNTkyMA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY2NjgwODg0Mw==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19VTklRVUVfSUQ=::Q29tcHV0ZXJfU3lzdGVtX1ZHQV9TdWJzeXN0ZW1fQ2hhcl9CdWZfU3Vic3lzdGVt::QXV0byBVTklRVUVfSUQ="
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_Char_Buf_Subsystem" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDNkdFUw==::QXV0byBERVZJQ0U="
@@ -1863,9 +1863,6 @@ set_global_assignment -entity "Computer_System_ADC" -library "Computer_System" -
 set_global_assignment -entity "Computer_System_ADC" -library "Computer_System" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "Computer_System.v"]
-set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
-set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
-set_global_assignment -library "Computer_System" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
 set_global_assignment -library "Computer_System" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/Computer_System_irq_mapper.sv"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Computer_System_mm_interconnect_0.v"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Computer_System_mm_interconnect_0_avalon_st_adapter_019.v"]
@@ -1912,6 +1909,9 @@ set_global_assignment -library "Computer_System" -name SYSTEMVERILOG_FILE [file 
 set_global_assignment -library "Computer_System" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_agent.sv"]
 set_global_assignment -library "Computer_System" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "Computer_System" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
+set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
+set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
+set_global_assignment -library "Computer_System" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Computer_System_Video_PLL.v"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_avalon_reset_from_locked_signal.v"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_up_altpll.v"]
@@ -2008,9 +2008,6 @@ set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/fiftyfivenm_adcblock_top_wrapper.v"]
 set_global_assignment -library "Computer_System" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Computer_System_ADC.v"]
 
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_NAME "altera_reset_controller"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
-set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_TOOL_NAME "altera_irq_mapper"
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "Computer_System_irq_mapper" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
@@ -2113,6 +2110,9 @@ set_global_assignment -entity "altera_merlin_slave_translator" -library "Compute
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_TOOL_NAME "altera_merlin_master_translator"
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "altera_merlin_master_translator" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_NAME "altera_reset_controller"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
+set_global_assignment -entity "altera_reset_controller" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_TOOL_NAME "altera_avalon_st_adapter"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "Computer_System_VGA_Subsystem_avalon_st_adapter" -library "Computer_System" -name IP_TOOL_ENV "Qsys"
