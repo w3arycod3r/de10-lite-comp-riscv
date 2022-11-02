@@ -7,7 +7,7 @@
 
 #define MHZ                   *1000000UL
 #define CPU_CLK_FREQ          (100 MHZ)
-#define MSEC_TO_TICKS(msec)   (msec * CPU_CLK_FREQ / 1000)
+#define MSEC_TO_TICKS(msec)   (msec * (CPU_CLK_FREQ / 1000))
 
 #define MEMADDR_OCRAM           ((uintptr_t)(0x80000000))
 #define MEMADDR_IRQCONTROLLER   ((uintptr_t)(0xff204040))

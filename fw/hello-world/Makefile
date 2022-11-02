@@ -18,13 +18,13 @@ OBJCOPY := $(CROSS_COMPILE)objcopy
 OBJDUMP := $(CROSS_COMPILE)objdump
 BIN2MIF := python3 bin2mif.py
 
-ARCH := rv32im
-ABI := ilp32
+ARCH := rv32imafc
+ABI := ilp32f
 
 BUILD_VERSION := "$(shell git describe --abbrev=8 --dirty --always --tags)"
 BUILD_DATE := "$(shell date '+%Y-%m-%d %H:%M:%S %:::z')"
 
-CFLAGS  := -ffreestanding -fno-delete-null-pointer-checks -g -march=$(ARCH) -mabi=$(ABI) -Wall -std=gnu99 -I. -ffunction-sections -fdata-sections -Os -flto -fno-strict-aliasing
+CFLAGS := -ffreestanding -fno-delete-null-pointer-checks -g -march=$(ARCH) -mabi=$(ABI) -Wall -std=gnu99 -I. -ffunction-sections -fdata-sections -Os -flto -fno-strict-aliasing
 CFLAGS += -DDBUILD_VERSION=\"$(BUILD_VERSION)\"
 CFLAGS += -DDBUILD_DATE=\"$(BUILD_DATE)\"
 

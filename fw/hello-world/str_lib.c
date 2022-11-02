@@ -1,5 +1,5 @@
 #include "str_lib.h"
-
+#include <stddef.h>
 
 // Return the length of the null-terminated string
 int strlen(char* str) {

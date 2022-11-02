@@ -1,11 +1,10 @@
 #ifndef SEG_7_H
 #define SEG_7_H
 
-#include   <stdbool.h>
-#include   <stdint.h>
-#include   <string.h>
-#include   <stdlib.h>
-
+#include <stdbool.h>
+#include <stdint.h>
+// #include <string.h>
+#include "str_lib.h"
 
 // ENUMERATIONS
 typedef enum { SEG7_MODE_STATIC, SEG7_MODE_SCROLL } SEG7_MODE_T;

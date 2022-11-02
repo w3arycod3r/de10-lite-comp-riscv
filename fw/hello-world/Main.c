@@ -69,7 +69,7 @@ int main() {
     Hal_TimerStart(MSEC_TO_TICKS(3000)); // 3 seconds
     Hal_GlobalEnableInterrupts();
 
-    seg7_writeString("Hello!");
+    seg7_writeString("Hello World...      ");
 
     uint32_t timeLast = Hal_ReadTime32();
     uint32_t pattern = 1;
@@ -79,7 +79,7 @@ int main() {
         uint32_t timeNow = Hal_ReadTime32();
 
         // Trigger every 250 msec
-        if ((timeNow - timeLast) > (MSEC_TO_TICKS(250))) {
+        if ((timeNow - timeLast) > (MSEC_TO_TICKS(100))) {
             timeLast = timeNow;
 
             // Shift

@@ -34,6 +34,7 @@ void Hal_EnableMachineInterrupt(uint32_t irq);
 void Hal_DisableMachineInterrupt(uint32_t irq);
 void Hal_GlobalEnableInterrupts();
 void Hal_GlobalEnableInterrupts();
+// Rolls over in about 42.9 seconds @ 100 MHz. You can't use this timer for a duration longer than this.
 uint32_t Hal_ReadTime32();
 uint64_t Hal_ReadTime64();
 
