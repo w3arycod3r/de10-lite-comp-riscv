@@ -24,6 +24,15 @@ typedef volatile struct {
   uint32_t control;
 } JtagUart;
 
+/* Internal Status */
+typedef struct {
+  bool pc_connected;
+  uint32_t last_ac_set_time;
+} JtagUart_Status;
+
+void UartInit();
+void UartMonitorPC(JtagUart* pUart);
+
 void UartWriteInt(JtagUart* pUart, int32_t i, bool newline);
 void UartWriteHex32(JtagUart* pUart, uint32_t ui, bool newline);
 void UartWriteHex8(JtagUart* pUart, uint8_t byte, bool newline);
@@ -31,6 +40,5 @@ void UartWrite(JtagUart* pUart, const char* str);
 
 void UartPut(JtagUart* pUart, char c);
 char UartGet(JtagUart* pUart);
-bool UartGetNonBlocking(JtagUart* pUart, char* c);
 
 #endif // Uart_H

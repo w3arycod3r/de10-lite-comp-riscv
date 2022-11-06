@@ -36,21 +36,19 @@ void IRQHandlerTimer(void) {
 }
 
 void IRQHandlerUart() {
-    char c;
-    bool gotChar = UartGetNonBlocking(g_Uart, &c);
-    if (gotChar) {
-        UartPut(g_Uart, c);
-    }
+    
 }
 
 int main() {
 
+    UartInit();
+
     // Greetings
-    // UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
-    // UartWrite(g_Uart, BUILD_VERSION);
-    // UartWrite(g_Uart, "  - ");
-    // UartWrite(g_Uart, BUILD_DATE);
-    // UartWrite(g_Uart, "  * * *\n");
+    UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
+    UartWrite(g_Uart, BUILD_STRING);
+    UartWrite(g_Uart, "  - ");
+    UartWrite(g_Uart, BUILD_DATE);
+    UartWrite(g_Uart, "  * * *\n");
 
     // Init seg7 module
     __seg7_init();
@@ -61,7 +59,7 @@ int main() {
     // Enable interrupt on timer and uart receive.
     Hal_SetExtIrqHandler(EXT_IRQ_JTAG_UART, IRQHandlerUart);
     Hal_EnableInterrupt(EXT_IRQ_JTAG_UART);
-    BIT_SET(g_Uart->control, UART_RE);	// enable read interrupts
+    BIT_CLR(g_Uart->control, UART_RE);	// enable read interrupts
     BIT_CLR(g_Uart->control, UART_WE);	// disable write interrupts
 
     Hal_EnableMachineInterrupt(IRQ_M_EXT);
@@ -102,5 +100,10 @@ int main() {
 
         // Main task of the seg7 module
         __seg7_service();
+
+        // Echo chars on the UART
+        uint8_t c = UartGet(g_Uart);
+        if (c == '\r') { c = '\n'; }
+        if (c) { UartPut(g_Uart, c); }
     }
 }

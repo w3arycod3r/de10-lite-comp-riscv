@@ -1,4 +1,8 @@
 #include "jtag_uart.h"
+#include "bit.h"
+#include "Hal.h"
+
+JtagUart_Status uart_status;
 
 void UartWriteInt(JtagUart* pUart, int32_t i, bool newline) {
 
@@ -79,19 +83,51 @@ void UartWrite(JtagUart* pUart, const char* str) {
 }
 
 void UartPut(JtagUart* pUart, char c) {
-	while (((pUart->control >> UART_WSPACE_SHIFT) & UART_WSPACE_MASK) == 0);
-	pUart->data = (uint32_t)c;
+	uint32_t control = pUart->control;
+
+	// There is space in write buffer
+	if (((control >> UART_WSPACE_SHIFT) & UART_WSPACE_MASK)) {
+		WRITE_BYTE(pUart->data, 0, c);
+	// No space
+	} else {
+		return;
+	}
 }
 
 char UartGet(JtagUart* pUart) {
-	while (((pUart->data >> UART_RAVAIL_SHIFT) & UART_RAVAIL_MASK) == 0);
-	return (char)(pUart->data & 0xFF);
+	// Read data register
+	uint32_t data = pUart->data;
+
+	// Valid character recv'd
+	if (BIT_TST(data, UART_RVALID)){
+		return (char)data;
+	// Nothing to get
+	} else {
+		return '\0';
+	}
+
 }
 
-bool UartGetNonBlocking(JtagUart* pUart, char* c) {
-	if (((pUart->data >> UART_RAVAIL_SHIFT) & UART_RAVAIL_MASK) != 0) {
-		*c = (char)(pUart->data & 0xFF);
-		return true;
-	}
-	return false;
+#define AC_TMR_TIMEOUT_MSEC
+
+void UartMonitorPC(JtagUart* pUart) {
+
+	// Clear the AC bit (by writing 1)
+	BIT_SET(pUart->control, UART_AC);
+	uart_status.last_ac_set_time = Hal_ReadTime32();
+
+	// Monitor it to see if PC clears it
+
+	// Timeout when PC takes too long -- assume PC is not connected
+	// Like a watchdog timer
+
+	// Restart timed test
+}
+
+void UartInit() {
+	// Clear the AC bit (by writing 1)
+	// BIT_SET(pUart->control, UART_AC);
+	uart_status.last_ac_set_time = Hal_ReadTime32();
+
+	uart_status.pc_connected = true;
 }
