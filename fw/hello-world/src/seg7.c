@@ -435,6 +435,17 @@ void seg7_writeString(char* psz_data) {
     seg7_writeBuffer((uint8_t*)psz_data, strlen(psz_data));
 }
 
+void seg7_writeStringPadSpace(char* psz_data) {
+    // New string on the stack to hold passed in string + the space padding + null term
+    char newStr[strlen(psz_data) + strlen((char*)__sz_seg7_spaces) + 1];
+    // Copy
+    strcpy(newStr, psz_data);
+    // Append Spaces
+    strcat(newStr, (char*)__sz_seg7_spaces);
+    // Call the normal string write function
+    seg7_writeString(newStr);
+}
+
 char* seg7_getDisplay(void) {
 
     // Get static display buffer

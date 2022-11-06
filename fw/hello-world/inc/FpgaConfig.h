@@ -32,12 +32,16 @@
 #define EXT_IRQ_PIO_JP1_1       7
 #define EXT_IRQ_PIO_KEY         6
 
-#ifndef DBUILD_VERSION
-#define DBUILD_VERSION "git undefined"
+#ifndef BUILD_VERSION
+#define BUILD_VERSION "git undefined"
 #endif
 
-#ifndef DBUILD_DATE
-#define DBUILD_DATE "date undefined"
+#ifndef BUILD_DATE
+#define BUILD_DATE "date undefined"
+#endif
+
+#ifndef BUILD_STRING
+#define BUILD_STRING "build string undefined"
 #endif
 
 typedef volatile struct {

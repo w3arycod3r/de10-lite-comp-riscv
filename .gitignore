@@ -4,8 +4,7 @@
 **/output_files/
 **/simulation/
 **/.qsys_edit/
-**/.obj/
-**/out/
+**/build/
 *.rpt
 *.done
 *.qws
@@ -18,3 +17,4 @@
 *.jdi
 *.pin
 *.sld
+settings.json

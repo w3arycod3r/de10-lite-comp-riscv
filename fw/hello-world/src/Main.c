@@ -47,9 +47,9 @@ int main() {
 
     // Greetings
     // UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
-    // UartWrite(g_Uart, DBUILD_VERSION);
+    // UartWrite(g_Uart, BUILD_VERSION);
     // UartWrite(g_Uart, "  - ");
-    // UartWrite(g_Uart, DBUILD_DATE);
+    // UartWrite(g_Uart, BUILD_DATE);
     // UartWrite(g_Uart, "  * * *\n");
 
     // Init seg7 module
@@ -69,7 +69,8 @@ int main() {
     Hal_TimerStart(MSEC_TO_TICKS(3000)); // 3 seconds
     Hal_GlobalEnableInterrupts();
 
-    seg7_writeString("Hello World...      ");
+    seg7_writeStringPadSpace("Hello World...");
+    seg7_writeStringPadSpace(BUILD_STRING);
 
     uint32_t timeLast = Hal_ReadTime32();
     uint32_t pattern = 1;

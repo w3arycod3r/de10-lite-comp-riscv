@@ -4,11 +4,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build hello-world",
-            "options": {"cwd": "${workspaceFolder}/fw/hello-world"},
+            "label": "hello-world (Clean Build)",
+            "options": {
+                "cwd": "${workspaceFolder}/fw/hello-world"
+            },
             "group": "build",
             "type": "shell",
-            "command": "./build.bat",
+            "command": "make clean ; make",
             "presentation": {
                 "echo": true,
                 "reveal": "always",
@@ -16,7 +18,58 @@
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
+            }
+        },
+        {
+            "label": "hello-world (Build)",
+            "options": {
+                "cwd": "${workspaceFolder}/fw/hello-world"
             },
+            "group": "build",
+            "type": "shell",
+            "command": "make",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "hello-world (Flash)",
+            "options": {
+                "cwd": "${workspaceFolder}/fw/hello-world"
+            },
+            "group": "build",
+            "type": "shell",
+            "command": "make flash",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "hello-world (Perm Flash)",
+            "options": {
+                "cwd": "${workspaceFolder}/fw/hello-world"
+            },
+            "group": "build",
+            "type": "shell",
+            "command": "make perm-flash",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
         },
         {
             "label": "Open JTAG UART terminal",
@@ -31,6 +84,6 @@
                 "showReuseMessage": true,
                 "clear": true
             }
-        }
+        },
     ]
 }

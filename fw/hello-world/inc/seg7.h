@@ -52,6 +52,7 @@ void  seg7_clearScreen(void);
 void  seg7_writeCharacter(uint8_t u8_column, uint8_t u8_data);
 void  seg7_writeBuffer(uint8_t* pu8_data, uint8_t u8_bufflen);
 void  seg7_writeString(char* psz_data);
+void  seg7_writeStringPadSpace(char* psz_data);
 char* seg7_getDisplay(void);
 void  seg7_blink(bool b_state);
 void  seg7_writeU8Decimal(uint8_t u8_data);
