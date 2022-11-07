@@ -9,24 +9,28 @@ OPT_LVL = -Os
 
 PROG_NAME := hello-world
 
+# Common Directories
+LIB_DIR = ../lib
+TOOLS_DIR = ../tools
+
 ######################################
 # C Sources
 ######################################
 C_SRC = \
-src/FpgaConfig.c \
-src/Hal.c \
-src/jtag_uart.c \
 src/Main.c \
-src/pio.c \
-src/seg7.c \
-src/str_lib.c \
+$(LIB_DIR)/src/FpgaConfig.c \
+$(LIB_DIR)/src/Hal.c \
+$(LIB_DIR)/src/jtag_uart.c \
+$(LIB_DIR)/src/pio.c \
+$(LIB_DIR)/src/seg7.c \
+$(LIB_DIR)/src/str_lib.c \
 
 ######################################
 # ASM Sources
 ######################################
 A_SRC = \
-src/Crt.S \
-src/Hal.S \
+$(LIB_DIR)/src/Crt.S \
+$(LIB_DIR)/src/Hal.S \
 
 ######################################
 # Build Info
@@ -94,7 +98,7 @@ AS := $(CROSS_COMPILE)gcc -x assembler-with-cpp
 OBJCOPY := $(CROSS_COMPILE)objcopy
 OBJDUMP := $(CROSS_COMPILE)objdump
 
-BIN2MIF := python3 bin2mif.py
+BIN2MIF := python3 $(TOOLS_DIR)/bin2mif.py
 RM := rm -rf
 COPY := cp
 
@@ -112,9 +116,10 @@ C_DEFS :=  \
 AS_DEFS =
 
 ### C Includes
-C_INCLUDES := \
--I. \
--Iinc \
+C_INCLUDES := 	\
+-I. 			\
+-Iinc 			\
+-I$(LIB_DIR)/inc 	\
 
 ### AS Includes
 AS_INCLUDES =
