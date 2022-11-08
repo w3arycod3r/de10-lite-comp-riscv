@@ -17,6 +17,8 @@ module Computer_System (
 		output wire [9:0]  leds_export,                        //                         leds.export
 		input  wire [1:0]  pushbuttons_export,                 //                  pushbuttons.export
 		input  wire        reset_controller_0_reset_in0_reset, // reset_controller_0_reset_in0.reset
+		input  wire        rs232_0_external_interface_RXD,     //   rs232_0_external_interface.RXD
+		output wire        rs232_0_external_interface_TXD,     //                             .TXD
 		output wire [1:0]  sdram_ba,                           //                        sdram.ba
 		output wire [12:0] sdram_addr,                         //                             .addr
 		output wire        sdram_cas_n,                        //                             .cas_n
@@ -46,7 +48,7 @@ module Computer_System (
 		input  wire        video_pll_ref_reset_reset           //          video_pll_ref_reset.reset
 	);
 
-	wire         system_pll_sys_clk_clk;                                                          // System_PLL:sys_clk_clk -> [ADC:clock, Accelerometer:clk, Arduino_GPIO:clk, Arduino_Reset_N:clk, Expansion_JP1_0:clk, Expansion_JP1_1:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, Interval_Timer:clk, Interval_Timer_2:clk, JTAG_UART:clk, JTAG_to_FPGA_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, VexRiscvAvalon_0:clk, irq_mapper:clk, mm_interconnect_0:System_PLL_sys_clk_clk, reset_controller_0:clk, rst_controller:clk]
+	wire         system_pll_sys_clk_clk;                                                          // System_PLL:sys_clk_clk -> [ADC:clock, Accelerometer:clk, Arduino_GPIO:clk, Arduino_Reset_N:clk, Expansion_JP1_0:clk, Expansion_JP1_1:clk, HEX3_HEX0:clk, HEX5_HEX4:clk, Interval_Timer:clk, Interval_Timer_2:clk, JTAG_to_FPGA_Bridge:clk_clk, LEDs:clk, Onchip_SRAM:clk, Pushbuttons:clk, SDRAM:clk, Slider_Switches:clk, SysID:clock, VGA_Subsystem:sys_clk_clk, VexRiscvAvalon_0:clk, irq_mapper:clk, juart0:clk, mm_interconnect_0:System_PLL_sys_clk_clk, reset_controller_0:clk, rst_controller:clk, uart0:clk]
 	wire         video_pll_vga_clk_clk;                                                           // Video_PLL:vga_clk_clk -> VGA_Subsystem:vga_clk_clk
 	wire         reset_controller_0_reset_out_reset;                                              // reset_controller_0:reset_out -> [JTAG_to_FPGA_Bridge:clk_reset_reset, VGA_Subsystem:sys_reset_reset_n, rst_controller:reset_in0]
 	wire         system_pll_reset_source_reset;                                                   // System_PLL:reset_source_reset -> reset_controller_0:reset_in1
@@ -95,13 +97,20 @@ module Computer_System (
 	wire   [0:0] mm_interconnect_0_accelerometer_avalon_accelerometer_spi_mode_slave_byteenable;  // mm_interconnect_0:Accelerometer_avalon_accelerometer_spi_mode_slave_byteenable -> Accelerometer:byteenable
 	wire         mm_interconnect_0_accelerometer_avalon_accelerometer_spi_mode_slave_write;       // mm_interconnect_0:Accelerometer_avalon_accelerometer_spi_mode_slave_write -> Accelerometer:write
 	wire   [7:0] mm_interconnect_0_accelerometer_avalon_accelerometer_spi_mode_slave_writedata;   // mm_interconnect_0:Accelerometer_avalon_accelerometer_spi_mode_slave_writedata -> Accelerometer:writedata
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;                        // mm_interconnect_0:JTAG_UART_avalon_jtag_slave_chipselect -> JTAG_UART:av_chipselect
-	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata;                          // JTAG_UART:av_readdata -> mm_interconnect_0:JTAG_UART_avalon_jtag_slave_readdata
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest;                       // JTAG_UART:av_waitrequest -> mm_interconnect_0:JTAG_UART_avalon_jtag_slave_waitrequest
-	wire   [0:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_address;                           // mm_interconnect_0:JTAG_UART_avalon_jtag_slave_address -> JTAG_UART:av_address
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;                              // mm_interconnect_0:JTAG_UART_avalon_jtag_slave_read -> JTAG_UART:av_read_n
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;                             // mm_interconnect_0:JTAG_UART_avalon_jtag_slave_write -> JTAG_UART:av_write_n
-	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;                         // mm_interconnect_0:JTAG_UART_avalon_jtag_slave_writedata -> JTAG_UART:av_writedata
+	wire         mm_interconnect_0_juart0_avalon_jtag_slave_chipselect;                           // mm_interconnect_0:juart0_avalon_jtag_slave_chipselect -> juart0:av_chipselect
+	wire  [31:0] mm_interconnect_0_juart0_avalon_jtag_slave_readdata;                             // juart0:av_readdata -> mm_interconnect_0:juart0_avalon_jtag_slave_readdata
+	wire         mm_interconnect_0_juart0_avalon_jtag_slave_waitrequest;                          // juart0:av_waitrequest -> mm_interconnect_0:juart0_avalon_jtag_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_juart0_avalon_jtag_slave_address;                              // mm_interconnect_0:juart0_avalon_jtag_slave_address -> juart0:av_address
+	wire         mm_interconnect_0_juart0_avalon_jtag_slave_read;                                 // mm_interconnect_0:juart0_avalon_jtag_slave_read -> juart0:av_read_n
+	wire         mm_interconnect_0_juart0_avalon_jtag_slave_write;                                // mm_interconnect_0:juart0_avalon_jtag_slave_write -> juart0:av_write_n
+	wire  [31:0] mm_interconnect_0_juart0_avalon_jtag_slave_writedata;                            // mm_interconnect_0:juart0_avalon_jtag_slave_writedata -> juart0:av_writedata
+	wire         mm_interconnect_0_uart0_avalon_rs232_slave_chipselect;                           // mm_interconnect_0:uart0_avalon_rs232_slave_chipselect -> uart0:chipselect
+	wire  [31:0] mm_interconnect_0_uart0_avalon_rs232_slave_readdata;                             // uart0:readdata -> mm_interconnect_0:uart0_avalon_rs232_slave_readdata
+	wire   [0:0] mm_interconnect_0_uart0_avalon_rs232_slave_address;                              // mm_interconnect_0:uart0_avalon_rs232_slave_address -> uart0:address
+	wire         mm_interconnect_0_uart0_avalon_rs232_slave_read;                                 // mm_interconnect_0:uart0_avalon_rs232_slave_read -> uart0:read
+	wire   [3:0] mm_interconnect_0_uart0_avalon_rs232_slave_byteenable;                           // mm_interconnect_0:uart0_avalon_rs232_slave_byteenable -> uart0:byteenable
+	wire         mm_interconnect_0_uart0_avalon_rs232_slave_write;                                // mm_interconnect_0:uart0_avalon_rs232_slave_write -> uart0:write
+	wire  [31:0] mm_interconnect_0_uart0_avalon_rs232_slave_writedata;                            // mm_interconnect_0:uart0_avalon_rs232_slave_writedata -> uart0:writedata
 	wire  [31:0] mm_interconnect_0_vga_subsystem_char_buffer_control_slave_readdata;              // VGA_Subsystem:char_buffer_control_slave_readdata -> mm_interconnect_0:VGA_Subsystem_char_buffer_control_slave_readdata
 	wire   [1:0] mm_interconnect_0_vga_subsystem_char_buffer_control_slave_address;               // mm_interconnect_0:VGA_Subsystem_char_buffer_control_slave_address -> VGA_Subsystem:char_buffer_control_slave_address
 	wire         mm_interconnect_0_vga_subsystem_char_buffer_control_slave_read;                  // mm_interconnect_0:VGA_Subsystem_char_buffer_control_slave_read -> VGA_Subsystem:char_buffer_control_slave_read
@@ -207,15 +216,16 @@ module Computer_System (
 	wire  [31:0] mm_interconnect_0_onchip_sram_s2_writedata;                                      // mm_interconnect_0:Onchip_SRAM_s2_writedata -> Onchip_SRAM:writedata2
 	wire         mm_interconnect_0_onchip_sram_s2_clken;                                          // mm_interconnect_0:Onchip_SRAM_s2_clken -> Onchip_SRAM:clken2
 	wire         irq_mapper_receiver0_irq;                                                        // Accelerometer:irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                                        // Arduino_GPIO:irq -> irq_mapper:receiver1_irq
-	wire         irq_mapper_receiver2_irq;                                                        // Expansion_JP1_0:irq -> irq_mapper:receiver2_irq
-	wire         irq_mapper_receiver3_irq;                                                        // Interval_Timer:irq -> irq_mapper:receiver3_irq
-	wire         irq_mapper_receiver4_irq;                                                        // Interval_Timer_2:irq -> irq_mapper:receiver4_irq
-	wire         irq_mapper_receiver5_irq;                                                        // JTAG_UART:av_irq -> irq_mapper:receiver5_irq
-	wire         irq_mapper_receiver6_irq;                                                        // Pushbuttons:irq -> irq_mapper:receiver6_irq
-	wire         irq_mapper_receiver7_irq;                                                        // Expansion_JP1_1:irq -> irq_mapper:receiver7_irq
+	wire         irq_mapper_receiver1_irq;                                                        // uart0:irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                                        // Arduino_GPIO:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver3_irq;                                                        // Expansion_JP1_0:irq -> irq_mapper:receiver3_irq
+	wire         irq_mapper_receiver4_irq;                                                        // Interval_Timer:irq -> irq_mapper:receiver4_irq
+	wire         irq_mapper_receiver5_irq;                                                        // Interval_Timer_2:irq -> irq_mapper:receiver5_irq
+	wire         irq_mapper_receiver6_irq;                                                        // juart0:av_irq -> irq_mapper:receiver6_irq
+	wire         irq_mapper_receiver7_irq;                                                        // Pushbuttons:irq -> irq_mapper:receiver7_irq
+	wire         irq_mapper_receiver8_irq;                                                        // Expansion_JP1_1:irq -> irq_mapper:receiver8_irq
 	wire  [31:0] vexriscvavalon_0_interrupt_receiver_irq;                                         // irq_mapper:sender_irq -> VexRiscvAvalon_0:irq_source
-	wire         rst_controller_reset_out_reset;                                                  // rst_controller:reset_out -> [ADC:reset, Accelerometer:reset, Arduino_GPIO:reset_n, Arduino_Reset_N:reset_n, Expansion_JP1_0:reset_n, Expansion_JP1_1:reset_n, HEX3_HEX0:reset_n, HEX5_HEX4:reset_n, Interval_Timer:reset_n, Interval_Timer_2:reset_n, JTAG_UART:rst_n, LEDs:reset_n, Onchip_SRAM:reset, Pushbuttons:reset_n, SDRAM:reset_n, Slider_Switches:reset_n, SysID:reset_n, VexRiscvAvalon_0:reset, irq_mapper:reset, mm_interconnect_0:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:VexRiscvAvalon_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset;                                                  // rst_controller:reset_out -> [ADC:reset, Accelerometer:reset, Arduino_GPIO:reset_n, Arduino_Reset_N:reset_n, Expansion_JP1_0:reset_n, Expansion_JP1_1:reset_n, HEX3_HEX0:reset_n, HEX5_HEX4:reset_n, Interval_Timer:reset_n, Interval_Timer_2:reset_n, LEDs:reset_n, Onchip_SRAM:reset, Pushbuttons:reset_n, SDRAM:reset_n, Slider_Switches:reset_n, SysID:reset_n, VexRiscvAvalon_0:reset, irq_mapper:reset, juart0:rst_n, mm_interconnect_0:JTAG_to_FPGA_Bridge_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_0:VexRiscvAvalon_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, uart0:reset]
 	wire         rst_controller_reset_out_reset_req;                                              // rst_controller:reset_req -> [Onchip_SRAM:reset_req, rst_translator:reset_req_in]
 
 	Computer_System_ADC #(
@@ -266,7 +276,7 @@ module Computer_System (
 		.chipselect (mm_interconnect_0_arduino_gpio_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_arduino_gpio_s1_readdata),   //                    .readdata
 		.bidir_port (arduino_gpio_export),                          // external_connection.export
-		.irq        (irq_mapper_receiver1_irq)                      //                 irq.irq
+		.irq        (irq_mapper_receiver2_irq)                      //                 irq.irq
 	);
 
 	Computer_System_Arduino_Reset_N arduino_reset_n (
@@ -289,7 +299,7 @@ module Computer_System (
 		.chipselect (mm_interconnect_0_expansion_jp1_0_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_expansion_jp1_0_s1_readdata),   //                    .readdata
 		.bidir_port (expansion_jp1_0_export),                          // external_connection.export
-		.irq        (irq_mapper_receiver2_irq)                         //                 irq.irq
+		.irq        (irq_mapper_receiver3_irq)                         //                 irq.irq
 	);
 
 	Computer_System_Expansion_JP1_0 expansion_jp1_1 (
@@ -301,7 +311,7 @@ module Computer_System (
 		.chipselect (mm_interconnect_0_expansion_jp1_1_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_expansion_jp1_1_s1_readdata),   //                    .readdata
 		.bidir_port (expansion_jp1_1_export),                          // external_connection.export
-		.irq        (irq_mapper_receiver7_irq)                         //                 irq.irq
+		.irq        (irq_mapper_receiver8_irq)                         //                 irq.irq
 	);
 
 	Computer_System_HEX3_HEX0 hex3_hex0 (
@@ -334,7 +344,7 @@ module Computer_System (
 		.readdata   (mm_interconnect_0_interval_timer_s1_readdata),   //      .readdata
 		.chipselect (mm_interconnect_0_interval_timer_s1_chipselect), //      .chipselect
 		.write_n    (~mm_interconnect_0_interval_timer_s1_write),     //      .write_n
-		.irq        (irq_mapper_receiver3_irq)                        //   irq.irq
+		.irq        (irq_mapper_receiver4_irq)                        //   irq.irq
 	);
 
 	Computer_System_Interval_Timer interval_timer_2 (
@@ -345,20 +355,7 @@ module Computer_System (
 		.readdata   (mm_interconnect_0_interval_timer_2_s1_readdata),   //      .readdata
 		.chipselect (mm_interconnect_0_interval_timer_2_s1_chipselect), //      .chipselect
 		.write_n    (~mm_interconnect_0_interval_timer_2_s1_write),     //      .write_n
-		.irq        (irq_mapper_receiver4_irq)                          //   irq.irq
-	);
-
-	Computer_System_JTAG_UART jtag_uart (
-		.clk            (system_pll_sys_clk_clk),                                    //               clk.clk
-		.rst_n          (~rst_controller_reset_out_reset),                           //             reset.reset_n
-		.av_chipselect  (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
-		.av_address     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                  .address
-		.av_read_n      (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
-		.av_readdata    (mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata),    //                  .readdata
-		.av_write_n     (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),      //                  .write_n
-		.av_writedata   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),   //                  .writedata
-		.av_waitrequest (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver5_irq)                                   //               irq.irq
+		.irq        (irq_mapper_receiver5_irq)                          //   irq.irq
 	);
 
 	Computer_System_JTAG_to_FPGA_Bridge #(
@@ -420,7 +417,7 @@ module Computer_System (
 		.chipselect (mm_interconnect_0_pushbuttons_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_pushbuttons_s1_readdata),   //                    .readdata
 		.in_port    (pushbuttons_export),                          // external_connection.export
-		.irq        (irq_mapper_receiver6_irq)                     //                 irq.irq
+		.irq        (irq_mapper_receiver7_irq)                     //                 irq.irq
 	);
 
 	SDRAM_64MB sdram (
@@ -557,6 +554,19 @@ module Computer_System (
 		.reset_source_reset (video_pll_reset_source_reset)  // reset_source.reset
 	);
 
+	Computer_System_juart0 juart0 (
+		.clk            (system_pll_sys_clk_clk),                                 //               clk.clk
+		.rst_n          (~rst_controller_reset_out_reset),                        //             reset.reset_n
+		.av_chipselect  (mm_interconnect_0_juart0_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
+		.av_address     (mm_interconnect_0_juart0_avalon_jtag_slave_address),     //                  .address
+		.av_read_n      (~mm_interconnect_0_juart0_avalon_jtag_slave_read),       //                  .read_n
+		.av_readdata    (mm_interconnect_0_juart0_avalon_jtag_slave_readdata),    //                  .readdata
+		.av_write_n     (~mm_interconnect_0_juart0_avalon_jtag_slave_write),      //                  .write_n
+		.av_writedata   (mm_interconnect_0_juart0_avalon_jtag_slave_writedata),   //                  .writedata
+		.av_waitrequest (mm_interconnect_0_juart0_avalon_jtag_slave_waitrequest), //                  .waitrequest
+		.av_irq         (irq_mapper_receiver6_irq)                                //               irq.irq
+	);
+
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("both"),
@@ -618,6 +628,21 @@ module Computer_System (
 		.reset_req_in14 (1'b0),                               // (terminated)
 		.reset_in15     (1'b0),                               // (terminated)
 		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	Computer_System_uart0 uart0 (
+		.clk        (system_pll_sys_clk_clk),                                //                clk.clk
+		.reset      (rst_controller_reset_out_reset),                        //              reset.reset
+		.address    (mm_interconnect_0_uart0_avalon_rs232_slave_address),    // avalon_rs232_slave.address
+		.chipselect (mm_interconnect_0_uart0_avalon_rs232_slave_chipselect), //                   .chipselect
+		.byteenable (mm_interconnect_0_uart0_avalon_rs232_slave_byteenable), //                   .byteenable
+		.read       (mm_interconnect_0_uart0_avalon_rs232_slave_read),       //                   .read
+		.write      (mm_interconnect_0_uart0_avalon_rs232_slave_write),      //                   .write
+		.writedata  (mm_interconnect_0_uart0_avalon_rs232_slave_writedata),  //                   .writedata
+		.readdata   (mm_interconnect_0_uart0_avalon_rs232_slave_readdata),   //                   .readdata
+		.irq        (irq_mapper_receiver1_irq),                              //          interrupt.irq
+		.UART_RXD   (rs232_0_external_interface_RXD),                        // external_interface.export
+		.UART_TXD   (rs232_0_external_interface_TXD)                         //                   .export
 	);
 
 	Computer_System_mm_interconnect_0 mm_interconnect_0 (
@@ -708,13 +733,13 @@ module Computer_System (
 		.Interval_Timer_2_s1_readdata                                  (mm_interconnect_0_interval_timer_2_s1_readdata),                                  //                                                    .readdata
 		.Interval_Timer_2_s1_writedata                                 (mm_interconnect_0_interval_timer_2_s1_writedata),                                 //                                                    .writedata
 		.Interval_Timer_2_s1_chipselect                                (mm_interconnect_0_interval_timer_2_s1_chipselect),                                //                                                    .chipselect
-		.JTAG_UART_avalon_jtag_slave_address                           (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),                           //                         JTAG_UART_avalon_jtag_slave.address
-		.JTAG_UART_avalon_jtag_slave_write                             (mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),                             //                                                    .write
-		.JTAG_UART_avalon_jtag_slave_read                              (mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),                              //                                                    .read
-		.JTAG_UART_avalon_jtag_slave_readdata                          (mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata),                          //                                                    .readdata
-		.JTAG_UART_avalon_jtag_slave_writedata                         (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),                         //                                                    .writedata
-		.JTAG_UART_avalon_jtag_slave_waitrequest                       (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest),                       //                                                    .waitrequest
-		.JTAG_UART_avalon_jtag_slave_chipselect                        (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),                        //                                                    .chipselect
+		.juart0_avalon_jtag_slave_address                              (mm_interconnect_0_juart0_avalon_jtag_slave_address),                              //                            juart0_avalon_jtag_slave.address
+		.juart0_avalon_jtag_slave_write                                (mm_interconnect_0_juart0_avalon_jtag_slave_write),                                //                                                    .write
+		.juart0_avalon_jtag_slave_read                                 (mm_interconnect_0_juart0_avalon_jtag_slave_read),                                 //                                                    .read
+		.juart0_avalon_jtag_slave_readdata                             (mm_interconnect_0_juart0_avalon_jtag_slave_readdata),                             //                                                    .readdata
+		.juart0_avalon_jtag_slave_writedata                            (mm_interconnect_0_juart0_avalon_jtag_slave_writedata),                            //                                                    .writedata
+		.juart0_avalon_jtag_slave_waitrequest                          (mm_interconnect_0_juart0_avalon_jtag_slave_waitrequest),                          //                                                    .waitrequest
+		.juart0_avalon_jtag_slave_chipselect                           (mm_interconnect_0_juart0_avalon_jtag_slave_chipselect),                           //                                                    .chipselect
 		.LEDs_s1_address                                               (mm_interconnect_0_leds_s1_address),                                               //                                             LEDs_s1.address
 		.LEDs_s1_write                                                 (mm_interconnect_0_leds_s1_write),                                                 //                                                    .write
 		.LEDs_s1_readdata                                              (mm_interconnect_0_leds_s1_readdata),                                              //                                                    .readdata
@@ -751,6 +776,13 @@ module Computer_System (
 		.Slider_Switches_s1_readdata                                   (mm_interconnect_0_slider_switches_s1_readdata),                                   //                                                    .readdata
 		.SysID_control_slave_address                                   (mm_interconnect_0_sysid_control_slave_address),                                   //                                 SysID_control_slave.address
 		.SysID_control_slave_readdata                                  (mm_interconnect_0_sysid_control_slave_readdata),                                  //                                                    .readdata
+		.uart0_avalon_rs232_slave_address                              (mm_interconnect_0_uart0_avalon_rs232_slave_address),                              //                            uart0_avalon_rs232_slave.address
+		.uart0_avalon_rs232_slave_write                                (mm_interconnect_0_uart0_avalon_rs232_slave_write),                                //                                                    .write
+		.uart0_avalon_rs232_slave_read                                 (mm_interconnect_0_uart0_avalon_rs232_slave_read),                                 //                                                    .read
+		.uart0_avalon_rs232_slave_readdata                             (mm_interconnect_0_uart0_avalon_rs232_slave_readdata),                             //                                                    .readdata
+		.uart0_avalon_rs232_slave_writedata                            (mm_interconnect_0_uart0_avalon_rs232_slave_writedata),                            //                                                    .writedata
+		.uart0_avalon_rs232_slave_byteenable                           (mm_interconnect_0_uart0_avalon_rs232_slave_byteenable),                           //                                                    .byteenable
+		.uart0_avalon_rs232_slave_chipselect                           (mm_interconnect_0_uart0_avalon_rs232_slave_chipselect),                           //                                                    .chipselect
 		.VexRiscvAvalon_0_irq_controller_address                       (mm_interconnect_0_vexriscvavalon_0_irq_controller_address),                       //                     VexRiscvAvalon_0_irq_controller.address
 		.VexRiscvAvalon_0_irq_controller_write                         (mm_interconnect_0_vexriscvavalon_0_irq_controller_write),                         //                                                    .write
 		.VexRiscvAvalon_0_irq_controller_read                          (mm_interconnect_0_vexriscvavalon_0_irq_controller_read),                          //                                                    .read
@@ -792,6 +824,7 @@ module Computer_System (
 		.receiver5_irq (irq_mapper_receiver5_irq),                // receiver5.irq
 		.receiver6_irq (irq_mapper_receiver6_irq),                // receiver6.irq
 		.receiver7_irq (irq_mapper_receiver7_irq),                // receiver7.irq
+		.receiver8_irq (irq_mapper_receiver8_irq),                // receiver8.irq
 		.sender_irq    (vexriscvavalon_0_interrupt_receiver_irq)  //    sender.irq
 	);
 

@@ -18,18 +18,18 @@
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module Computer_System_JTAG_UART_sim_scfifo_w (
-                                                // inputs:
-                                                 clk,
-                                                 fifo_wdata,
-                                                 fifo_wr,
+module Computer_System_juart0_sim_scfifo_w (
+                                             // inputs:
+                                              clk,
+                                              fifo_wdata,
+                                              fifo_wr,
 
-                                                // outputs:
-                                                 fifo_FF,
-                                                 r_dat,
-                                                 wfifo_empty,
-                                                 wfifo_used
-                                              )
+                                             // outputs:
+                                              fifo_FF,
+                                              r_dat,
+                                              wfifo_empty,
+                                              wfifo_used
+                                           )
 ;
 
   output           fifo_FF;
@@ -75,20 +75,20 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module Computer_System_JTAG_UART_scfifo_w (
-                                            // inputs:
-                                             clk,
-                                             fifo_clear,
-                                             fifo_wdata,
-                                             fifo_wr,
-                                             rd_wfifo,
+module Computer_System_juart0_scfifo_w (
+                                         // inputs:
+                                          clk,
+                                          fifo_clear,
+                                          fifo_wdata,
+                                          fifo_wr,
+                                          rd_wfifo,
 
-                                            // outputs:
-                                             fifo_FF,
-                                             r_dat,
-                                             wfifo_empty,
-                                             wfifo_used
-                                          )
+                                         // outputs:
+                                          fifo_FF,
+                                          r_dat,
+                                          wfifo_empty,
+                                          wfifo_used
+                                       )
 ;
 
   output           fifo_FF;
@@ -109,7 +109,7 @@ wire    [  7: 0] wfifo_used;
 
 //synthesis translate_off
 //////////////// SIMULATION-ONLY CONTENTS
-  Computer_System_JTAG_UART_sim_scfifo_w the_Computer_System_JTAG_UART_sim_scfifo_w
+  Computer_System_juart0_sim_scfifo_w the_Computer_System_juart0_sim_scfifo_w
     (
       .clk         (clk),
       .fifo_FF     (fifo_FF),
@@ -161,18 +161,18 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module Computer_System_JTAG_UART_sim_scfifo_r (
-                                                // inputs:
-                                                 clk,
-                                                 fifo_rd,
-                                                 rst_n,
+module Computer_System_juart0_sim_scfifo_r (
+                                             // inputs:
+                                              clk,
+                                              fifo_rd,
+                                              rst_n,
 
-                                                // outputs:
-                                                 fifo_EF,
-                                                 fifo_rdata,
-                                                 rfifo_full,
-                                                 rfifo_used
-                                              )
+                                             // outputs:
+                                              fifo_EF,
+                                              fifo_rdata,
+                                              rfifo_full,
+                                              rfifo_used
+                                           )
 ;
 
   output           fifo_EF;
@@ -240,21 +240,21 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module Computer_System_JTAG_UART_scfifo_r (
-                                            // inputs:
-                                             clk,
-                                             fifo_clear,
-                                             fifo_rd,
-                                             rst_n,
-                                             t_dat,
-                                             wr_rfifo,
+module Computer_System_juart0_scfifo_r (
+                                         // inputs:
+                                          clk,
+                                          fifo_clear,
+                                          fifo_rd,
+                                          rst_n,
+                                          t_dat,
+                                          wr_rfifo,
 
-                                            // outputs:
-                                             fifo_EF,
-                                             fifo_rdata,
-                                             rfifo_full,
-                                             rfifo_used
-                                          )
+                                         // outputs:
+                                          fifo_EF,
+                                          fifo_rdata,
+                                          rfifo_full,
+                                          rfifo_used
+                                       )
 ;
 
   output           fifo_EF;
@@ -276,7 +276,7 @@ wire    [  7: 0] rfifo_used;
 
 //synthesis translate_off
 //////////////// SIMULATION-ONLY CONTENTS
-  Computer_System_JTAG_UART_sim_scfifo_r the_Computer_System_JTAG_UART_sim_scfifo_r
+  Computer_System_juart0_sim_scfifo_r the_Computer_System_juart0_sim_scfifo_r
     (
       .clk        (clk),
       .fifo_EF    (fifo_EF),
@@ -328,23 +328,23 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module Computer_System_JTAG_UART (
-                                   // inputs:
-                                    av_address,
-                                    av_chipselect,
-                                    av_read_n,
-                                    av_write_n,
-                                    av_writedata,
-                                    clk,
-                                    rst_n,
+module Computer_System_juart0 (
+                                // inputs:
+                                 av_address,
+                                 av_chipselect,
+                                 av_read_n,
+                                 av_write_n,
+                                 av_writedata,
+                                 clk,
+                                 rst_n,
 
-                                   // outputs:
-                                    av_irq,
-                                    av_readdata,
-                                    av_waitrequest,
-                                    dataavailable,
-                                    readyfordata
-                                 )
+                                // outputs:
+                                 av_irq,
+                                 av_readdata,
+                                 av_waitrequest,
+                                 dataavailable,
+                                 readyfordata
+                              )
   /* synthesis ALTERA_ATTRIBUTE = "SUPPRESS_DA_RULE_INTERNAL=\"R101,C106,D101,D103\"" */ ;
 
   output           av_irq;
@@ -406,7 +406,7 @@ wire             wr_rfifo;
   assign rd_wfifo = r_ena & ~wfifo_empty;
   assign wr_rfifo = t_ena & ~rfifo_full;
   assign fifo_clear = ~rst_n;
-  Computer_System_JTAG_UART_scfifo_w the_Computer_System_JTAG_UART_scfifo_w
+  Computer_System_juart0_scfifo_w the_Computer_System_juart0_scfifo_w
     (
       .clk         (clk),
       .fifo_FF     (fifo_FF),
@@ -419,7 +419,7 @@ wire             wr_rfifo;
       .wfifo_used  (wfifo_used)
     );
 
-  Computer_System_JTAG_UART_scfifo_r the_Computer_System_JTAG_UART_scfifo_r
+  Computer_System_juart0_scfifo_r the_Computer_System_juart0_scfifo_r
     (
       .clk        (clk),
       .fifo_EF    (fifo_EF),
@@ -555,7 +555,7 @@ wire             wr_rfifo;
 
 //synthesis translate_on
 //synthesis read_comments_as_HDL on
-//  alt_jtag_atlantic Computer_System_JTAG_UART_alt_jtag_atlantic
+//  alt_jtag_atlantic Computer_System_juart0_alt_jtag_atlantic
 //    (
 //      .clk (clk),
 //      .r_dat (r_dat),
@@ -568,10 +568,10 @@ wire             wr_rfifo;
 //      .t_pause (t_pause)
 //    );
 //
-//  defparam Computer_System_JTAG_UART_alt_jtag_atlantic.INSTANCE_ID = 0,
-//           Computer_System_JTAG_UART_alt_jtag_atlantic.LOG2_RXFIFO_DEPTH = 8,
-//           Computer_System_JTAG_UART_alt_jtag_atlantic.LOG2_TXFIFO_DEPTH = 8,
-//           Computer_System_JTAG_UART_alt_jtag_atlantic.SLD_AUTO_INSTANCE_INDEX = "YES";
+//  defparam Computer_System_juart0_alt_jtag_atlantic.INSTANCE_ID = 0,
+//           Computer_System_juart0_alt_jtag_atlantic.LOG2_RXFIFO_DEPTH = 8,
+//           Computer_System_juart0_alt_jtag_atlantic.LOG2_TXFIFO_DEPTH = 8,
+//           Computer_System_juart0_alt_jtag_atlantic.SLD_AUTO_INSTANCE_INDEX = "YES";
 //
 //  always @(posedge clk or negedge rst_n)
 //    begin

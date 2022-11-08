@@ -46,7 +46,7 @@
 
 typedef volatile struct {
     uint32_t port;
-    uint32_t direction;
+    uint32_t direction; // 0 for input, 1 for output?
     uint32_t _reserved1;
     uint32_t _reserved2;
     uint32_t outset;

@@ -35,7 +35,7 @@ typedef struct {
 void juart_init(jUartStatus* js, jUartPeriph* reg);
 void juart_serv(jUartStatus* js);
 bool juart_is_pc_conn(jUartStatus* js);
-uint8_t juart_hw_wspace(jUartStatus* js);
+uint16_t juart_hw_wspace(jUartStatus* js);
 
 void juart_write(jUartStatus* js, const char* str);
 bool juart_put(jUartStatus* js, char c);

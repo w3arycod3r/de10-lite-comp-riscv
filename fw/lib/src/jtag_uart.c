@@ -17,7 +17,7 @@ void juart_init(jUartStatus* js, jUartPeriph* reg) {
 	js->last_ac_set_time = Hal_ReadTime32();
 
 	// Assume PC not connected initially
-	js->pc_connected = false;
+	js->pc_connected = true;
 }
 
 /* Service the JTAG UART code module */
@@ -60,7 +60,8 @@ void juart_write(jUartStatus* js, const char* str) {
 	}
 }
 
-uint8_t juart_hw_wspace(jUartStatus* js) {
+// How much space is left in the write buffer?
+uint16_t juart_hw_wspace(jUartStatus* js) {
 	return ((js->reg->control >> UART_WSPACE_SHIFT) & UART_WSPACE_MASK);
 }
 
@@ -84,7 +85,7 @@ bool juart_put(jUartStatus* js, char c) {
 		return true;
 	}
 	
-	// Drop the char
+	// PC disconnected, drop the char
 	return false;
 }
 

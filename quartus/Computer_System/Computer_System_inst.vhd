@@ -39,7 +39,9 @@
 			vga_G                              : out   std_logic_vector(3 downto 0);                     -- G
 			vga_B                              : out   std_logic_vector(3 downto 0);                     -- B
 			video_pll_ref_clk_clk              : in    std_logic                     := 'X';             -- clk
-			video_pll_ref_reset_reset          : in    std_logic                     := 'X'              -- reset
+			video_pll_ref_reset_reset          : in    std_logic                     := 'X';             -- reset
+			rs232_0_external_interface_RXD     : in    std_logic                     := 'X';             -- RXD
+			rs232_0_external_interface_TXD     : out   std_logic                                         -- TXD
 		);
 	end component Computer_System;
 
@@ -84,6 +86,8 @@
 			vga_G                              => CONNECTED_TO_vga_G,                              --                             .G
 			vga_B                              => CONNECTED_TO_vga_B,                              --                             .B
 			video_pll_ref_clk_clk              => CONNECTED_TO_video_pll_ref_clk_clk,              --            video_pll_ref_clk.clk
-			video_pll_ref_reset_reset          => CONNECTED_TO_video_pll_ref_reset_reset           --          video_pll_ref_reset.reset
+			video_pll_ref_reset_reset          => CONNECTED_TO_video_pll_ref_reset_reset,          --          video_pll_ref_reset.reset
+			rs232_0_external_interface_RXD     => CONNECTED_TO_rs232_0_external_interface_RXD,     --   rs232_0_external_interface.RXD
+			rs232_0_external_interface_TXD     => CONNECTED_TO_rs232_0_external_interface_TXD      --                             .TXD
 		);
 

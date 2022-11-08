@@ -38,6 +38,8 @@
 		.vga_G                              (<connected-to-vga_G>),                              //                             .G
 		.vga_B                              (<connected-to-vga_B>),                              //                             .B
 		.video_pll_ref_clk_clk              (<connected-to-video_pll_ref_clk_clk>),              //            video_pll_ref_clk.clk
-		.video_pll_ref_reset_reset          (<connected-to-video_pll_ref_reset_reset>)           //          video_pll_ref_reset.reset
+		.video_pll_ref_reset_reset          (<connected-to-video_pll_ref_reset_reset>),          //          video_pll_ref_reset.reset
+		.rs232_0_external_interface_RXD     (<connected-to-rs232_0_external_interface_RXD>),     //   rs232_0_external_interface.RXD
+		.rs232_0_external_interface_TXD     (<connected-to-rs232_0_external_interface_TXD>)      //                             .TXD
 	);
 

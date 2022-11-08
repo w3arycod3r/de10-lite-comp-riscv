@@ -29,7 +29,7 @@
 // Generation parameters:
 //   output_name:         Computer_System_mm_interconnect_0_rsp_demux_001
 //   ST_DATA_W:           86
-//   ST_CHANNEL_W:        23
+//   ST_CHANNEL_W:        24
 //   NUM_OUTPUTS:         2
 //   VALID_WIDTH:         1
 // ------------------------------------------
@@ -47,7 +47,7 @@ module Computer_System_mm_interconnect_0_rsp_demux_001
     // -------------------
     input  [1-1      : 0]   sink_valid,
     input  [86-1    : 0]   sink_data, // ST_DATA_W=86
-    input  [23-1 : 0]   sink_channel, // ST_CHANNEL_W=23
+    input  [24-1 : 0]   sink_channel, // ST_CHANNEL_W=24
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -57,14 +57,14 @@ module Computer_System_mm_interconnect_0_rsp_demux_001
     // -------------------
     output reg                      src0_valid,
     output reg [86-1    : 0] src0_data, // ST_DATA_W=86
-    output reg [23-1 : 0] src0_channel, // ST_CHANNEL_W=23
+    output reg [24-1 : 0] src0_channel, // ST_CHANNEL_W=24
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
 
     output reg                      src1_valid,
     output reg [86-1    : 0] src1_data, // ST_DATA_W=86
-    output reg [23-1 : 0] src1_channel, // ST_CHANNEL_W=23
+    output reg [24-1 : 0] src1_channel, // ST_CHANNEL_W=24
     output reg                      src1_startofpacket,
     output reg                      src1_endofpacket,
     input                           src1_ready,
@@ -109,7 +109,7 @@ module Computer_System_mm_interconnect_0_rsp_demux_001
     assign ready_vector[0] = src0_ready;
     assign ready_vector[1] = src1_ready;
 
-    assign sink_ready = |(sink_channel & {{21{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{22{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 

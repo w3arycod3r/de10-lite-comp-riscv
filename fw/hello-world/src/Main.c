@@ -46,11 +46,11 @@ int main() {
     juart_init(&juart0, juart0_p);
 
     // Greetings
-    juart_write(&juart0, "\n\n* * * VexRiscv Demo  -  ");
+    juart_write(&juart0, "\n\n* * * VexRiscv Demo - ");
     juart_write(&juart0, BUILD_STRING);
-    juart_write(&juart0, "  - ");
+    juart_write(&juart0, " - ");
     juart_write(&juart0, BUILD_DATE);
-    juart_write(&juart0, "  * * *\n");
+    juart_write(&juart0, " * * *\n");
 
     // Init seg7 module
     __seg7_init();
@@ -104,7 +104,8 @@ int main() {
         __seg7_service();
 
         juart_serv(&juart0);
-        
+        // Display connected status on LEDR0
+        pio_write(g_pio_ledr, 0, juart_is_pc_conn(&juart0));
 
         // Echo chars on the UART
         uint8_t c = juart_get(&juart0);

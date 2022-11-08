@@ -169,22 +169,6 @@
          type = "boolean";
       }
    }
-   element JTAG_UART
-   {
-      datum _sortIndex
-      {
-         value = "16";
-         type = "int";
-      }
-   }
-   element JTAG_UART.avalon_jtag_slave
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-   }
    element JTAG_to_FPGA_Bridge
    {
       datum _sortIndex
@@ -213,7 +197,7 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "24";
          type = "int";
       }
    }
@@ -395,11 +379,35 @@
          type = "int";
       }
    }
+   element juart0
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
+   element juart0.avalon_jtag_slave
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
    element reset_controller_0
    {
       datum _sortIndex
       {
          value = "1";
+         type = "int";
+      }
+   }
+   element uart0
+   {
+      datum _sortIndex
+      {
+         value = "23";
          type = "int";
       }
    }
@@ -473,6 +481,11 @@
    name="reset_controller_0_reset_in0"
    internal="reset_controller_0.reset_in0"
    type="reset"
+   dir="end" />
+ <interface
+   name="rs232_0_external_interface"
+   internal="uart0.external_interface"
+   type="conduit"
    dir="end" />
  <interface name="sdram" internal="SDRAM.wire" type="conduit" dir="end" />
  <interface
@@ -658,25 +671,6 @@
   <parameter name="systemFrequency" value="100000000" />
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
- </module>
- <module
-   name="JTAG_UART"
-   kind="altera_avalon_jtag_uart"
-   version="21.1"
-   enabled="1">
-  <parameter name="allowMultipleConnections" value="false" />
-  <parameter name="avalonSpec" value="2.0" />
-  <parameter name="clkFreq" value="100000000" />
-  <parameter name="hubInstanceID" value="0" />
-  <parameter name="readBufferDepth" value="64" />
-  <parameter name="readIRQThreshold" value="8" />
-  <parameter name="simInputCharacterStream" value="" />
-  <parameter name="simInteractiveOptions">NO_INTERACTIVE_WINDOWS</parameter>
-  <parameter name="useRegistersForReadBuffer" value="false" />
-  <parameter name="useRegistersForWriteBuffer" value="false" />
-  <parameter name="useRelativePathForSimFile" value="false" />
-  <parameter name="writeBufferDepth" value="64" />
-  <parameter name="writeIRQThreshold" value="8" />
  </module>
  <module
    name="JTAG_to_FPGA_Bridge"
@@ -996,7 +990,7 @@
    kind="VexRiscvAvalon"
    version="1.0"
    enabled="1">
-  <parameter name="AUTO_INTERRUPT_RECEIVER_INTERRUPTS_USED" value="255" />
+  <parameter name="AUTO_INTERRUPT_RECEIVER_INTERRUPTS_USED" value="511" />
   <parameter name="CORE_CONFIG" value="4" />
   <parameter name="C_EXCEPTION_VECTOR" value="134217760" />
   <parameter name="C_IO_BEGIN" value="150994944" />
@@ -1018,6 +1012,25 @@
   <parameter name="lcd_clk_en" value="false" />
   <parameter name="vga_clk_en" value="true" />
   <parameter name="video_in_clk_en" value="false" />
+ </module>
+ <module
+   name="juart0"
+   kind="altera_avalon_jtag_uart"
+   version="21.1"
+   enabled="1">
+  <parameter name="allowMultipleConnections" value="false" />
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="clkFreq" value="100000000" />
+  <parameter name="hubInstanceID" value="0" />
+  <parameter name="readBufferDepth" value="256" />
+  <parameter name="readIRQThreshold" value="8" />
+  <parameter name="simInputCharacterStream" value="" />
+  <parameter name="simInteractiveOptions">NO_INTERACTIVE_WINDOWS</parameter>
+  <parameter name="useRegistersForReadBuffer" value="false" />
+  <parameter name="useRegistersForWriteBuffer" value="false" />
+  <parameter name="useRelativePathForSimFile" value="false" />
+  <parameter name="writeBufferDepth" value="256" />
+  <parameter name="writeIRQThreshold" value="8" />
  </module>
  <module
    name="reset_controller_0"
@@ -1049,6 +1062,15 @@
   <parameter name="USE_RESET_REQUEST_IN9" value="0" />
   <parameter name="USE_RESET_REQUEST_INPUT" value="0" />
  </module>
+ <module name="uart0" kind="altera_up_avalon_rs232" version="17.1" enabled="1">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="100000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
+  <parameter name="avalon_bus_type" value="Memory Mapped" />
+  <parameter name="baud" value="115200" />
+  <parameter name="data_bits" value="8" />
+  <parameter name="parity" value="None" />
+  <parameter name="stop_bits" value="1" />
+ </module>
  <connection
    kind="avalon"
    version="21.1"
@@ -1071,9 +1093,18 @@
    kind="avalon"
    version="21.1"
    start="VexRiscvAvalon_0.data_bus"
-   end="JTAG_UART.avalon_jtag_slave">
+   end="juart0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff201000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="VexRiscvAvalon_0.data_bus"
+   end="uart0.avalon_rs232_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff204080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1278,7 +1309,7 @@
    kind="avalon"
    version="21.1"
    start="Nios2.data_master"
-   end="JTAG_UART.avalon_jtag_slave">
+   end="juart0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff201000" />
   <parameter name="defaultConnection" value="false" />
@@ -1504,9 +1535,18 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="JTAG_UART.avalon_jtag_slave">
+   end="juart0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff201000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="JTAG_to_FPGA_Bridge.master"
+   end="uart0.avalon_rs232_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff204080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1748,7 +1788,7 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="JTAG_UART.clk" />
+   end="juart0.clk" />
  <connection
    kind="clock"
    version="21.1"
@@ -1789,6 +1829,11 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
+   end="uart0.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
    end="Onchip_SRAM.clk1" />
  <connection
    kind="clock"
@@ -1811,6 +1856,13 @@
    start="VexRiscvAvalon_0.interrupt_receiver"
    end="Accelerometer.interrupt">
   <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="21.1"
+   start="VexRiscvAvalon_0.interrupt_receiver"
+   end="uart0.interrupt">
+  <parameter name="irqNumber" value="8" />
  </connection>
  <connection
    kind="interrupt"
@@ -1844,7 +1896,7 @@
    kind="interrupt"
    version="21.1"
    start="VexRiscvAvalon_0.interrupt_receiver"
-   end="JTAG_UART.irq">
+   end="juart0.irq">
   <parameter name="irqNumber" value="5" />
  </connection>
  <connection
@@ -1889,7 +1941,7 @@
    end="Arduino_GPIO.irq">
   <parameter name="irqNumber" value="13" />
  </connection>
- <connection kind="interrupt" version="21.1" start="Nios2.irq" end="JTAG_UART.irq">
+ <connection kind="interrupt" version="21.1" start="Nios2.irq" end="juart0.irq">
   <parameter name="irqNumber" value="8" />
  </connection>
  <connection
@@ -1970,7 +2022,7 @@
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="JTAG_UART.reset" />
+   end="juart0.reset" />
  <connection
    kind="reset"
    version="21.1"
@@ -2001,6 +2053,11 @@
    version="21.1"
    start="reset_controller_0.reset_out"
    end="LEDs.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="uart0.reset" />
  <connection
    kind="reset"
    version="21.1"

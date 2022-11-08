@@ -112,7 +112,9 @@ architecture arch of DE10_Lite_Computer is
         vga_B                       : out   std_logic_vector(3 downto 0);                     -- B
         video_pll_ref_clk_clk       : in    std_logic                     := 'X';             -- clk
         video_pll_ref_reset_reset   : in    std_logic                     := 'X';             -- reset
-        reset_controller_0_reset_in0_reset : in    std_logic                     := 'X'             -- reset
+        reset_controller_0_reset_in0_reset : in    std_logic                     := 'X';             -- reset
+        rs232_0_external_interface_RXD     : in    std_logic                     := 'X';             -- RXD
+        rs232_0_external_interface_TXD     : out   std_logic                                         -- TXD
 
 	);
 	end component Computer_System;
@@ -138,6 +140,10 @@ begin
     DRAM_LDQM <= sdram_dqm(0);
     
     asyncReset <= not KEY(0);
+
+    -- GPIO Muxes
+    -- GPIO(7) - uart0 TX
+    -- GPIO(9) - uart0 RX
     
     -- Instantiations 
     comp_inst : component Computer_System
@@ -155,6 +161,10 @@ begin
         vexriscvavalon_0_jtag_tdi   => open,
         vexriscvavalon_0_jtag_tdo   => open,
         vexriscvavalon_0_jtag_tck   => open,
+
+        -- uart0
+        rs232_0_external_interface_RXD => open,
+        rs232_0_external_interface_TXD => open,
         
         -- Accelerometer
         accelerometer_I2C_SDAT      => GSENSOR_SDI,

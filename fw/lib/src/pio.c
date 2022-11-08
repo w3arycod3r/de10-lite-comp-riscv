@@ -2,6 +2,22 @@
 #include "FpgaConfig.h"
 #include "bit.h"
 
+void pio_set_dir(Pio *pPio, uint8_t bit, PIO_DIR_T dir) {
+    switch (dir)
+    {
+    case PIO_DIR_IN:
+        BIT_CLR(pPio->direction, bit);
+        break;
+    case PIO_DIR_OUT:
+        BIT_SET(pPio->direction, bit);
+        break;
+    default:
+        break;
+    }
+    
+    return;
+}
+
 void pio_write(Pio *pPio, uint8_t bit, bool val) {
     if (val) {
         BIT_SET(pPio->port, bit);

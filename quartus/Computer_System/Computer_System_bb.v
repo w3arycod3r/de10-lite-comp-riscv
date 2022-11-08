@@ -39,7 +39,9 @@ module Computer_System (
 	vga_G,
 	vga_B,
 	video_pll_ref_clk_clk,
-	video_pll_ref_reset_reset);	
+	video_pll_ref_reset_reset,
+	rs232_0_external_interface_RXD,
+	rs232_0_external_interface_TXD);	
 
 	inout		accelerometer_I2C_SDAT;
 	output		accelerometer_I2C_SCLK;
@@ -81,4 +83,6 @@ module Computer_System (
 	output	[3:0]	vga_B;
 	input		video_pll_ref_clk_clk;
 	input		video_pll_ref_reset_reset;
+	input		rs232_0_external_interface_RXD;
+	output		rs232_0_external_interface_TXD;
 endmodule
