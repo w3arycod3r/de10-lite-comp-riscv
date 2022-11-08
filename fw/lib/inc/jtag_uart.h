@@ -19,26 +19,26 @@
 #define UART_WE          1
 #define UART_RE          0
 
+/* Registers for JTAG UART Peripheral */
 typedef volatile struct {
-  uint32_t data;
-  uint32_t control;
-} JtagUart;
+    uint32_t data;
+    uint32_t control;
+} jUartPeriph;
 
-/* Internal Status */
+/* Internal Status of the code module */
 typedef struct {
-  bool pc_connected;
-  uint32_t last_ac_set_time;
-} JtagUart_Status;
+    jUartPeriph* reg;
+    bool pc_connected;
+    uint32_t last_ac_set_time;
+} jUartStatus;
 
-void UartInit();
-void UartMonitorPC(JtagUart* pUart);
+void juart_init(jUartStatus* js, jUartPeriph* reg);
+void juart_serv(jUartStatus* js);
+bool juart_is_pc_conn(jUartStatus* js);
+uint8_t juart_hw_wspace(jUartStatus* js);
 
-void UartWriteInt(JtagUart* pUart, int32_t i, bool newline);
-void UartWriteHex32(JtagUart* pUart, uint32_t ui, bool newline);
-void UartWriteHex8(JtagUart* pUart, uint8_t byte, bool newline);
-void UartWrite(JtagUart* pUart, const char* str);
+void juart_write(jUartStatus* js, const char* str);
+bool juart_put(jUartStatus* js, char c);
+char juart_get(jUartStatus* js);
 
-void UartPut(JtagUart* pUart, char c);
-char UartGet(JtagUart* pUart);
-
-#endif // Uart_H
+#endif // JTAG_UART_H

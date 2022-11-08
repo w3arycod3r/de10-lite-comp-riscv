@@ -93,7 +93,7 @@ extern Pio* g_pio_key;
 extern Pio* g_pio_hex5_hex4;
 extern Pio* g_pio_hex3_hex0;
 
-extern JtagUart* g_Uart;
+extern jUartPeriph* juart0_p;
 extern InterruptController* g_InterruptController;
 
 #endif // FPGACONFIG_H

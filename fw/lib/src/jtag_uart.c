@@ -2,101 +2,95 @@
 #include "bit.h"
 #include "Hal.h"
 
-JtagUart_Status uart_status;
+#define AC_TMR_TIMEOUT_MSEC 500
 
-void UartWriteInt(JtagUart* pUart, int32_t i, bool newline) {
+/* Init the code module and the hardware */
+void juart_init(jUartStatus* js, jUartPeriph* reg) {
 
-	// An 32 bit integer has at most 10 digits + sign + zero byte
-	char buffer[12] = {0};
+	// Save the peripheral pointer
+	js->reg = reg;
 
-	// To prevent overflow, handle this as special case
-	if (i == INT32_MIN) {
+	// Clear the AC bit (by writing 1)
+	BIT_SET(js->reg->control, UART_AC);
 
-		buffer[0] = '-';
-		buffer[1] = '2';
-		buffer[2] = '1';
-		buffer[3] = '4';
-		buffer[4] = '7';
-		buffer[5] = '4';
-		buffer[6] = '8';
-		buffer[7] = '3';
-		buffer[8] = '6';
-		buffer[9] = '4';
-		buffer[10] = '8';
-		buffer[11] = 0;
+	// Reset PC watchdog
+	js->last_ac_set_time = Hal_ReadTime32();
 
-	} else {
-
-		uint8_t bufferIndex = 0;
-
-		if (i < 0) {
-			i = -i;
-			buffer[bufferIndex++] = '-';
-		}
-
-		int32_t temp = i / 10;
-
-		while (temp) {
-			temp /= 10;
-			bufferIndex++;
-		}
-
-		do {
-			buffer[bufferIndex--] = (i % 10) + '0';
-			i /= 10;
-		} while(i);
-
-	}
-
-	UartWrite(pUart, buffer);
-
-	if (newline) {
-		UartWrite(pUart, "\n");
-	}
-
+	// Assume PC not connected initially
+	js->pc_connected = false;
 }
 
-void UartWriteHex32(JtagUart* pUart, uint32_t ui, bool newline) {
-	UartWriteHex8(pUart, (ui>>24) & 0xFF, false);
-	UartWriteHex8(pUart, (ui>>16) & 0xFF, false);
-	UartWriteHex8(pUart, (ui>>8) & 0xFF, false);
-	UartWriteHex8(pUart, (ui) & 0xFF, newline);
-}
+/* Service the JTAG UART code module */
+void juart_serv(jUartStatus* js) {
 
-void UartWriteHex8(JtagUart* pUart, uint8_t byte, bool newline) {
-	uint8_t l = byte & 0x0F;
-	uint8_t h = (byte >> 4) & 0x0F;
-	l = (l < 0x0A) ? l + '0' : l + 'A' - 10;
-	h = (h < 0x0A) ? h + '0' : h + 'A' - 10;
-	UartPut(pUart, h);
-	UartPut(pUart, l);
-	if (newline) {
-		UartWrite(pUart, "\n");
+	// PC has set the AC bit
+	if (BIT_TST(js->reg->control, UART_AC))
+	{
+		// A connection is present
+		js->pc_connected = true;
+		// Reset watchdog timer
+		js->last_ac_set_time = Hal_ReadTime32();
+		// Clear the AC bit (by writing 1)
+		BIT_SET(js->reg->control, UART_AC);
 	}
+	
+
+	// Timeout when PC takes too long -- assume PC is not connected
+	// Like a watchdog timer
+	if (HAL_HAS_DURATION_PASSED_MSEC(js->last_ac_set_time, AC_TMR_TIMEOUT_MSEC))
+	{
+		js->pc_connected = false;
+		js->last_ac_set_time = Hal_ReadTime32();
+	}
+	
 }
 
-void UartWrite(JtagUart* pUart, const char* str) {
+bool juart_is_pc_conn(jUartStatus* js) {
+	return js->pc_connected;
+}
+
+void juart_write(jUartStatus* js, const char* str) {
+	bool status;
 	while (*str) {
-		if (*str == '\n') UartPut(pUart, '\r');
-		UartPut(pUart, *str++);
+		if (*str == '\n') juart_put(js, '\r');
+		status = juart_put(js, *str++);
+
+		// If we drop a character, drop the rest of the string
+		if (!status) return;
 	}
 }
 
-void UartPut(JtagUart* pUart, char c) {
-	uint32_t control = pUart->control;
+uint8_t juart_hw_wspace(jUartStatus* js) {
+	return ((js->reg->control >> UART_WSPACE_SHIFT) & UART_WSPACE_MASK);
+}
+
+bool juart_put(jUartStatus* js, char c) {
 
 	// There is space in write buffer
-	if (((control >> UART_WSPACE_SHIFT) & UART_WSPACE_MASK)) {
-		WRITE_BYTE(pUart->data, 0, c);
-	// No space
-	} else {
-		return;
+	if (juart_hw_wspace(js)) {
+		WRITE_BYTE(js->reg->data, 0, c);
+		return true;
 	}
+
+	// If PC is connected, wait for space 
+	while (juart_is_pc_conn(js) && !juart_hw_wspace(js)) {
+		juart_serv(js);
+	}
+
+	// We got space, write the char
+	if (juart_hw_wspace(js))
+	{
+		WRITE_BYTE(js->reg->data, 0, c);
+		return true;
+	}
+	
+	// Drop the char
+	return false;
 }
 
-char UartGet(JtagUart* pUart) {
+char juart_get(jUartStatus* js) {
 	// Read data register
-	uint32_t data = pUart->data;
+	uint32_t data = js->reg->data;
 
 	// Valid character recv'd
 	if (BIT_TST(data, UART_RVALID)){
@@ -106,28 +100,4 @@ char UartGet(JtagUart* pUart) {
 		return '\0';
 	}
 
-}
-
-#define AC_TMR_TIMEOUT_MSEC
-
-void UartMonitorPC(JtagUart* pUart) {
-
-	// Clear the AC bit (by writing 1)
-	BIT_SET(pUart->control, UART_AC);
-	uart_status.last_ac_set_time = Hal_ReadTime32();
-
-	// Monitor it to see if PC clears it
-
-	// Timeout when PC takes too long -- assume PC is not connected
-	// Like a watchdog timer
-
-	// Restart timed test
-}
-
-void UartInit() {
-	// Clear the AC bit (by writing 1)
-	// BIT_SET(pUart->control, UART_AC);
-	uart_status.last_ac_set_time = Hal_ReadTime32();
-
-	uart_status.pc_connected = true;
 }

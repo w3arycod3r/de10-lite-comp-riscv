@@ -43,5 +43,6 @@ uint64_t Hal_ReadTime64();
 
 // Macros
 #define HAL_HAS_DURATION_PASSED(timer32, dur32) ( (Hal_ReadTime32()-timer32) > dur32 )
+#define HAL_HAS_DURATION_PASSED_MSEC(timer32, dur_msec) ( HAL_HAS_DURATION_PASSED(timer32, MSEC_TO_TICKS(dur_msec)) )
 
 #endif // HAL_H

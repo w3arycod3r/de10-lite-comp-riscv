@@ -68,20 +68,20 @@ extern uintptr_t SystemInterruptHandler(uintptr_t stack, bool softInterrupt);
 uintptr_t Hal_Exception(uintptr_t stack, uintptr_t addr, uint32_t mcause) {
 
 	if ((mcause & 0x80000000) == 0) {
-		UartWrite(g_Uart, "TRAP\n    stack    ");
-		UartWriteHex32(g_Uart, stack, true);
-		UartWrite(g_Uart, "    mepc     ");
-		UartWriteHex32(g_Uart, addr, true);
-		UartWrite(g_Uart, "    mcause   ");
-		UartWriteHex32(g_Uart, mcause, true);
-		UartWrite(g_Uart, "    irq en   ");
-		UartWriteHex32(g_Uart, g_InterruptController->enabled, true);
-		UartWrite(g_Uart, "    irq pen  ");
-		UartWriteHex32(g_Uart, g_InterruptController->pending, true);
-		UartWrite(g_Uart, "    mtval    ");
-		UartWriteHex32(g_Uart, read_csr(mtval),true);
-		UartWrite(g_Uart, "    mbadaddr ");
-		UartWriteHex32(g_Uart, read_csr(mbadaddr), true);
+		// UartWrite(g_Uart, "TRAP\n    stack    ");
+		// UartWriteHex32(g_Uart, stack, true);
+		// UartWrite(g_Uart, "    mepc     ");
+		// UartWriteHex32(g_Uart, addr, true);
+		// UartWrite(g_Uart, "    mcause   ");
+		// UartWriteHex32(g_Uart, mcause, true);
+		// UartWrite(g_Uart, "    irq en   ");
+		// UartWriteHex32(g_Uart, g_InterruptController->enabled, true);
+		// UartWrite(g_Uart, "    irq pen  ");
+		// UartWriteHex32(g_Uart, g_InterruptController->pending, true);
+		// UartWrite(g_Uart, "    mtval    ");
+		// UartWriteHex32(g_Uart, read_csr(mtval),true);
+		// UartWrite(g_Uart, "    mbadaddr ");
+		// UartWriteHex32(g_Uart, read_csr(mbadaddr), true);
 		while(1);
 	} else {
 		if ((mcause & 0x7FFFFFFF) == IRQ_M_EXT) {

@@ -28,6 +28,8 @@ DEALINGS IN THE SOFTWARE. */
 
 static int counterMod = 1;
 
+jUartStatus juart0;
+
 void IRQHandlerTimer(void) {
     // Invert direction of counter
     counterMod = -counterMod;
@@ -41,14 +43,14 @@ void IRQHandlerUart() {
 
 int main() {
 
-    UartInit();
+    juart_init(&juart0, juart0_p);
 
     // Greetings
-    UartWrite(g_Uart, "\n\n* * * VexRiscv Demo  -  ");
-    UartWrite(g_Uart, BUILD_STRING);
-    UartWrite(g_Uart, "  - ");
-    UartWrite(g_Uart, BUILD_DATE);
-    UartWrite(g_Uart, "  * * *\n");
+    juart_write(&juart0, "\n\n* * * VexRiscv Demo  -  ");
+    juart_write(&juart0, BUILD_STRING);
+    juart_write(&juart0, "  - ");
+    juart_write(&juart0, BUILD_DATE);
+    juart_write(&juart0, "  * * *\n");
 
     // Init seg7 module
     __seg7_init();
@@ -59,8 +61,8 @@ int main() {
     // Enable interrupt on timer and uart receive.
     Hal_SetExtIrqHandler(EXT_IRQ_JTAG_UART, IRQHandlerUart);
     Hal_EnableInterrupt(EXT_IRQ_JTAG_UART);
-    BIT_CLR(g_Uart->control, UART_RE);	// enable read interrupts
-    BIT_CLR(g_Uart->control, UART_WE);	// disable write interrupts
+    BIT_CLR(juart0.reg->control, UART_RE);	// enable read interrupts
+    BIT_CLR(juart0.reg->control, UART_WE);	// disable write interrupts
 
     Hal_EnableMachineInterrupt(IRQ_M_EXT);
     Hal_SetTimerIrqHandler(IRQHandlerTimer);
@@ -101,9 +103,12 @@ int main() {
         // Main task of the seg7 module
         __seg7_service();
 
+        juart_serv(&juart0);
+        
+
         // Echo chars on the UART
-        uint8_t c = UartGet(g_Uart);
+        uint8_t c = juart_get(&juart0);
         if (c == '\r') { c = '\n'; }
-        if (c) { UartPut(g_Uart, c); }
+        if (c) { juart_put(&juart0, c); }
     }
 }
