@@ -24,6 +24,7 @@ $(LIB_DIR)/src/jtag_uart.c \
 $(LIB_DIR)/src/pio.c \
 $(LIB_DIR)/src/seg7.c \
 $(LIB_DIR)/src/str_lib.c \
+$(LIB_DIR)/src/multi_button.c \
 
 ######################################
 # ASM Sources
@@ -142,7 +143,7 @@ ASFLAGS = $(AS_DEFS) $(AS_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fn
 # Linker Script
 LD_SCRIPT = link.ld
 
-LDFLAGS := $(ARCH) $(ABI) -T $(LD_SCRIPT) -static -nostartfiles -nostdlib -lgcc -Wl,-print-memory-usage -Wl,-gc-sections -Wl,-Map=$(MAP),--cref
+LDFLAGS := $(ARCH) $(ABI) -T $(LD_SCRIPT) -static -nostartfiles -lc -lgcc -Wl,-print-memory-usage -Wl,-gc-sections -Wl,-Map=$(MAP),--cref
 
 ######################################
 # Default Target

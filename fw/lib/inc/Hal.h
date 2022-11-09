@@ -11,6 +11,10 @@
 #define IRQ_BADINSTR 1
 #define IRQ_MEMERROR 2
 
+// SysTick Defines
+#define SYS_TICK_DUR_MSEC 1
+#define SYS_TICK_DUR_TICKS (MSEC_TO_TICKS(SYS_TICK_DUR_MSEC))
+
 typedef void(*VoidFunc)(void);
 
 // Located in Hal.c
@@ -27,6 +31,11 @@ void Hal_TimerStart(uint64_t value);
 void Hal_TimerStop();
 void Hal_RaiseSoftInterrupt();
 void Hal_ClearSoftInterrupt();
+
+// SysTick
+uint32_t Hal_SysTickRead(); // "SysTick" timer with 1 msec resolution
+void Hal_SysTickInit();
+void Hal_SysTickServ(); 	// Service the "SysTick" timer module
 
 // Located in Hal.S
 

@@ -4,6 +4,10 @@ static VoidFunc Hal_ExtIrqCallback[32];
 static VoidFunc Hal_TimerIrqCallback;
 static VoidFunc Hal_SoftIrqCallback;
 
+// SysTick Vars
+static uint32_t sysTick;
+static uint32_t sysTickTmr;
+
 void Hal_SetExtIrqHandler(uint32_t irq, VoidFunc callback) {
 	Hal_ExtIrqCallback[irq] = callback;
 }
@@ -104,4 +108,26 @@ uintptr_t Hal_Exception(uintptr_t stack, uintptr_t addr, uint32_t mcause) {
 
 	return stack;
 
+}
+
+
+void Hal_SysTickInit()
+{
+	sysTick = 0;
+	sysTickTmr = Hal_ReadTime32();
+}
+
+void Hal_SysTickServ()
+{
+	if (HAL_HAS_DURATION_PASSED(sysTickTmr, SYS_TICK_DUR_TICKS))
+	{
+		sysTickTmr = Hal_ReadTime32();
+		sysTick++;
+	}
+	
+}
+
+uint32_t Hal_SysTickRead()
+{
+	return sysTick;
 }

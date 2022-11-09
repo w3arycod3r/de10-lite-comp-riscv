@@ -4,6 +4,7 @@
 #include "bit.h"
 #include "Hal.h"
 #include "str_lib.h"
+#include <string.h>
 
 // CONSTANTS
 
@@ -563,6 +564,12 @@ void __seg7_i32ToDecStr(int32_t i32_value, char* psz_outputStr) {
         *--psz_outputStr = csz_digit[i32_value % 10];
         i32_value = i32_value / 10;
     } while (i32_value);
+}
+
+void __seg7_i32ToDecStrCat(int32_t i32_value, char* psz_outputStr) {
+    char tmpstr[16];
+    __seg7_i32ToDecStr(i32_value, tmpstr);
+    strcat(psz_outputStr, tmpstr);
 }
 
 char __seg7_nibbleToHexChar(uint8_t u8_value) {
