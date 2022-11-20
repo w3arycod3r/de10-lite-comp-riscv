@@ -17,4 +17,5 @@
 *.jdi
 *.pin
 *.sld
+*.bak
 settings.json

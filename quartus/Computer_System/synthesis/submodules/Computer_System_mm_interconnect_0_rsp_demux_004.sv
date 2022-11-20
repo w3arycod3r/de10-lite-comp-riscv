@@ -27,11 +27,11 @@
 
 // ------------------------------------------
 // Generation parameters:
-//   output_name:         Computer_System_mm_interconnect_0_cmd_demux_003
-//   ST_DATA_W:           95
+//   output_name:         Computer_System_mm_interconnect_0_rsp_demux_004
+//   ST_DATA_W:           113
 //   ST_CHANNEL_W:        28
 //   NUM_OUTPUTS:         2
-//   VALID_WIDTH:         28
+//   VALID_WIDTH:         1
 // ------------------------------------------
 
 //------------------------------------------
@@ -40,13 +40,13 @@
 // 15610 - Warning: Design contains x input pin(s) that do not drive logic
 //------------------------------------------
 
-module Computer_System_mm_interconnect_0_cmd_demux_003
+module Computer_System_mm_interconnect_0_rsp_demux_004
 (
     // -------------------
     // Sink
     // -------------------
-    input  [28-1      : 0]   sink_valid,
-    input  [95-1    : 0]   sink_data, // ST_DATA_W=95
+    input  [1-1      : 0]   sink_valid,
+    input  [113-1    : 0]   sink_data, // ST_DATA_W=113
     input  [28-1 : 0]   sink_channel, // ST_CHANNEL_W=28
     input                         sink_startofpacket,
     input                         sink_endofpacket,
@@ -56,14 +56,14 @@ module Computer_System_mm_interconnect_0_cmd_demux_003
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [95-1    : 0] src0_data, // ST_DATA_W=95
+    output reg [113-1    : 0] src0_data, // ST_DATA_W=113
     output reg [28-1 : 0] src0_channel, // ST_CHANNEL_W=28
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
 
     output reg                      src1_valid,
-    output reg [95-1    : 0] src1_data, // ST_DATA_W=95
+    output reg [113-1    : 0] src1_data, // ST_DATA_W=113
     output reg [28-1 : 0] src1_channel, // ST_CHANNEL_W=28
     output reg                      src1_startofpacket,
     output reg                      src1_endofpacket,
@@ -92,14 +92,14 @@ module Computer_System_mm_interconnect_0_cmd_demux_003
         src0_endofpacket   = sink_endofpacket;
         src0_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src0_valid         = sink_channel[0] && sink_valid[0];
+        src0_valid         = sink_channel[0] && sink_valid;
 
         src1_data          = sink_data;
         src1_startofpacket = sink_startofpacket;
         src1_endofpacket   = sink_endofpacket;
         src1_channel       = sink_channel >> NUM_OUTPUTS;
 
-        src1_valid         = sink_channel[1] && sink_valid[1];
+        src1_valid         = sink_channel[1] && sink_valid;
 
     end
 

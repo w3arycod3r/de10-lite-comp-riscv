@@ -5,7 +5,7 @@
 
 set_global_assignment -name FAMILY "MAX 10 FPGA"
 set_global_assignment -name DEVICE 10M50DAF484C6GES
-set_global_assignment -name TOP_LEVEL_ENTITY DE10_Lite_Computer
+set_global_assignment -name TOP_LEVEL_ENTITY DE10_Lite_Computer_Top
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE IMAGE WITH ERAM"
 
@@ -268,6 +268,11 @@ set_location_assignment PIN_Y13 -to GSENSOR_INT[2]
 set_location_assignment PIN_AB15 -to GSENSOR_SCLK
 set_location_assignment PIN_V11 -to GSENSOR_SDI
 set_location_assignment PIN_V12 -to GSENSOR_SDO
+set_global_assignment -name FLOW_ENABLE_RTL_VIEWER ON
+set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name VHDL_FILE DE10_Lite_Computer_Top.vhd
+set_global_assignment -name QIP_FILE Computer_System/synthesis/Computer_System.qip
+set_global_assignment -name SDC_FILE DE10_Lite_Computer.sdc
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -456,9 +461,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_INT[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SCLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDI
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GSENSOR_SDO
-set_global_assignment -name QIP_FILE Computer_System/synthesis/Computer_System.qip
-set_global_assignment -name VHDL_FILE DE10_Lite_Computer.vhd
-set_global_assignment -name SDC_FILE DE10_Lite_Computer.sdc
-set_global_assignment -name FLOW_ENABLE_RTL_VIEWER ON
-set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name VHDL_FILE mux_2_to_1.vhd
+set_global_assignment -name VHDL_FILE tristate_buff.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

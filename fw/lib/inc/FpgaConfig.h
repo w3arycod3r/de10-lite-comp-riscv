@@ -9,44 +9,52 @@
 #define CPU_CLK_FREQ          (100 MHZ)
 #define MSEC_TO_TICKS(msec)   (msec * (CPU_CLK_FREQ / 1000))
 
-#define MEMADDR_OCRAM           ((uintptr_t)(0x80000000))
-#define MEMADDR_IRQCONTROLLER   ((uintptr_t)(0xff204040))
-#define MEMADDR_JTAG_UART       ((uintptr_t)(0xff201000))
-#define MEMADDR_PIO_LEDR        ((uintptr_t)(0xff200000))
-#define MEMADDR_PIO_SW          ((uintptr_t)(0xff200040))
-#define MEMADDR_PIO_KEY         ((uintptr_t)(0xff200050))
-#define MEMADDR_PIO_HEX5_HEX4   ((uintptr_t)(0xff200030))
-#define MEMADDR_PIO_HEX3_HEX0   ((uintptr_t)(0xff200020))
-#define MEMADDR_PIO_ARDUINO     ((uintptr_t)(0xff200100))
-#define MEMADDR_PIO_JP1_0       ((uintptr_t)(0xff200060))
-#define MEMADDR_PIO_JP1_1       ((uintptr_t)(0xff200070))
+/* Periperal Base Memory Addresses
+ * Pulled from Computer_System.html
+*/
+#define MEMADDR_OCRAM             ((uintptr_t)(0x80000000))
+#define MEMADDR_IRQCONTROLLER     ((uintptr_t)(0xff204040))
+#define MEMADDR_JTAG_UART_0       ((uintptr_t)(0xff201000))
+#define MEMADDR_UART_0            ((uintptr_t)(0xff204080))
+#define MEMADDR_PIO_LEDR          ((uintptr_t)(0xff200000))
+#define MEMADDR_PIO_SW            ((uintptr_t)(0xff200040))
+#define MEMADDR_PIO_KEY           ((uintptr_t)(0xff200050))
+#define MEMADDR_PIO_HEX5_HEX4     ((uintptr_t)(0xff200030))
+#define MEMADDR_PIO_HEX3_HEX0     ((uintptr_t)(0xff200020))
+#define MEMADDR_PIO_ARD_GPIO      ((uintptr_t)(0xff200100))
+#define MEMADDR_PIO_ARD_GPIO_DIR  ((uintptr_t)(0xff2040c0))
+#define MEMADDR_PIO_GPIO_A        ((uintptr_t)(0xff200060))
+#define MEMADDR_PIO_GPIO_A_DIR    ((uintptr_t)(0xff204090))
+#define MEMADDR_PIO_GPIO_B        ((uintptr_t)(0xff200070))
+#define MEMADDR_PIO_GPIO_B_DIR    ((uintptr_t)(0xff2040a0))
+#define MEMADDR_PIO_GPIO_AF_MUX_A ((uintptr_t)(0xff2040b0))
 
 #define NUM_LEDR 10
 
+// IRQ Numbers
 #define EXT_IRQ_ACCEL           0
-#define EXT_IRQ_INT_TMR1        3
-#define EXT_IRQ_INT_TMR2        4
+#define EXT_IRQ_INT_TMR0        3
+#define EXT_IRQ_INT_TMR1        4
 #define EXT_IRQ_JTAG_UART       5
 #define EXT_IRQ_PIO_ARDUINO     1
 #define EXT_IRQ_PIO_JP1_0       2
 #define EXT_IRQ_PIO_JP1_1       7
 #define EXT_IRQ_PIO_KEY         6
 
+// Build variables, defined by the Makefile at compile time
 #ifndef BUILD_VERSION
 #define BUILD_VERSION "git undefined"
 #endif
-
 #ifndef BUILD_DATE
 #define BUILD_DATE "date undefined"
 #endif
-
 #ifndef BUILD_STRING
 #define BUILD_STRING "build string undefined"
 #endif
 
 typedef volatile struct {
     uint32_t port;
-    uint32_t direction; // 0 for input, 1 for output?
+    uint32_t direction; // 0 for input, 1 for output
     uint32_t _reserved1;
     uint32_t _reserved2;
     uint32_t outset;

@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "25";
          type = "int";
       }
    }
@@ -29,7 +29,7 @@
    {
       datum _sortIndex
       {
-         value = "22";
+         value = "27";
          type = "int";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "17";
          type = "int";
       }
    }
@@ -57,11 +57,19 @@
          type = "boolean";
       }
    }
+   element Arduino_GPIO_Dir
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
    element Arduino_Reset_N
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "19";
          type = "int";
       }
    }
@@ -73,7 +81,7 @@
          type = "boolean";
       }
    }
-   element Expansion_JP1_0
+   element GPIO_A
    {
       datum _sortIndex
       {
@@ -81,7 +89,7 @@
          type = "int";
       }
    }
-   element Expansion_JP1_0.s1
+   element GPIO_A.s1
    {
       datum _lockedAddress
       {
@@ -89,7 +97,23 @@
          type = "boolean";
       }
    }
-   element Expansion_JP1_1
+   element GPIO_AF_MUX_A
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
+   element GPIO_A_Dir
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
+   element GPIO_B
    {
       datum _sortIndex
       {
@@ -97,12 +121,20 @@
          type = "int";
       }
    }
-   element Expansion_JP1_1.s1
+   element GPIO_B.s1
    {
       datum _lockedAddress
       {
          value = "1";
          type = "boolean";
+      }
+   }
+   element GPIO_B_Dir
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
       }
    }
    element HEX3_HEX0
@@ -137,15 +169,15 @@
          type = "boolean";
       }
    }
-   element Interval_Timer
+   element Interval_Timer0
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "22";
          type = "int";
       }
    }
-   element Interval_Timer.s1
+   element Interval_Timer0.s1
    {
       datum _lockedAddress
       {
@@ -153,15 +185,15 @@
          type = "boolean";
       }
    }
-   element Interval_Timer_2
+   element Interval_Timer1
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "23";
          type = "int";
       }
    }
-   element Interval_Timer_2.s1
+   element Interval_Timer1.s1
    {
       datum _lockedAddress
       {
@@ -197,7 +229,7 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "28";
          type = "int";
       }
    }
@@ -285,7 +317,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "24";
          type = "int";
       }
    }
@@ -314,7 +346,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "26";
          type = "int";
       }
    }
@@ -350,7 +382,7 @@
          type = "String";
       }
    }
-   element VexRiscvAvalon_0
+   element VexRiscv_Core0
    {
       datum _sortIndex
       {
@@ -358,7 +390,7 @@
          type = "int";
       }
    }
-   element VexRiscvAvalon_0.irq_controller
+   element VexRiscv_Core0.irq_controller
    {
       datum _lockedAddress
       {
@@ -383,7 +415,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "20";
          type = "int";
       }
    }
@@ -407,7 +439,7 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "21";
          type = "int";
       }
    }
@@ -433,7 +465,7 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface
-   name="accelerometer"
+   name="accel"
    internal="Accelerometer.external_interface"
    type="conduit"
    dir="end" />
@@ -443,18 +475,38 @@
    type="conduit"
    dir="end" />
  <interface
+   name="arduino_gpio_dir"
+   internal="Arduino_GPIO_Dir.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="arduino_reset_n"
    internal="Arduino_Reset_N.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="expansion_jp1_0"
-   internal="Expansion_JP1_0.external_connection"
+   name="gpio_a"
+   internal="GPIO_A.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="expansion_jp1_1"
-   internal="Expansion_JP1_1.external_connection"
+   name="gpio_a_dir"
+   internal="GPIO_A_Dir.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_af_mux_a"
+   internal="GPIO_AF_MUX_A.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_b"
+   internal="GPIO_B.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="gpio_b_dir"
+   internal="GPIO_B_Dir.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -473,18 +525,13 @@
    type="conduit"
    dir="end" />
  <interface
-   name="pushbuttons"
-   internal="Pushbuttons.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="reset_controller_0_reset_in0"
+   name="master_reset"
    internal="reset_controller_0.reset_in0"
    type="reset"
    dir="end" />
  <interface
-   name="rs232_0_external_interface"
-   internal="uart0.external_interface"
+   name="pushbuttons"
+   internal="Pushbuttons.external_connection"
    type="conduit"
    dir="end" />
  <interface name="sdram" internal="SDRAM.wire" type="conduit" dir="end" />
@@ -509,8 +556,13 @@
    type="reset"
    dir="end" />
  <interface
-   name="vexriscvavalon_0_jtag"
-   internal="VexRiscvAvalon_0.jtag"
+   name="uart0"
+   internal="uart0.external_interface"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="vexriscv_core0_jtag"
+   internal="VexRiscv_Core0.jtag"
    type="conduit"
    dir="end" />
  <interface name="vga" internal="VGA_Subsystem.vga" type="conduit" dir="end" />
@@ -549,14 +601,32 @@
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="100000000" />
-  <parameter name="direction" value="Bidir" />
+  <parameter name="direction" value="InOut" />
   <parameter name="edgeType" value="FALLING" />
   <parameter name="generateIRQ" value="true" />
   <parameter name="irqType" value="EDGE" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="true" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="16" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="Arduino_GPIO_Dir"
+   kind="altera_avalon_pio"
+   version="21.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="true" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
  </module>
  <module
    name="Arduino_Reset_N"
@@ -576,26 +646,22 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module
-   name="Expansion_JP1_0"
-   kind="altera_avalon_pio"
-   version="21.1"
-   enabled="1">
+ <module name="GPIO_A" kind="altera_avalon_pio" version="21.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="100000000" />
-  <parameter name="direction" value="Bidir" />
+  <parameter name="direction" value="InOut" />
   <parameter name="edgeType" value="FALLING" />
   <parameter name="generateIRQ" value="true" />
   <parameter name="irqType" value="EDGE" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="true" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="18" />
+  <parameter name="width" value="32" />
  </module>
  <module
-   name="Expansion_JP1_1"
+   name="GPIO_AF_MUX_A"
    kind="altera_avalon_pio"
    version="21.1"
    enabled="1">
@@ -603,14 +669,56 @@
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="100000000" />
-  <parameter name="direction" value="Bidir" />
+  <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="FALLING" />
   <parameter name="generateIRQ" value="true" />
   <parameter name="irqType" value="EDGE" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="true" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="18" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="GPIO_A_Dir" kind="altera_avalon_pio" version="21.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="true" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="GPIO_B" kind="altera_avalon_pio" version="21.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="true" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="InOut" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="GPIO_B_Dir" kind="altera_avalon_pio" version="21.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="true" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="true" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
  </module>
  <module name="HEX3_HEX0" kind="altera_avalon_pio" version="21.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -641,7 +749,7 @@
   <parameter name="width" value="16" />
  </module>
  <module
-   name="Interval_Timer"
+   name="Interval_Timer0"
    kind="altera_avalon_timer"
    version="21.1"
    enabled="1">
@@ -657,7 +765,7 @@
   <parameter name="watchdogPulse" value="2" />
  </module>
  <module
-   name="Interval_Timer_2"
+   name="Interval_Timer1"
    kind="altera_avalon_timer"
    version="21.1"
    enabled="1">
@@ -977,19 +1085,15 @@
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_PIXEL_DMA_MASTER_ADDRESS_MAP"><![CDATA[<address-map><slave name='SDRAM.s1' start='0x0' end='0x4000000' /><slave name='Onchip_SRAM.s2' start='0x8000000' end='0x8010000' /></address-map>]]></parameter>
   <parameter name="AUTO_PIXEL_DMA_MASTER_ADDRESS_WIDTH" value="AddressWidth = 28" />
-  <parameter name="AUTO_SYS_CLK_CLOCK_DOMAIN" value="8" />
-  <parameter name="AUTO_SYS_CLK_CLOCK_RATE" value="100000000" />
-  <parameter name="AUTO_SYS_CLK_RESET_DOMAIN" value="8" />
+  <parameter name="AUTO_SYS_CLK_CLOCK_DOMAIN" value="10" />
+  <parameter name="AUTO_SYS_CLK_CLOCK_RATE" value="25000000" />
+  <parameter name="AUTO_SYS_CLK_RESET_DOMAIN" value="10" />
   <parameter name="AUTO_UNIQUE_ID">$${FILENAME}_VGA_Subsystem</parameter>
   <parameter name="AUTO_VGA_CLK_CLOCK_DOMAIN" value="10" />
   <parameter name="AUTO_VGA_CLK_CLOCK_RATE" value="25000000" />
   <parameter name="AUTO_VGA_CLK_RESET_DOMAIN" value="10" />
  </module>
- <module
-   name="VexRiscvAvalon_0"
-   kind="VexRiscvAvalon"
-   version="1.0"
-   enabled="1">
+ <module name="VexRiscv_Core0" kind="VexRiscvAvalon" version="1.0" enabled="1">
   <parameter name="AUTO_INTERRUPT_RECEIVER_INTERRUPTS_USED" value="511" />
   <parameter name="CORE_CONFIG" value="4" />
   <parameter name="C_EXCEPTION_VECTOR" value="134217760" />
@@ -1074,7 +1178,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="ADC.adc_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff204000" />
@@ -1083,7 +1187,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Accelerometer.avalon_accelerometer_spi_mode_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff204020" />
@@ -1092,7 +1196,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="juart0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff201000" />
@@ -1101,7 +1205,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="uart0.avalon_rs232_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff204080" />
@@ -1110,7 +1214,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="VGA_Subsystem.char_buffer_control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff203030" />
@@ -1119,7 +1223,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="VGA_Subsystem.char_buffer_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x09000000" />
@@ -1128,7 +1232,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="SysID.control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202040" />
@@ -1137,7 +1241,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Nios2.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0a000000" />
@@ -1146,8 +1250,8 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
-   end="VexRiscvAvalon_0.irq_controller">
+   start="VexRiscv_Core0.data_bus"
+   end="VexRiscv_Core0.irq_controller">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff204040" />
   <parameter name="defaultConnection" value="false" />
@@ -1155,7 +1259,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="VGA_Subsystem.pixel_dma_control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff203020" />
@@ -1164,7 +1268,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="VGA_Subsystem.rgb_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff203010" />
@@ -1173,7 +1277,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Arduino_GPIO.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200100" />
@@ -1182,7 +1286,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Arduino_Reset_N.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200110" />
@@ -1191,8 +1295,8 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
-   end="Expansion_JP1_0.s1">
+   start="VexRiscv_Core0.data_bus"
+   end="GPIO_A.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200060" />
   <parameter name="defaultConnection" value="false" />
@@ -1200,7 +1304,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="HEX3_HEX0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200020" />
@@ -1209,7 +1313,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="HEX5_HEX4.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200030" />
@@ -1218,8 +1322,8 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
-   end="Interval_Timer.s1">
+   start="VexRiscv_Core0.data_bus"
+   end="Interval_Timer0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202000" />
   <parameter name="defaultConnection" value="false" />
@@ -1227,8 +1331,8 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
-   end="Interval_Timer_2.s1">
+   start="VexRiscv_Core0.data_bus"
+   end="Interval_Timer1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202020" />
   <parameter name="defaultConnection" value="false" />
@@ -1236,7 +1340,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="LEDs.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200000" />
@@ -1245,7 +1349,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Onchip_SRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08000000" />
@@ -1254,7 +1358,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Pushbuttons.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200050" />
@@ -1263,7 +1367,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
@@ -1272,7 +1376,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
+   start="VexRiscv_Core0.data_bus"
    end="Slider_Switches.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200040" />
@@ -1281,10 +1385,46 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.data_bus"
-   end="Expansion_JP1_1.s1">
+   start="VexRiscv_Core0.data_bus"
+   end="GPIO_B.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200070" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="VexRiscv_Core0.data_bus"
+   end="GPIO_A_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff204090" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="VexRiscv_Core0.data_bus"
+   end="GPIO_B_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="VexRiscv_Core0.data_bus"
+   end="GPIO_AF_MUX_A.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="VexRiscv_Core0.data_bus"
+   end="Arduino_GPIO_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1427,7 +1567,7 @@
    kind="avalon"
    version="21.1"
    start="Nios2.data_master"
-   end="Expansion_JP1_0.s1">
+   end="GPIO_A.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200060" />
   <parameter name="defaultConnection" value="false" />
@@ -1454,7 +1594,7 @@
    kind="avalon"
    version="21.1"
    start="Nios2.data_master"
-   end="Interval_Timer.s1">
+   end="Interval_Timer0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202000" />
   <parameter name="defaultConnection" value="false" />
@@ -1463,7 +1603,7 @@
    kind="avalon"
    version="21.1"
    start="Nios2.data_master"
-   end="Interval_Timer_2.s1">
+   end="Interval_Timer1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202020" />
   <parameter name="defaultConnection" value="false" />
@@ -1471,7 +1611,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.instruction_bus"
+   start="VexRiscv_Core0.instruction_bus"
    end="SDRAM.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
@@ -1480,7 +1620,7 @@
  <connection
    kind="avalon"
    version="21.1"
-   start="VexRiscvAvalon_0.instruction_bus"
+   start="VexRiscv_Core0.instruction_bus"
    end="Onchip_SRAM.s2">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08000000" />
@@ -1580,7 +1720,7 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="VexRiscvAvalon_0.irq_controller">
+   end="VexRiscv_Core0.irq_controller">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff204040" />
   <parameter name="defaultConnection" value="false" />
@@ -1670,7 +1810,7 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="Expansion_JP1_0.s1">
+   end="GPIO_A.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200060" />
   <parameter name="defaultConnection" value="false" />
@@ -1697,7 +1837,7 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="Interval_Timer.s1">
+   end="Interval_Timer0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202000" />
   <parameter name="defaultConnection" value="false" />
@@ -1706,7 +1846,7 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="Interval_Timer_2.s1">
+   end="Interval_Timer1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff202020" />
   <parameter name="defaultConnection" value="false" />
@@ -1715,9 +1855,45 @@
    kind="avalon"
    version="21.1"
    start="JTAG_to_FPGA_Bridge.master"
-   end="Expansion_JP1_1.s1">
+   end="GPIO_B.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xff200070" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="JTAG_to_FPGA_Bridge.master"
+   end="GPIO_A_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff204090" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="JTAG_to_FPGA_Bridge.master"
+   end="GPIO_B_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="JTAG_to_FPGA_Bridge.master"
+   end="GPIO_AF_MUX_A.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040b0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="21.1"
+   start="JTAG_to_FPGA_Bridge.master"
+   end="Arduino_GPIO_Dir.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xff2040c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1773,11 +1949,6 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="Expansion_JP1_0.clk" />
- <connection
-   kind="clock"
-   version="21.1"
-   start="System_PLL.sys_clk"
    end="Arduino_GPIO.clk" />
  <connection
    kind="clock"
@@ -1793,12 +1964,12 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="Interval_Timer.clk" />
+   end="Interval_Timer0.clk" />
  <connection
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="Interval_Timer_2.clk" />
+   end="Interval_Timer1.clk" />
  <connection
    kind="clock"
    version="21.1"
@@ -1819,7 +1990,7 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="Expansion_JP1_1.clk" />
+   end="GPIO_B.clk" />
  <connection
    kind="clock"
    version="21.1"
@@ -1834,16 +2005,41 @@
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
+   end="GPIO_A.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
+   end="GPIO_A_Dir.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
+   end="GPIO_B_Dir.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
+   end="GPIO_AF_MUX_A.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
+   end="Arduino_GPIO_Dir.clk" />
+ <connection
+   kind="clock"
+   version="21.1"
+   start="System_PLL.sys_clk"
    end="Onchip_SRAM.clk1" />
  <connection
    kind="clock"
    version="21.1"
    start="System_PLL.sys_clk"
-   end="VexRiscvAvalon_0.clock" />
+   end="VexRiscv_Core0.clock" />
  <connection
    kind="clock"
    version="21.1"
-   start="System_PLL.sys_clk"
+   start="Video_PLL.vga_clk"
    end="VGA_Subsystem.sys_clk" />
  <connection
    kind="clock"
@@ -1853,64 +2049,64 @@
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
+   start="VexRiscv_Core0.interrupt_receiver"
    end="Accelerometer.interrupt">
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
+   start="VexRiscv_Core0.interrupt_receiver"
    end="uart0.interrupt">
   <parameter name="irqNumber" value="8" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
+   start="VexRiscv_Core0.interrupt_receiver"
    end="Arduino_GPIO.irq">
   <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
-   end="Expansion_JP1_0.irq">
+   start="VexRiscv_Core0.interrupt_receiver"
+   end="GPIO_A.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
-   end="Interval_Timer.irq">
+   start="VexRiscv_Core0.interrupt_receiver"
+   end="Interval_Timer0.irq">
   <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
-   end="Interval_Timer_2.irq">
+   start="VexRiscv_Core0.interrupt_receiver"
+   end="Interval_Timer1.irq">
   <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
+   start="VexRiscv_Core0.interrupt_receiver"
    end="juart0.irq">
   <parameter name="irqNumber" value="5" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
+   start="VexRiscv_Core0.interrupt_receiver"
    end="Pushbuttons.irq">
   <parameter name="irqNumber" value="6" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
-   start="VexRiscvAvalon_0.interrupt_receiver"
-   end="Expansion_JP1_1.irq">
+   start="VexRiscv_Core0.interrupt_receiver"
+   end="GPIO_B.irq">
   <parameter name="irqNumber" value="7" />
  </connection>
  <connection
@@ -1927,11 +2123,7 @@
    end="Pushbuttons.irq">
   <parameter name="irqNumber" value="1" />
  </connection>
- <connection
-   kind="interrupt"
-   version="21.1"
-   start="Nios2.irq"
-   end="Expansion_JP1_0.irq">
+ <connection kind="interrupt" version="21.1" start="Nios2.irq" end="GPIO_A.irq">
   <parameter name="irqNumber" value="11" />
  </connection>
  <connection
@@ -1948,14 +2140,14 @@
    kind="interrupt"
    version="21.1"
    start="Nios2.irq"
-   end="Interval_Timer.irq">
+   end="Interval_Timer0.irq">
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
    version="21.1"
    start="Nios2.irq"
-   end="Interval_Timer_2.irq">
+   end="Interval_Timer1.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
  <connection
@@ -1972,7 +2164,7 @@
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="VexRiscvAvalon_0.reset" />
+   end="VexRiscv_Core0.reset" />
  <connection
    kind="reset"
    version="21.1"
@@ -2002,12 +2194,12 @@
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="Expansion_JP1_0.reset" />
+   end="GPIO_A.reset" />
  <connection
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="Expansion_JP1_1.reset" />
+   end="GPIO_B.reset" />
  <connection
    kind="reset"
    version="21.1"
@@ -2027,12 +2219,12 @@
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="Interval_Timer.reset" />
+   end="Interval_Timer0.reset" />
  <connection
    kind="reset"
    version="21.1"
    start="reset_controller_0.reset_out"
-   end="Interval_Timer_2.reset" />
+   end="Interval_Timer1.reset" />
  <connection
    kind="reset"
    version="21.1"
@@ -2058,6 +2250,26 @@
    version="21.1"
    start="reset_controller_0.reset_out"
    end="uart0.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="GPIO_A_Dir.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="GPIO_B_Dir.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="GPIO_AF_MUX_A.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="reset_controller_0.reset_out"
+   end="Arduino_GPIO_Dir.reset" />
  <connection
    kind="reset"
    version="21.1"
