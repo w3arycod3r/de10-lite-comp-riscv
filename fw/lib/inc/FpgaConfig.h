@@ -9,25 +9,38 @@
 #define CPU_CLK_FREQ          (100 MHZ)
 #define MSEC_TO_TICKS(msec)   (msec * (CPU_CLK_FREQ / 1000))
 
-/* Periperal Base Memory Addresses
+/* Peripheral Base Memory Addresses
  * Pulled from Computer_System.html
 */
-#define MEMADDR_OCRAM             ((uintptr_t)(0x80000000))
-#define MEMADDR_IRQCONTROLLER     ((uintptr_t)(0xff204040))
-#define MEMADDR_JTAG_UART_0       ((uintptr_t)(0xff201000))
-#define MEMADDR_UART_0            ((uintptr_t)(0xff204080))
-#define MEMADDR_PIO_LEDR          ((uintptr_t)(0xff200000))
-#define MEMADDR_PIO_SW            ((uintptr_t)(0xff200040))
-#define MEMADDR_PIO_KEY           ((uintptr_t)(0xff200050))
-#define MEMADDR_PIO_HEX5_HEX4     ((uintptr_t)(0xff200030))
-#define MEMADDR_PIO_HEX3_HEX0     ((uintptr_t)(0xff200020))
-#define MEMADDR_PIO_ARD_GPIO      ((uintptr_t)(0xff200100))
-#define MEMADDR_PIO_ARD_GPIO_DIR  ((uintptr_t)(0xff2040c0))
-#define MEMADDR_PIO_GPIO_A        ((uintptr_t)(0xff200060))
-#define MEMADDR_PIO_GPIO_A_DIR    ((uintptr_t)(0xff204090))
-#define MEMADDR_PIO_GPIO_B        ((uintptr_t)(0xff200070))
-#define MEMADDR_PIO_GPIO_B_DIR    ((uintptr_t)(0xff2040a0))
-#define MEMADDR_PIO_GPIO_AF_MUX_A ((uintptr_t)(0xff2040b0))
+#define MEMADDR_OCRAM               ((uintptr_t)(0x80000000))
+#define MEMADDR_IRQCONTROLLER       ((uintptr_t)(0xff204040))
+#define MEMADDR_JTAG_UART_0         ((uintptr_t)(0xff201000))
+#define MEMADDR_UART_0              ((uintptr_t)(0xff204080))
+#define MEMADDR_PIO_LEDR            ((uintptr_t)(0xff200000))
+#define MEMADDR_PIO_SW              ((uintptr_t)(0xff200040))
+#define MEMADDR_PIO_KEY             ((uintptr_t)(0xff200050))
+#define MEMADDR_PIO_HEX5_HEX4       ((uintptr_t)(0xff200030))
+#define MEMADDR_PIO_HEX3_HEX0       ((uintptr_t)(0xff200020))
+#define MEMADDR_PIO_ARD_GPIO        ((uintptr_t)(0xff200100))
+#define MEMADDR_PIO_ARD_GPIO_DIR    ((uintptr_t)(0xff2040c0))
+#define MEMADDR_PIO_GPIO_A          ((uintptr_t)(0xff200060))
+#define MEMADDR_PIO_GPIO_A_DIR      ((uintptr_t)(0xff204090))
+#define MEMADDR_PIO_GPIO_B          ((uintptr_t)(0xff200070))
+#define MEMADDR_PIO_GPIO_B_DIR      ((uintptr_t)(0xff2040a0))
+#define MEMADDR_PIO_AF_MUX_A        ((uintptr_t)(0xff2040b0))
+
+// AF Mux bits in GPIO_AF_MUX_A
+
+/*  afm.a.0
+    bit = 0 -> GPIO[9] connected to GPIO_A[9]
+    bit = 1 -> GPIO[9] connected to UART0_TX
+*/
+#define AF_MUX_A_UART0_TX   0
+/*  afm.a.1
+    bit = 0 -> master_reset connected to ~KEY[0]
+    bit = 1 -> master_reset connected to '0' (inactive)
+*/
+#define AF_MUX_A_RST_KEY0   1
 
 #define NUM_LEDR 10
 
@@ -52,14 +65,6 @@
 #define BUILD_STRING "build string undefined"
 #endif
 
-typedef volatile struct {
-    uint32_t port;
-    uint32_t direction; // 0 for input, 1 for output
-    uint32_t _reserved1;
-    uint32_t _reserved2;
-    uint32_t outset;
-    uint32_t outclear;
-} Pio;
 
 /* InterruptController
 
@@ -95,13 +100,6 @@ typedef volatile struct {
     uint32_t softinterrupt; // RW
 } InterruptController;
 
-extern Pio* g_pio_ledr;
-extern Pio* g_pio_sw;
-extern Pio* g_pio_key;
-extern Pio* g_pio_hex5_hex4;
-extern Pio* g_pio_hex3_hex0;
-
-extern jUartPeriph* juart0_p;
 extern InterruptController* g_InterruptController;
 
 #endif // FPGACONFIG_H

@@ -3,7 +3,6 @@
 #include "FpgaConfig.h"
 #include "bit.h"
 #include "Hal.h"
-#include "str_lib.h"
 #include <string.h>
 
 // CONSTANTS
@@ -154,8 +153,8 @@ void __seg7_hw_config ( void )
   	/* These GPIO pins are output only, no need to set direction */
 	
 	/* Set initial state of the GPIO pins */
-    pio_write_port(g_pio_hex5_hex4, 0);
-    pio_write_port(g_pio_hex3_hex0, 0);
+    pio_write_port(pio_hex5_hex4, 0);
+    pio_write_port(pio_hex3_hex0, 0);
     
 }
 
@@ -170,22 +169,22 @@ void __seg7_hw_set_digit(uint8_t u8_dig, uint8_t u8_pattern) {
     switch (u8_dig)
     {
     case 5:
-        pio_write_port_byte(g_pio_hex5_hex4, 1, u8_pattern);
+        pio_write_port_byte(pio_hex5_hex4, 1, u8_pattern);
         break;
     case 4:
-        pio_write_port_byte(g_pio_hex5_hex4, 0, u8_pattern);
+        pio_write_port_byte(pio_hex5_hex4, 0, u8_pattern);
         break;
     case 3:
-        pio_write_port_byte(g_pio_hex3_hex0, 3, u8_pattern);
+        pio_write_port_byte(pio_hex3_hex0, 3, u8_pattern);
         break;
     case 2:
-        pio_write_port_byte(g_pio_hex3_hex0, 2, u8_pattern);
+        pio_write_port_byte(pio_hex3_hex0, 2, u8_pattern);
         break;
     case 1:
-        pio_write_port_byte(g_pio_hex3_hex0, 1, u8_pattern);
+        pio_write_port_byte(pio_hex3_hex0, 1, u8_pattern);
         break;
     case 0:
-        pio_write_port_byte(g_pio_hex3_hex0, 0, u8_pattern);
+        pio_write_port_byte(pio_hex3_hex0, 0, u8_pattern);
         break;
 
     default:

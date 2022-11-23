@@ -30,8 +30,6 @@ DEALINGS IN THE SOFTWARE. */
 
 static int counterMod = 1;
 
-jUartStatus juart0;
-
 MULTIBUTTON_T  KEY_ARR[2];
 MULTIBUTTON_T* KEY    [2];
 
@@ -54,26 +52,26 @@ int main() {
     mb_init(KEY[0]);
     mb_init(KEY[1]);
 
-    juart_init(&juart0, juart0_p);
+    juart_init(juart0, juart0_p);
 
     // Greetings
-    juart_write(&juart0, "\n\n* * * VexRiscv Demo - ");
-    juart_write(&juart0, BUILD_STRING);
-    juart_write(&juart0, " - ");
-    juart_write(&juart0, BUILD_DATE);
-    juart_write(&juart0, " * * *\n");
+    juart_write(juart0, "\n\n* * * VexRiscv Demo - ");
+    juart_write(juart0, BUILD_STRING);
+    juart_write(juart0, " - ");
+    juart_write(juart0, BUILD_DATE);
+    juart_write(juart0, " * * *\n");
 
     // Init seg7 module
     __seg7_init();
 
     // LEDs off
-    pio_write_port(g_pio_ledr, 0);
+    pio_write_port(pio_ledr, 0);
 
     // Enable interrupt on timer and uart receive.
     Hal_SetExtIrqHandler(EXT_IRQ_JTAG_UART, IRQHandlerUart);
     Hal_EnableInterrupt(EXT_IRQ_JTAG_UART);
-    BIT_CLR(juart0.reg->control, UART_RE);	// enable read interrupts
-    BIT_CLR(juart0.reg->control, UART_WE);	// disable write interrupts
+    BIT_CLR(juart0->reg->control, UART_RE);	// enable read interrupts
+    BIT_CLR(juart0->reg->control, UART_WE);	// disable write interrupts
 
     Hal_EnableMachineInterrupt(IRQ_M_EXT);
     Hal_SetTimerIrqHandler(IRQHandlerTimer);
@@ -90,6 +88,11 @@ int main() {
     while (1)
     {
         uint32_t timeNow = Hal_ReadTime32();
+
+        // Enable/Disable reset on KEY0
+        // SW[0] UP   -> Reset inactive
+        // SW[0] DOWN -> Reset tied to KEY0
+        pio_write(pio_af_mux_a, AF_MUX_A_RST_KEY0, pio_read(pio_sw, 0));
 
         // Trigger every 250 msec
         if ((timeNow - timeLast) > (MSEC_TO_TICKS(100))) {
@@ -115,44 +118,51 @@ int main() {
         // Main task of the seg7 module
         __seg7_service();
 
-        juart_serv(&juart0);
+        juart_serv(juart0);
         Hal_SysTickServ();
         // Display connected status on LEDR0
         // pio_write(g_pio_ledr, 0, juart_is_pc_conn(&juart0));
 
         // Echo chars on the UART
-        uint8_t c = juart_get(&juart0);
+        uint8_t c = juart_get(juart0);
         if (c == '\r') { c = '\n'; }
-        if (c) { juart_put(&juart0, c); }
+        if (c) { juart_put(juart0, c); }
 
-        pio_write_port(g_pio_ledr, pio_read_port(g_pio_sw));
+        pio_write_port(pio_ledr, pio_read_port(pio_sw));
 
-        char strBuff[64];
-        strcpy(strBuff, "Key 1 event @ SysTick ");
-        __seg7_i32ToDecStrCat((int32_t)Hal_SysTickRead(), strBuff);
-
-        // Read KEY1 events
-        switch (mb_get_event(KEY[1], pio_read(g_pio_key, 1)))
+        // Read KEY0 and KEY1 events
+        for (int i = 0; i < 2; i++)
         {
-        case MB_EVENT_CLICK:
-            strcat(strBuff, ": MB_EVENT_CLICK\n");
-            juart_write(&juart0, strBuff);
-            break;
-        case MB_EVENT_DOUBLE_CLICK:
-            strcat(strBuff, ": MB_EVENT_DOUBLE_CLICK\n");
-            juart_write(&juart0, strBuff);
-            break;
-        case MB_EVENT_HOLD:
-            strcat(strBuff, ": MB_EVENT_HOLD\n");
-            juart_write(&juart0, strBuff);
-            break;
-        case MB_EVENT_LONG_HOLD:
-            strcat(strBuff, ": MB_EVENT_LONG_HOLD\n");
-            juart_write(&juart0, strBuff);
-            break;
-        
-        default:
-            break;
+            MB_EVENT_T key_event = mb_get_event(KEY[i], pio_read(pio_key, i));
+
+            char strBuff[64];
+            strcpy(strBuff, "Key ");
+            __seg7_i32ToDecStrCat((int32_t)i, strBuff);
+            strcat(strBuff, " event @ SysTick ");
+            __seg7_i32ToDecStrCat((int32_t)Hal_SysTickRead(), strBuff);
+
+            switch (key_event)
+            {
+            case MB_EVENT_CLICK:
+                strcat(strBuff, ": MB_EVENT_CLICK\n");
+                juart_write(juart0, strBuff);
+                break;
+            case MB_EVENT_DOUBLE_CLICK:
+                strcat(strBuff, ": MB_EVENT_DOUBLE_CLICK\n");
+                juart_write(juart0, strBuff);
+                break;
+            case MB_EVENT_HOLD:
+                strcat(strBuff, ": MB_EVENT_HOLD\n");
+                juart_write(juart0, strBuff);
+                break;
+            case MB_EVENT_LONG_HOLD:
+                strcat(strBuff, ": MB_EVENT_LONG_HOLD\n");
+                juart_write(juart0, strBuff);
+                break;
+            
+            default:
+                break;
+            }
         }
     }
 }

@@ -3,6 +3,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include "FpgaConfig.h"
+
+//*******************************************
+// Defines
+//*******************************************
 
 /* Data register */
 #define UART_RAVAIL_SHIFT      16
@@ -19,6 +24,10 @@
 #define UART_WE          1
 #define UART_RE          0
 
+//*******************************************
+// Structs
+//*******************************************
+
 /* Registers for JTAG UART Peripheral */
 typedef volatile struct {
     uint32_t data;
@@ -31,6 +40,15 @@ typedef struct {
     bool pc_connected;
     uint32_t last_ac_set_time;
 } jUartStatus;
+
+// juart0
+extern jUartPeriph* juart0_p;
+extern jUartStatus  juart0_s;
+extern jUartStatus* juart0;
+
+//*******************************************
+// Public Prototypes
+//*******************************************
 
 void juart_init(jUartStatus* js, jUartPeriph* reg);
 void juart_serv(jUartStatus* js);

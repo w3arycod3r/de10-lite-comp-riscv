@@ -23,7 +23,6 @@ $(LIB_DIR)/src/Hal.c \
 $(LIB_DIR)/src/jtag_uart.c \
 $(LIB_DIR)/src/pio.c \
 $(LIB_DIR)/src/seg7.c \
-$(LIB_DIR)/src/str_lib.c \
 $(LIB_DIR)/src/multi_button.c \
 
 ######################################

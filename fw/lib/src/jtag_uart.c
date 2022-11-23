@@ -1,8 +1,13 @@
 #include "jtag_uart.h"
 #include "bit.h"
 #include "Hal.h"
+#include "FpgaConfig.h"
 
 #define AC_TMR_TIMEOUT_MSEC 500
+
+jUartPeriph* juart0_p    = (jUartPeriph*)(MEMADDR_JTAG_UART_0);
+jUartStatus  juart0_s;
+jUartStatus* juart0 	 = &juart0_s;
 
 /* Init the code module and the hardware */
 void juart_init(jUartStatus* js, jUartPeriph* reg) {
