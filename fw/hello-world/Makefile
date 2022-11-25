@@ -130,12 +130,12 @@ AS_INCLUDES =
 ARCH := -march=rv32imafc
 ABI := -mabi=ilp32f
 
-CFLAGS = $(C_DEFS) $(C_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
+CFLAGS = $(C_DEFS) $(C_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -Werror -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
 
 # Generate dependency information
 CFLAGS += -MMD -MP -MF"$(DEP_DIR)/$(notdir $(@:.o=.d))"
 
-ASFLAGS = $(AS_DEFS) $(AS_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
+ASFLAGS = $(AS_DEFS) $(AS_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -Werror -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
 
 ######################################
 # LDFLAGS (Linker)

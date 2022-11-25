@@ -36,6 +36,8 @@ uint8_t __seg7_char_to_patt(char c_char);
 void    __seg7_writeStringRightJust(char* psz_data);
 void    __seg7_i32ToDecStr(int32_t i32_value, char* psz_outputStr);
 void    __seg7_i32ToDecStrCat(int32_t i32_value, char* psz_outputStr);
+void    __seg7_u32ToBinStr(uint32_t u32_value, uint8_t num_bits, char* psz_outputStr);
+void    __seg7_u32ToBinStrCat(uint32_t u32_value, uint8_t num_bits, char* psz_outputStr);
 char    __seg7_nibbleToHexChar(uint8_t u8_value);
 void    __seg7_u8ToHexStr(uint8_t u8_value, char* psz_outputStr);
 void    __seg7_u16ToHexStr(uint16_t u16_value, char* psz_outputStr);

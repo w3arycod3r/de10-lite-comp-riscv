@@ -90,6 +90,12 @@ int main() {
     uint32_t timeLast = Hal_ReadTime32();
     uint32_t pattern = 1;
     bool dir = false; // false--left, true--right
+    uint8_t u8_cntr = 0;
+    int8_t i8_cntr = 0;
+    uint16_t u16_cntr = 0;
+    uint32_t last_sw = pio_read_port(pio_sw);
+    uint32_t sw;
+
     while (1)
     {
         uint32_t timeNow = Hal_ReadTime32();
@@ -132,14 +138,30 @@ int main() {
         // Echo chars on the JTAG UART
         c = juart_get(juart0);
         if (c == '\r') { c = '\n'; }
-        if (c) { log_put(c); }
+        // if (c) { log_put(c); }
 
         // Echo chars on the UART
         c = uart_get(uart0);
         if (c == '\r') { c = '\n'; }
-        if (c) { log_put(c); }
+        // if (c) { log_put(c); }
 
         pio_write_port(pio_ledr, pio_read_port(pio_sw));
+
+        // Log changes on the switches
+        sw = pio_read_port(pio_sw);
+        if (sw != last_sw) {
+            last_sw = sw;
+
+            // Format
+            char strBuff[64];
+            strcpy(strBuff, "SW event @ SysTick ");
+            __seg7_i32ToDecStrCat((int32_t)Hal_SysTickRead(), strBuff);
+            strcat(strBuff, ": SW = ");
+            __seg7_u32ToBinStrCat(sw, 10, strBuff);
+            strcat(strBuff, "\n");
+            // Print
+            log_write(strBuff);
+        }
 
         // Read KEY0 and KEY1 events
         for (int i = 0; i < 2; i++)
@@ -152,6 +174,7 @@ int main() {
             strcat(strBuff, " event @ SysTick ");
             __seg7_i32ToDecStrCat((int32_t)Hal_SysTickRead(), strBuff);
 
+            // Print events
             switch (key_event)
             {
             case MB_EVENT_CLICK:
@@ -174,6 +197,83 @@ int main() {
             default:
                 break;
             }
+
+            // Handle Counters
+            // Key 0 click -> Increment
+            if ((i == 0) && (key_event == MB_EVENT_CLICK))
+            {
+                u8_cntr += 1;
+                i8_cntr += 1;
+                u16_cntr += 1;
+            }
+            // Key 0 double click -> Fast Increment
+            if ((i == 0) && (key_event == MB_EVENT_DOUBLE_CLICK))
+            {
+                u8_cntr += 100;
+                i8_cntr += 100;
+                u16_cntr += 100;
+            }
+            // Key 0 hold -> Clear
+            if ((i == 0) && (key_event == MB_EVENT_HOLD))
+            {
+                u8_cntr = 0;
+                i8_cntr = 0;
+                u16_cntr = 0;
+            }
+            // Key 1 click -> Decrement
+            if ((i == 1) && (key_event == MB_EVENT_CLICK))
+            {
+                u8_cntr -= 1;
+                i8_cntr -= 1;
+                u16_cntr -= 1;
+            }
+            // Key 1 double click -> Fast Decrement
+            if ((i == 1) && (key_event == MB_EVENT_DOUBLE_CLICK))
+            {
+                u8_cntr -= 100;
+                i8_cntr -= 100;
+                u16_cntr -= 100;
+            }
+            
+        }
+
+        // Control 7-seg mode
+
+        // SW[9] controls blink
+        seg7_blink(pio_read(pio_sw, 9));
+
+        sw = pio_read_port(pio_sw);
+
+        // SW[3..1] control what is displayed
+        switch ((sw >> 1) & 0b111)
+        {
+        case 0b000:
+            seg7_writeStringPadSpace(BUILD_STRING);
+            break;
+        case 0b001:
+            seg7_writeString("bright");
+            break;
+        case 0b010:
+            seg7_writeU8Decimal(u8_cntr);
+            break;
+        case 0b011:
+            seg7_writeU8Hex(u8_cntr);
+            break;
+        case 0b100:
+            seg7_writeI8Decimal(i8_cntr);
+            break;
+        case 0b101:
+            seg7_writeI8Hex(i8_cntr);
+            break;
+        case 0b110:
+            seg7_writeU16Decimal(u16_cntr);
+            break;
+        case 0b111:
+            seg7_writeU16Hex(u16_cntr);
+            break;
+        
+        default:
+            break;
         }
     }
 }

@@ -255,12 +255,14 @@ void __seg7_writeStringRightJust(char* psz_data) {
 
     // Right justify formula:
     // begIdx = endIdx-len+1
-    u8_begIndex = (__SEG7_NUM_DIGITS-1)-strlen(psz_data)+1;
+    // endIdx is (__SEG7_NUM_DIGITS-1) ... Simplifies to below expr
+    u8_begIndex = (__SEG7_NUM_DIGITS) - u8_strLen;
 
-    seg7_clearScreen();
+    // Clear the currDisp buffer
+    strcpy((char*)__sz_seg7_currDisp, (char*)__sz_seg7_spaces);
 
-    // Copy formBuff into currDisp starting at begIndex
-    strcpy((char*)(__sz_seg7_currDisp+u8_begIndex), psz_data);
+    // Copy incoming string into currDisp starting at begIndex
+    strcpy((char*)&__sz_seg7_currDisp[u8_begIndex], psz_data);
     
     __u8_seg7_mode = SEG7_MODE_STATIC;
     __seg7_update_displays();
@@ -565,9 +567,42 @@ void __seg7_i32ToDecStr(int32_t i32_value, char* psz_outputStr) {
     } while (i32_value);
 }
 
+/*  Print lower (num_bits) bits in binary format to psz_outputStr 
+    Ex. 0x1234, 8 bits -> "0b00110100"
+    psz_outputStr must be at least size (num_bits + 3), to accommodate prefix and null term
+*/ 
+void __seg7_u32ToBinStr(uint32_t u32_value, uint8_t num_bits, char* psz_outputStr) {
+
+    if (num_bits == 0 || num_bits > 32)
+    {
+        return;
+    }
+    
+    strcpy(psz_outputStr, "0b");    // Prefix
+
+    // Convert bits to ASCII
+    for (int i = 0; i < num_bits; i++)
+    {
+        // Check bits from left to right
+        if (BIT_TST(u32_value, num_bits - 1 - i))
+        {
+            strcat(psz_outputStr, "1");
+        } else {
+            strcat(psz_outputStr, "0");
+        }
+        
+    }
+}
+
 void __seg7_i32ToDecStrCat(int32_t i32_value, char* psz_outputStr) {
     char tmpstr[16];
     __seg7_i32ToDecStr(i32_value, tmpstr);
+    strcat(psz_outputStr, tmpstr);
+}
+
+void __seg7_u32ToBinStrCat(uint32_t u32_value, uint8_t num_bits, char* psz_outputStr) {
+    char tmpstr[35];    // 32 bits + 3
+    __seg7_u32ToBinStr(u32_value, num_bits, tmpstr);
     strcat(psz_outputStr, tmpstr);
 }
 

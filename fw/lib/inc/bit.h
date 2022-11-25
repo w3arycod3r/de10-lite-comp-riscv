@@ -1,9 +1,9 @@
 #ifndef BIT_H
 #define BIT_H
 
-#define BIT_SET(reg, bit) (reg |=  (1 << bit))
-#define BIT_CLR(reg, bit) (reg &= ~(1 << bit))
-#define BIT_TST(reg, bit) (reg &   (1 << bit))
+#define BIT_SET(reg, bit) (reg |=  (1 << (bit)))
+#define BIT_CLR(reg, bit) (reg &= ~(1 << (bit)))
+#define BIT_TST(reg, bit) (reg &   (1 << (bit)))
 
 #define GET_BYTE(reg, byte) ((reg >> (byte*8)) & 0xFF)
 #define GET_BYTE3(reg) ((reg >> 24) & 0xFF)
