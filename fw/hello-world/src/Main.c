@@ -27,6 +27,9 @@ DEALINGS IN THE SOFTWARE. */
 #include "seg7.h"
 #include "multi_button.h"
 #include <string.h>
+#include "jtag_uart.h"
+#include "uart.h"
+#include "log_sys.h"
 
 static int counterMod = 1;
 
@@ -40,10 +43,6 @@ void IRQHandlerTimer(void) {
     Hal_TimerStart(MSEC_TO_TICKS(2000)); // 2 seconds
 }
 
-void IRQHandlerUart() {
-    
-}
-
 int main() {
 
     KEY[0] = &KEY_ARR[0];
@@ -52,32 +51,38 @@ int main() {
     mb_init(KEY[0]);
     mb_init(KEY[1]);
 
-    juart_init(juart0, juart0_p);
-
-    // Greetings
-    juart_write(juart0, "\n\n* * * VexRiscv Demo - ");
-    juart_write(juart0, BUILD_STRING);
-    juart_write(juart0, " - ");
-    juart_write(juart0, BUILD_DATE);
-    juart_write(juart0, " * * *\n");
-
     // Init seg7 module
     __seg7_init();
 
     // LEDs off
     pio_write_port(pio_ledr, 0);
 
-    // Enable interrupt on timer and uart receive.
-    Hal_SetExtIrqHandler(EXT_IRQ_JTAG_UART, IRQHandlerUart);
-    Hal_EnableInterrupt(EXT_IRQ_JTAG_UART);
-    BIT_CLR(juart0->reg->control, UART_RE);	// enable read interrupts
-    BIT_CLR(juart0->reg->control, UART_WE);	// disable write interrupts
-
+    // Enable external and timer interrupts
     Hal_EnableMachineInterrupt(IRQ_M_EXT);
     Hal_SetTimerIrqHandler(IRQHandlerTimer);
     Hal_TimerStart(MSEC_TO_TICKS(3000)); // 3 seconds
     Hal_GlobalEnableInterrupts();
     Hal_SysTickInit();
+
+    // This should be done after ext irq's are set up, since this sets up the UART's
+    log_init();
+
+    // // Determine params of uart0
+    // char strBuff[64];
+    // strcpy(strBuff, "uart0 wspace = ");
+    // __seg7_i32ToDecStrCat((int32_t)uart_hw_wspace(uart0), strBuff);
+    // strcat(strBuff, "\n");
+    // juart_write(juart0, strBuff);
+
+    // // Stall
+    // while (1) { }
+
+    // Greetings
+    log_write("\n\n* * * VexRiscv Demo - ");
+    log_write(BUILD_STRING);
+    log_write(" - ");
+    log_write(BUILD_DATE);
+    log_write(" * * *\n");
 
     seg7_writeStringPadSpace("Hello World...");
     seg7_writeStringPadSpace(BUILD_STRING);
@@ -88,6 +93,7 @@ int main() {
     while (1)
     {
         uint32_t timeNow = Hal_ReadTime32();
+        uint8_t c;
 
         // Enable/Disable reset on KEY0
         // SW[0] UP   -> Reset inactive
@@ -118,15 +124,20 @@ int main() {
         // Main task of the seg7 module
         __seg7_service();
 
-        juart_serv(juart0);
+        log_serv();
         Hal_SysTickServ();
         // Display connected status on LEDR0
         // pio_write(g_pio_ledr, 0, juart_is_pc_conn(&juart0));
 
-        // Echo chars on the UART
-        uint8_t c = juart_get(juart0);
+        // Echo chars on the JTAG UART
+        c = juart_get(juart0);
         if (c == '\r') { c = '\n'; }
-        if (c) { juart_put(juart0, c); }
+        if (c) { log_put(c); }
+
+        // Echo chars on the UART
+        c = uart_get(uart0);
+        if (c == '\r') { c = '\n'; }
+        if (c) { log_put(c); }
 
         pio_write_port(pio_ledr, pio_read_port(pio_sw));
 
@@ -145,19 +156,19 @@ int main() {
             {
             case MB_EVENT_CLICK:
                 strcat(strBuff, ": MB_EVENT_CLICK\n");
-                juart_write(juart0, strBuff);
+                log_write(strBuff);
                 break;
             case MB_EVENT_DOUBLE_CLICK:
                 strcat(strBuff, ": MB_EVENT_DOUBLE_CLICK\n");
-                juart_write(juart0, strBuff);
+                log_write(strBuff);
                 break;
             case MB_EVENT_HOLD:
                 strcat(strBuff, ": MB_EVENT_HOLD\n");
-                juart_write(juart0, strBuff);
+                log_write(strBuff);
                 break;
             case MB_EVENT_LONG_HOLD:
                 strcat(strBuff, ": MB_EVENT_LONG_HOLD\n");
-                juart_write(juart0, strBuff);
+                log_write(strBuff);
                 break;
             
             default:

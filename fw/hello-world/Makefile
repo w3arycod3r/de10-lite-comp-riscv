@@ -21,9 +21,11 @@ src/Main.c \
 $(LIB_DIR)/src/FpgaConfig.c \
 $(LIB_DIR)/src/Hal.c \
 $(LIB_DIR)/src/jtag_uart.c \
+$(LIB_DIR)/src/uart.c \
 $(LIB_DIR)/src/pio.c \
 $(LIB_DIR)/src/seg7.c \
 $(LIB_DIR)/src/multi_button.c \
+$(LIB_DIR)/src/log_sys.c \
 
 ######################################
 # ASM Sources

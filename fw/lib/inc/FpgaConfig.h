@@ -3,8 +3,6 @@
 
 #include <stdint.h>
 
-#include "jtag_uart.h"
-
 #define MHZ                   *1000000UL
 #define CPU_CLK_FREQ          (100 MHZ)
 #define MSEC_TO_TICKS(msec)   (msec * (CPU_CLK_FREQ / 1000))
@@ -48,7 +46,8 @@
 #define EXT_IRQ_ACCEL           0
 #define EXT_IRQ_INT_TMR0        3
 #define EXT_IRQ_INT_TMR1        4
-#define EXT_IRQ_JTAG_UART       5
+#define EXT_IRQ_JTAG_UART_0     5
+#define EXT_IRQ_UART_0          8
 #define EXT_IRQ_PIO_ARDUINO     1
 #define EXT_IRQ_PIO_JP1_0       2
 #define EXT_IRQ_PIO_JP1_1       7

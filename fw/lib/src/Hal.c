@@ -1,4 +1,5 @@
 #include "Hal.h"
+#include <stdbool.h>
 
 static VoidFunc Hal_ExtIrqCallback[32];
 static VoidFunc Hal_TimerIrqCallback;

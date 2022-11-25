@@ -1,3 +1,6 @@
+// File:    jtag_uart.h
+// Purpose: Driver for the Altera JTAG UART peripheral
+
 #ifndef JTAG_UART_H
 #define JTAG_UART_H
 
@@ -10,19 +13,19 @@
 //*******************************************
 
 /* Data register */
-#define UART_RAVAIL_SHIFT      16
-#define UART_RAVAIL_MASK    0xFFFF
-#define UART_RVALID         15
-#define UART_DATA           7
+#define JUART_RAVAIL_SHIFT      16
+#define JUART_RAVAIL_MASK       0xFFFF
+#define JUART_RVALID            15
+#define JUART_DATA              7
 
 /* Control register */
-#define UART_WSPACE_SHIFT      16
-#define UART_WSPACE_MASK  0xFFFF
-#define UART_AC          10
-#define UART_WI          9
-#define UART_RI          8
-#define UART_WE          1
-#define UART_RE          0
+#define JUART_WSPACE_SHIFT      16
+#define JUART_WSPACE_MASK       0xFFFF
+#define JUART_AC                10
+#define JUART_WI                9
+#define JUART_RI                8
+#define JUART_WE                1
+#define JUART_RE                0
 
 //*******************************************
 // Structs
@@ -32,17 +35,17 @@
 typedef volatile struct {
     uint32_t data;
     uint32_t control;
-} jUartPeriph;
+} jUartReg;
 
 /* Internal Status of the code module */
 typedef struct {
-    jUartPeriph* reg;
+    jUartReg* reg;
     bool pc_connected;
     uint32_t last_ac_set_time;
 } jUartStatus;
 
 // juart0
-extern jUartPeriph* juart0_p;
+extern jUartReg*    juart0_r;
 extern jUartStatus  juart0_s;
 extern jUartStatus* juart0;
 
@@ -50,7 +53,7 @@ extern jUartStatus* juart0;
 // Public Prototypes
 //*******************************************
 
-void juart_init(jUartStatus* js, jUartPeriph* reg);
+void juart_init(jUartStatus* js, jUartReg* reg);
 void juart_serv(jUartStatus* js);
 bool juart_is_pc_conn(jUartStatus* js);
 uint16_t juart_hw_wspace(jUartStatus* js);
