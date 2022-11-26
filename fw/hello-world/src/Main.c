@@ -138,12 +138,12 @@ int main() {
         // Echo chars on the JTAG UART
         c = juart_get(juart0);
         if (c == '\r') { c = '\n'; }
-        // if (c) { log_put(c); }
+        if (c) { log_put(c); }
 
         // Echo chars on the UART
         c = uart_get(uart0);
         if (c == '\r') { c = '\n'; }
-        // if (c) { log_put(c); }
+        if (c) { log_put(c); }
 
         pio_write_port(pio_ledr, pio_read_port(pio_sw));
 
