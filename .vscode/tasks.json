@@ -55,6 +55,23 @@
             }
         },
         {
+            "label": "hello-world (Flash & Term)",
+            "options": {
+                "cwd": "${workspaceFolder}/fw/hello-world"
+            },
+            "group": "build",
+            "type": "shell",
+            "command": "make flash-term",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false,
+            }
+        },
+        {
             "label": "hello-world (Perm Flash)",
             "options": {
                 "cwd": "${workspaceFolder}/fw/hello-world"

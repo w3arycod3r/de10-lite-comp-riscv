@@ -30,6 +30,14 @@ DEALINGS IN THE SOFTWARE. */
 #include "jtag_uart.h"
 #include "uart.h"
 #include "log_sys.h"
+#include <printf/printf.h>
+#include "lfsr.h"
+
+//*******************************************
+// Static Prototypes
+//*******************************************
+void ram_test();
+void print_mem(uint8_t* start, uint32_t len);
 
 static int counterMod = 1;
 
@@ -95,6 +103,8 @@ int main() {
     uint16_t u16_cntr = 0;
     uint32_t last_sw = pio_read_port(pio_sw);
     uint32_t sw;
+
+    ram_test();
 
     while (1)
     {
@@ -276,4 +286,89 @@ int main() {
             break;
         }
     }
+}
+
+extern uint8_t _sdram_start, _sdram_end;
+
+void ram_test() {
+    uint8_t *sdram_start = &_sdram_start;
+    uint8_t *sdram_end = &_sdram_end;
+    uint32_t sdram_len = (uint32_t)(sdram_end - sdram_start) + 1;   // Bytes
+
+    uint32_t sdram_num_words = sdram_len / 4;
+    printf_("Starting SDRAM test...\n");
+    printf_("sdram_start : 0x%.8x\n", (unsigned int)sdram_start);
+    printf_("sdram_end   : 0x%.8x\n", (unsigned int)sdram_end);
+
+    // print_mem(sdram_start, sdram_len);
+    memset((void*)sdram_start, 0xFF, sdram_len);
+
+    uint32_t* u32_ptr = (uint32_t*)sdram_start;
+
+    // Fill the SDRAM using the LFSR sequence
+    printf_("Writing test sequence to SDRAM...\n");
+    lfsr_reset();
+    for (uint32_t i = 0; i < sdram_num_words; i++)
+    {
+        *u32_ptr++ = lfsr_next();
+    }
+    
+    // Inject error
+    // u32_ptr = (uint32_t*)sdram_start;
+    // u32_ptr[sdram_num_words-1] = swap_endianess_u32(0xDEADBEEF);
+
+    // Read back from SDRAM and check against the sequence
+    printf_("Reading back test sequence from SDRAM...\n");
+    lfsr_reset();
+    u32_ptr = (uint32_t*)sdram_start;
+    uint32_t read;
+    bool test_pass = true;
+    for (uint32_t i = 0; i < sdram_num_words; i++)
+    {
+        read = *u32_ptr;
+        if (read != lfsr_next())
+        {
+            test_pass = false;
+            break;
+        }
+        u32_ptr++;
+    }
+
+    if (!test_pass)
+    {
+        printf_("SDRAM test FAILED at address 0x%.8x\n", (unsigned int)u32_ptr);
+    } else {
+        printf_("SDRAM test PASSED\n");
+    }
+    
+    printf_("Printing contents of SDRAM...\n\n");
+    
+
+    print_mem(sdram_start, 16 * 10);
+    printf_("   ...\n");
+    print_mem(sdram_end-(16*10)+1, 16 * 10);
+}
+
+void print_mem(uint8_t* start, uint32_t len) {
+
+    // Ensure address is aligned to a 32-bit word
+    // RISC-V core will trap if you attempt a misaligned memory access
+    if (((uint32_t)start % 4) != 0) {
+        return;
+    }
+    uint8_t* end = start + len;
+
+    while (start < end) {
+        // Print address, followed by 16 bytes (4 words) per line
+        printf_("0x%.8x  ", (unsigned int)start);
+        for (int i = 0; i < 4; i++)
+        {
+            uint32_t read = *(uint32_t*)start;  // Do a 32-bit read to optimize throughput
+            start += 4;
+            // Little endian ordering, RISC-V and the Avalon-MM bus spec are both le
+            printf_("%.2x %.2x %.2x %.2x ", (unsigned int)GET_BYTE0(read), (unsigned int)GET_BYTE1(read), (unsigned int)GET_BYTE2(read), (unsigned int)GET_BYTE3(read));
+        }
+        printf_("\n");
+    }
+
 }

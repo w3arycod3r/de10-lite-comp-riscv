@@ -1,5 +1,7 @@
 #include "Hal.h"
 #include <stdbool.h>
+#include "log_sys.h"
+#include <printf/printf.h>
 
 static VoidFunc Hal_ExtIrqCallback[32];
 static VoidFunc Hal_TimerIrqCallback;
@@ -73,20 +75,39 @@ extern uintptr_t SystemInterruptHandler(uintptr_t stack, bool softInterrupt);
 uintptr_t Hal_Exception(uintptr_t stack, uintptr_t addr, uint32_t mcause) {
 
 	if ((mcause & 0x80000000) == 0) {
-		// UartWrite(g_Uart, "TRAP\n    stack    ");
+		printf_("TRAP\n    stack    ");
+
 		// UartWriteHex32(g_Uart, stack, true);
-		// UartWrite(g_Uart, "    mepc     ");
+		printf_("0x%.8x\n", (unsigned int)stack);
+
+		printf_("    mepc     ");
+
 		// UartWriteHex32(g_Uart, addr, true);
-		// UartWrite(g_Uart, "    mcause   ");
+		printf_("0x%.8x\n", (unsigned int)addr);
+
+		printf_("    mcause   ");
+
 		// UartWriteHex32(g_Uart, mcause, true);
-		// UartWrite(g_Uart, "    irq en   ");
+		printf_("0x%.8x\n", (unsigned int)mcause);
+
+		printf_("    irq en   ");
+
 		// UartWriteHex32(g_Uart, g_InterruptController->enabled, true);
-		// UartWrite(g_Uart, "    irq pen  ");
+		printf_("0x%.8x\n", (unsigned int)g_InterruptController->enabled);
+
+		printf_("    irq pen  ");
 		// UartWriteHex32(g_Uart, g_InterruptController->pending, true);
-		// UartWrite(g_Uart, "    mtval    ");
+		printf_("0x%.8x\n", (unsigned int)g_InterruptController->pending);
+
+		printf_("    mtval    ");
 		// UartWriteHex32(g_Uart, read_csr(mtval),true);
-		// UartWrite(g_Uart, "    mbadaddr ");
+		printf_("0x%.8x\n", (unsigned int)read_csr(mtval));
+
+		printf_("    mbadaddr ");
 		// UartWriteHex32(g_Uart, read_csr(mbadaddr), true);
+		printf_("0x%.8x\n", (unsigned int)read_csr(mbadaddr));
+
+		// Stall
 		while(1);
 	} else {
 		if ((mcause & 0x7FFFFFFF) == IRQ_M_EXT) {

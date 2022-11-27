@@ -7,6 +7,7 @@
 #include "FpgaConfig.h"
 #include "jtag_uart.h"
 #include "uart.h"
+#include <printf/printf.h>
 
 //*******************************************
 // Defines
@@ -56,3 +57,7 @@ void log_serv() {
 	juart_serv(juart0);
 }
 
+/* Implement this for the printf_ library */
+void putchar_(char c) {
+	log_put(c);
+}

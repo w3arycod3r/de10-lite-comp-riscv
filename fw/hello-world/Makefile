@@ -26,6 +26,9 @@ $(LIB_DIR)/src/pio.c \
 $(LIB_DIR)/src/seg7.c \
 $(LIB_DIR)/src/multi_button.c \
 $(LIB_DIR)/src/log_sys.c \
+$(LIB_DIR)/printf/printf.c \
+$(LIB_DIR)/src/lfsr.c \
+$(LIB_DIR)/src/bit.c \
 
 ######################################
 # ASM Sources
@@ -99,6 +102,7 @@ CC := $(CROSS_COMPILE)gcc
 AS := $(CROSS_COMPILE)gcc -x assembler-with-cpp
 OBJCOPY := $(CROSS_COMPILE)objcopy
 OBJDUMP := $(CROSS_COMPILE)objdump
+NM := $(CROSS_COMPILE)nm
 
 BIN2MIF := python3 $(TOOLS_DIR)/bin2mif.py
 RM := rm -rf
@@ -122,6 +126,7 @@ C_INCLUDES := 	\
 -I. 			\
 -Iinc 			\
 -I$(LIB_DIR)/inc 	\
+-I$(LIB_DIR) 	\
 
 ### AS Includes
 AS_INCLUDES =
@@ -130,12 +135,12 @@ AS_INCLUDES =
 ARCH := -march=rv32imafc
 ABI := -mabi=ilp32f
 
-CFLAGS = $(C_DEFS) $(C_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -Werror -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
+CFLAGS = $(C_DEFS) $(C_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
 
 # Generate dependency information
 CFLAGS += -MMD -MP -MF"$(DEP_DIR)/$(notdir $(@:.o=.d))"
 
-ASFLAGS = $(AS_DEFS) $(AS_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -Werror -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
+ASFLAGS = $(AS_DEFS) $(AS_INCLUDES) $(ARCH) $(ABI) $(OPT_LVL) -ffreestanding -fno-delete-null-pointer-checks -g -Wall -std=gnu99  -ffunction-sections -fdata-sections -flto -fno-strict-aliasing
 
 ######################################
 # LDFLAGS (Linker)
@@ -173,6 +178,12 @@ $(OBJ_DIR)/%.S.o: %.S Makefile | make-dirs
 $(ELF): $(C_OUT) $(A_OUT) $(LD_SCRIPT) Makefile
 	$(CC) $(A_OUT) $(C_OUT) -o $@ $(LDFLAGS)
 	$(OBJDUMP) -D $@ > $(DUMP)
+# Append the symbol & size listing to the map file
+	@echo -e "------------------------------------------------------------" >> $(MAP)
+	@echo -e "-nm output:" >> $(MAP)
+	@echo -e "Address (hex) | Size (hex) | Type | Symbol Name" >> $(MAP)
+	@echo -e "------------------------------------------------------------" >> $(MAP)
+	$(NM) --print-size --size-sort --special-syms $(ELF) >> $(MAP)
 
 # .elf to .srec
 $(SREC): $(ELF)
@@ -227,6 +238,9 @@ perm-flash: $(QUART_POF)
 term:
 	nios2-terminal
 
+# Temp Flash & Open Terminal Target
+flash-term: flash term
+
 # Clean Target
 clean:
 	$(RM) $(BUILD_DIR)
@@ -240,4 +254,4 @@ print:
 	@echo BUILD_PWD $(BUILD_PWD)
 
 # Phony Targets (those which produce no output file)
-.PHONY: all clean make-dirs print term flash perm-flash
+.PHONY: all clean make-dirs print term flash perm-flash flash-term

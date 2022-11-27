@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/fw/**"
+                "${workspaceFolder}/fw/**",
+                "${workspaceFolder}/fw/lib**",
+                "${workspaceFolder}/fw/lib/inc**"
             ],
             "defines": [
                 "_DEBUG",

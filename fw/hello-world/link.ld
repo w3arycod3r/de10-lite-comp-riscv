@@ -4,14 +4,18 @@ OUTPUT_ARCH( "riscv" )
 MEMORY
 {
 	OCRAM (rwx) : ORIGIN = 0x08000000, LENGTH = 64K
-	/* SDRAM (rwx) : ORIGIN = 0x00000000, LENGTH = 64M */
+	SDRAM (rwx) : ORIGIN = 0x00000000, LENGTH = 64M
 }
 
 ENTRY(__reset_vector__)
 
 _end_of_memory = ORIGIN(OCRAM) + LENGTH(OCRAM) - 1;
+/* RISC-V calling convention says SP must always be 16-byte aligned */
 _sp = ALIGN(_end_of_memory - 0x10, 4);
 
+/* For use in the code */
+_sdram_start = ORIGIN(SDRAM);
+_sdram_end = ORIGIN(SDRAM) + LENGTH(SDRAM) - 1;
 
 SECTIONS
 {
@@ -69,3 +73,7 @@ SECTIONS
 
 	_end = .;
 }
+
+_stack_start = ALIGN(_end, 16);
+_stack_end = _sp;
+_stack_size = _stack_end - _stack_start;
