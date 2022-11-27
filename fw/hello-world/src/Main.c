@@ -301,12 +301,13 @@ void ram_test() {
     printf_("sdram_end   : 0x%.8x\n", (unsigned int)sdram_end);
 
     // print_mem(sdram_start, sdram_len);
-    memset((void*)sdram_start, 0xFF, sdram_len);
+    // memset((void*)sdram_start, 0xFF, sdram_len);
 
     uint32_t* u32_ptr = (uint32_t*)sdram_start;
 
     // Fill the SDRAM using the LFSR sequence
     printf_("Writing test sequence to SDRAM...\n");
+    seg7_writeString("ram-wr");
     lfsr_reset();
     for (uint32_t i = 0; i < sdram_num_words; i++)
     {
@@ -319,6 +320,7 @@ void ram_test() {
 
     // Read back from SDRAM and check against the sequence
     printf_("Reading back test sequence from SDRAM...\n");
+    seg7_writeString("ram-rd");
     lfsr_reset();
     u32_ptr = (uint32_t*)sdram_start;
     uint32_t read;
@@ -337,8 +339,10 @@ void ram_test() {
     if (!test_pass)
     {
         printf_("SDRAM test FAILED at address 0x%.8x\n", (unsigned int)u32_ptr);
+        seg7_writeString(" FAIL ");
     } else {
         printf_("SDRAM test PASSED\n");
+        seg7_writeString(" PASS ");
     }
     
     printf_("Printing contents of SDRAM...\n\n");
