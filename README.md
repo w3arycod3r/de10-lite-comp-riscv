@@ -85,4 +85,5 @@ SW event @ SysTick 41343: SW = 0b0100001011
 # Debug
 - Via JTAG UART terminal (built in USB)
 - Via USB-to-UART adapter (RX/TX Pins, Hardware UART Periph)
-![](img\uart0_wiring.png)
+
+![](img/uart0_wiring.png)
