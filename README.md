@@ -70,7 +70,7 @@ SW event @ SysTick 41343: SW = 0b0100001011
 3. [MSYS2](https://www.msys2.org/#installation)
 4. Prebuilt RISC-V Toolchain
     - SiFive [Freedom Tools](https://github.com/sifive/freedom-tools/releases)
-    - riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-w64-mingw32.zip
+    - [Direct Link](https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-w64-mingw32.zip)
 
 # Build Quartus Project
 1. Make edits in VHDL code or in Platform Designer
