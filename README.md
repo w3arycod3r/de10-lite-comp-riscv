@@ -66,24 +66,28 @@ SW event @ SysTick 41343: SW = 0b0100001011
 
 # Dependencies
 1. Quartus Prime Lite [21.1.1](https://www.intel.com/content/www/us/en/software-kit/736572/intel-quartus-prime-lite-edition-design-software-version-21-1-1-for-windows.html)
-2. [Git](https://gitforwindows.org/) for Windows?
-3. [MSYS2](https://www.msys2.org/#installation)
+    - Add `C:\intelFPGA_lite\21.1\quartus\bin64` to your PATH
+3. [Git](https://gitforwindows.org/) for Windows?
+4. [MSYS2](https://www.msys2.org/#installation)
     - Execute `pacman -S mingw-w64-ucrt-x86_64-gcc make` in the UCRT64 env
     - Add `C:\msys64\usr\bin` and `C:\msys64\ucrt64\bin\` to your PATH
 5. Prebuilt RISC-V Toolchain
     - SiFive [Freedom Tools](https://github.com/sifive/freedom-tools/releases)
     - [Direct Link](https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-w64-mingw32.zip)
     - Add `/bin` dir to your PATH
+6. [Python](https://www.python.org/downloads/windows/), v3.11.3 at time of writing
+    - Ensure python.exe is in your PATH
 
-# Build Quartus Project
-1. Make edits in VHDL code or in Platform Designer
-2. "Start Compilation"
-
-# Build firmware
-1. Invoke Makefile via vscode tasks
-
-# Flash
-1. Invoke Makefile via vscode tasks
+# Build and Flash Steps
+1. Platform Designer Project -> Generate VHDL for Quartus Project
+    - Already done, build output saved in repo
+2. Quartus Project -> Generate .sof and .pof
+    - Must be done in Quartus UI
+    - "Start Compilation", Ctrl-L
+3. Firmware Build using RISC-V toolchain -> Update .mif and rebuild .sof and .pof
+    - Invoke Makefile via vscode tasks
+4. Flash .sof or .pof to board using Quartus tools
+    - Invoke Makefile via vscode tasks
 
 # Debug
 - Via JTAG UART terminal (built in USB)
