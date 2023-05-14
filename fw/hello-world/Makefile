@@ -104,7 +104,7 @@ OBJCOPY := $(CROSS_COMPILE)objcopy
 OBJDUMP := $(CROSS_COMPILE)objdump
 NM := $(CROSS_COMPILE)nm
 
-BIN2MIF := python3 $(TOOLS_DIR)/bin2mif.py
+BIN2MIF := python $(TOOLS_DIR)/bin2mif.py
 RM := rm -rf
 COPY := cp
 
