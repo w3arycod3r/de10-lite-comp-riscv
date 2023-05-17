@@ -79,7 +79,7 @@ SW event @ SysTick 41343: SW = 0b0100001011
     - Ensure python.exe is in your PATH
 
 # Build and Flash Steps
-1. Platform Designer Project -> Generate HDL for Quartus Project
+1. [Platform Designer](https://www.intel.com/content/www/us/en/docs/programmable/683609/21-3/creating-a-system-with.html) Project -> Generate HDL for Quartus Project
     - Already done, build output saved in repo
 2. Quartus Project -> Generate .sof and .pof
     - Must be done in Quartus UI
