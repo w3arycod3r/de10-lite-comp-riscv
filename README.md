@@ -94,3 +94,26 @@ SW event @ SysTick 41343: SW = 0b0100001011
 - Via USB-to-UART adapter (RX/TX Pins, Hardware UART Periph)
 
 ![](img/uart0_wiring.png)
+
+# Sources
+The revered VexRiscv core and the supporting tools
+- https://github.com/SpinalHDL/SpinalHDL
+- https://github.com/SpinalHDL/VexRiscv
+- https://github.com/SpinalHDL/openocd_riscv
+
+Tom's excellent blog covering Quartus, Intel, and VexRiscv topics
+- https://tomverbeure.github.io/2021/05/02/Intel-JTAG-UART.html
+- https://tomverbeure.github.io/2021/07/18/VexRiscv-OpenOCD-and-Traps.html
+- https://tomverbeure.github.io/2021/04/25/Intel-FPGA-RAM-Bitstream-Patching.html
+- https://github.com/tomverbeure/jtag_uart_example
+- https://github.com/tomverbeure/fpga_quick_ram_update
+
+The work of ARIES-Embedded - Adding the Avalon® bus to VexRiscv cores, allowing them to be dropped into a Platform Designer system.
+Also, bare metal and FreeRTOS firmware examples to run on the VexRiscv core.
+- https://github.com/ARIES-Embedded/riscv-on-max10
+
+hildebrandmw's work - Good HDL examples of using the hardware on the DE10-Lite board, particularly the SDRAM.
+- https://github.com/hildebrandmw/de10lite-hdl
+
+Intel's DE10-Lite Computer System, using their Nios® II core in a Platform Designer system, along with various peripherals.
+- https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/18.1/Computer_Systems/DE10-Lite/DE10-Lite_Computer_NiosII.pdf
