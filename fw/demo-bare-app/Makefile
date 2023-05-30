@@ -7,10 +7,11 @@
 # Optimization Level
 OPT_LVL = -Os
 
-PROG_NAME := hello-world
+PROG_NAME := demo-bare-app
 
 # Common Directories
 LIB_DIR = ../lib
+RV_LIB_DIR = ../lib/rv-lib
 TOOLS_DIR = ../tools
 
 ######################################
@@ -18,24 +19,24 @@ TOOLS_DIR = ../tools
 ######################################
 C_SRC = \
 src/Main.c \
-$(LIB_DIR)/src/FpgaConfig.c \
-$(LIB_DIR)/src/Hal.c \
-$(LIB_DIR)/src/jtag_uart.c \
-$(LIB_DIR)/src/uart.c \
-$(LIB_DIR)/src/pio.c \
-$(LIB_DIR)/src/seg7.c \
-$(LIB_DIR)/src/multi_button.c \
-$(LIB_DIR)/src/log_sys.c \
+$(RV_LIB_DIR)/src/FpgaConfig.c \
+$(RV_LIB_DIR)/src/Hal.c \
+$(RV_LIB_DIR)/src/jtag_uart.c \
+$(RV_LIB_DIR)/src/uart.c \
+$(RV_LIB_DIR)/src/pio.c \
+$(RV_LIB_DIR)/src/seg7.c \
+$(RV_LIB_DIR)/src/multi_button.c \
+$(RV_LIB_DIR)/src/log_sys.c \
+$(RV_LIB_DIR)/src/lfsr.c \
+$(RV_LIB_DIR)/src/bit.c \
 $(LIB_DIR)/printf/printf.c \
-$(LIB_DIR)/src/lfsr.c \
-$(LIB_DIR)/src/bit.c \
 
 ######################################
 # ASM Sources
 ######################################
 A_SRC = \
-$(LIB_DIR)/src/Crt.S \
-$(LIB_DIR)/src/Hal.S \
+$(RV_LIB_DIR)/src/Crt.S \
+$(RV_LIB_DIR)/src/Hal.S \
 
 ######################################
 # Build Info
@@ -125,7 +126,8 @@ AS_DEFS =
 C_INCLUDES := 	\
 -I. 			\
 -Iinc 			\
--I$(LIB_DIR)/inc 	\
+-I$(RV_LIB_DIR)/inc 	\
+-I$(RV_LIB_DIR) 	\
 -I$(LIB_DIR) 	\
 
 ### AS Includes

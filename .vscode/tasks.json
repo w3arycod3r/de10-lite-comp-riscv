@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "hello-world (Clean Build)",
+            "label": "demo-bare-app (Clean Build)",
             "options": {
-                "cwd": "${workspaceFolder}/fw/hello-world"
+                "cwd": "${workspaceFolder}/fw/demo-bare-app"
             },
             "group": "build",
             "type": "shell",
@@ -21,9 +21,9 @@
             }
         },
         {
-            "label": "hello-world (Build)",
+            "label": "demo-bare-app (Build)",
             "options": {
-                "cwd": "${workspaceFolder}/fw/hello-world"
+                "cwd": "${workspaceFolder}/fw/demo-bare-app"
             },
             "group": "build",
             "type": "shell",
@@ -38,9 +38,9 @@
             }
         },
         {
-            "label": "hello-world (Flash)",
+            "label": "demo-bare-app (Flash)",
             "options": {
-                "cwd": "${workspaceFolder}/fw/hello-world"
+                "cwd": "${workspaceFolder}/fw/demo-bare-app"
             },
             "group": "build",
             "type": "shell",
@@ -55,9 +55,9 @@
             }
         },
         {
-            "label": "hello-world (Flash & Term)",
+            "label": "demo-bare-app (Flash & Term)",
             "options": {
-                "cwd": "${workspaceFolder}/fw/hello-world"
+                "cwd": "${workspaceFolder}/fw/demo-bare-app"
             },
             "group": "build",
             "type": "shell",
@@ -72,9 +72,9 @@
             }
         },
         {
-            "label": "hello-world (Perm Flash)",
+            "label": "demo-bare-app (Perm Flash)",
             "options": {
-                "cwd": "${workspaceFolder}/fw/hello-world"
+                "cwd": "${workspaceFolder}/fw/demo-bare-app"
             },
             "group": "build",
             "type": "shell",
